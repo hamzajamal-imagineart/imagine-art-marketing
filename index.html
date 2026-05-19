@@ -387,8 +387,8 @@
     .hiw-center {
       position: absolute; left: 50%; top: min(61%, 560px);
       transform: translate(-50%, -50%);
-      width: 380px; height: 480px;
-      border-radius: 28px; overflow: hidden;
+      width: min(380px, 84vw); height: min(480px, 106vw);
+      border-radius: clamp(18px, 4vw, 28px); overflow: hidden;
       background: linear-gradient(160deg, #1c1c1e 0%, #0f0f0f 100%);
       border: 1px solid rgba(255,255,255,0.09);
       box-shadow:
@@ -1024,9 +1024,20 @@
     var videoPlaying = false;
 
     // 2 cards: jacket (left) and model (right), merge one by one
+    var vw = window.innerWidth;
+    var isMobile = vw < 600;
+    // On mobile, shrink cards to fit viewport
+    if (isMobile) {
+      var cw = Math.round(vw * 0.38), ch = Math.round(cw * 1.32);
+      cards.forEach(function(c) {
+        c.style.width  = cw + 'px'; c.style.height = ch + 'px';
+        c.style.marginLeft = (-cw/2) + 'px'; c.style.marginTop = (-ch/2) + 'px';
+      });
+    }
+    var dxBase = Math.min(320, Math.round(vw * 0.26));
     var cardData = [
-      { dx: -320, dy: 0, rot: -6,  s: 0.00, e: 0.35 },  // jacket — left
-      { dx:  320, dy: 0, rot:  6,  s: 0.25, e: 0.60 },  // model  — right
+      { dx: -dxBase, dy: 0, rot: -6,  s: 0.00, e: 0.35 },  // jacket — left
+      { dx:  dxBase, dy: 0, rot:  6,  s: 0.25, e: 0.60 },  // model  — right
     ];
 
     // ease-in-out cubic
@@ -1453,9 +1464,10 @@
   <script>
     (function () {
       const NAV_LINKS = [
-        { label: 'Ads',       href: '#sec-ads'       },
-        { label: 'Templates', href: '#sec-templates'  },
-        { label: 'Gallery',   href: '#sec-gallery'    },
+        { label: 'How it Works', href: '#sec-hiw'       },
+        { label: 'Ad Creative',  href: '#sec-ads'       },
+        { label: 'Templates',    href: '#sec-templates'  },
+        { label: 'Gallery',      href: '#sec-gallery'    },
       ];
       const SHARED_STYLE = `
         .navbar-btn-ghost { display: none !important; }

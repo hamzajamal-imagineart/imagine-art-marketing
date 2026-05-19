@@ -192,9 +192,8 @@
       <nav class="nav-links">
         ${isMkt ? `
         <a href="#sec-hiw" class="nav-link">How it Works</a>
+        <a href="#sec-ads" class="nav-link">Ad Creative</a>
         <a href="#sec-templates" class="nav-link">Templates</a>
-        <a href="#sec-features" class="nav-link">Features</a>
-        <a href="#sec-showcase" class="nav-link">Showcase</a>
         <a href="#sec-gallery" class="nav-link">Gallery</a>
         ` : isEcom ? `
         <a href="#sec-statement" class="nav-link">Overview</a>
@@ -245,9 +244,8 @@
       <div class="nav-mobile-inner" id="nav-mobile-inner">
         ${isMkt ? `
         <a href="#sec-hiw" class="nav-mobile-link">How it Works</a>
+        <a href="#sec-ads" class="nav-mobile-link">Ad Creative</a>
         <a href="#sec-templates" class="nav-mobile-link">Templates</a>
-        <a href="#sec-features" class="nav-mobile-link">Features</a>
-        <a href="#sec-showcase" class="nav-mobile-link">Showcase</a>
         <a href="#sec-gallery" class="nav-mobile-link">Gallery</a>
         ` : isEcom ? `
         <a href="#sec-statement" class="nav-mobile-link">Overview</a>
