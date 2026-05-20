@@ -89,8 +89,8 @@
     color: #fff; transition: background 0.15s; padding: 0; flex-shrink: 0;
   }
   .nav-hamburger:hover { background: rgba(255,255,255,0.1); }
-  .navbar.scrolled .nav-hamburger { color: #0f0f0f; }
-  .navbar.scrolled .nav-hamburger:hover { background: rgba(0,0,0,0.06); }
+  .navbar.scrolled .nav-hamburger { color: rgba(255,255,255,0.75); }
+  .navbar.scrolled .nav-hamburger:hover { background: rgba(255,255,255,0.08); }
   .nav-hamburger .bar {
     display: block; width: 18px; height: 1.5px;
     background: currentColor; border-radius: 2px;

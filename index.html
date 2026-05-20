@@ -23,7 +23,7 @@
       background: #0f0f0f;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      padding: 56px 64px 60px;
+      padding: 56px 64px 140px;
       overflow: hidden;
       position: relative;
     }
@@ -53,12 +53,12 @@
     .hero-top {
       position: relative; z-index: 2;
       display: flex; flex-direction: column; align-items: center;
-      gap: 10px; margin-bottom: 32px;
+      gap: 10px; margin-bottom: 52px;
     }
     .hero-logo { height: 20px; width: auto; }
     .hero-studio-title {
       font-family: 'Monomaniac One', sans-serif;
-      font-size: clamp(44px, 6.2vw, 80px); font-weight: 400;
+      font-size: clamp(28px, 3.4vw, 60px); font-weight: 400;
       letter-spacing: 6px; color: #fff; text-align: center;
       line-height: 1.0; text-transform: uppercase;
     }
@@ -74,7 +74,7 @@
       width: 100%; max-width: 1120px;
     }
     .hero-cards {
-      display: flex; gap: 6px; width: 100%; height: 400px;
+      display: flex; gap: 6px; width: 100%; height: 300px;
     }
     .hi {
       flex: 1; min-width: 0; border-radius: 14px; overflow: hidden;
@@ -87,57 +87,95 @@
       letter-spacing: 0.05em; z-index: 2;
     }
 
-    /* Frosted white prompt box — overlaps bottom of cards */
-    .hero-prompt-wrap {
-      position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%);
-      width: calc(100% - 80px); max-width: 720px;
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 22px; z-index: 10;
-      height: 58px;
-      display: flex; align-items: center; gap: 12px;
-      padding: 0 12px 0 22px;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.2);
+    /* ── HeroPromptBox — exact reference port ───────────────── */
+    .hero-bottom {
+      position: absolute; bottom: 56px; left: 0; right: 0;
+      display: flex; flex-direction: column; align-items: center;
+      z-index: 10; padding: 0 40px;
+    }
+    .hpb-form { position: relative; width: 100%; max-width: 760px; margin: 0 auto; }
+    .hpb-wrap {
+      position: relative; border-radius: 22px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(255,255,255,0.18);
       backdrop-filter: blur(18px) saturate(1.2);
       -webkit-backdrop-filter: blur(18px) saturate(1.2);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.2);
+      transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
     }
-    .hero-prompt-input {
-      flex: 1; border: none; outline: none; resize: none;
-      font-size: 15px; font-weight: 300; background: transparent;
-      color: #0a0a0b; font-family: inherit;
-      line-height: 1.5; height: 100%; padding: 0;
-    }
-    .hero-prompt-input::placeholder { color: rgba(10,10,11,0.35); }
-    .hero-prompt-btn {
-      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
-      background: #0a0a0b; border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    }
-    .hero-prompt-btn:hover { background: #333; transform: scale(1.06); box-shadow: 0 8px 24px rgba(0,0,0,0.28); }
-    .hero-prompt-btn svg { width: 14px; height: 14px; }
-
-    /* Chips — below the cards-wrap (clear of overlapping prompt) */
-    .hero-chips {
-      position: relative; z-index: 2;
-      display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
-      margin-top: 54px;
-    }
-    .hero-chip {
-      padding: 7px 16px; border-radius: 999px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.14);
-      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      color: rgba(255,255,255,0.75);
-      font-size: 12.5px; font-weight: 300; font-family: inherit;
-      cursor: pointer; white-space: nowrap;
-      transition: background 0.18s, border-color 0.18s, color 0.18s;
-    }
-    .hero-chip:hover {
-      background: rgba(255,255,255,0.13);
+    .hpb-wrap:hover {
       border-color: rgba(255,255,255,0.26);
-      color: #fff;
+      background: rgba(255,255,255,0.9);
     }
+    .hpb-wrap[data-focused="true"] {
+      border-color: rgba(255,255,255,0.32);
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.08), 0 28px 90px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.22);
+    }
+    .hpb-input {
+      width: 100%; padding: 12px 22px 56px;
+      background: transparent; border: none; outline: none;
+      color: #0a0a0b; font-family: inherit;
+      font-size: 16px; line-height: 1.5; letter-spacing: -0.01em;
+      caret-color: rgba(10,10,11,0.85);
+      resize: none; display: block; box-sizing: border-box;
+      max-height: 220px; overflow: auto;
+    }
+    .hpb-input::placeholder { color: transparent; }
+    .hpb-placeholder {
+      position: absolute; top: 12px; left: 22px; right: 22px;
+      pointer-events: none; font-family: inherit;
+      font-size: 16px; line-height: 1.5; letter-spacing: -0.01em;
+      color: rgba(10,10,11,0.42);
+      transition: opacity 320ms ease;
+    }
+    .hpb-submit {
+      position: absolute; right: 14px; bottom: 14px;
+      width: 42px; height: 42px; border-radius: 50%;
+      border: none; background: rgba(10,10,11,0.78); color: #fff;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, opacity 180ms ease;
+    }
+    .hpb-submit:hover { transform: scale(1.06); box-shadow: 0 8px 24px rgba(0,0,0,0.28); }
+    .hpb-submit:active { transform: scale(0.97); }
+    .hpb-chips-row {
+      margin-top: 18px;
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px;
+    }
+    .hpb-chip {
+      font-size: 13px; font-weight: 500; font-family: inherit;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px; padding: 8px 16px;
+      cursor: pointer; letter-spacing: -0.01em; white-space: nowrap;
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      transition: background 200ms ease, border-color 200ms ease, color 200ms ease, transform 180ms ease;
+    }
+    .hpb-chip:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.24); color: #fff; }
+    .hpb-chip:active { transform: scale(0.97); }
+    .hpb-chip-icon {
+      width: 36px; height: 36px; padding: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .hpb-chip-icon svg { transition: transform 480ms cubic-bezier(0.34,1.56,0.64,1); }
+    .hpb-chip-icon:hover svg { transform: rotate(-220deg); }
+    .hpb-microcopy {
+      margin-top: 14px;
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      font-size: 12px; color: rgba(255,255,255,0.55);
+      letter-spacing: -0.005em; text-shadow: 0 1px 12px rgba(0,0,0,0.4);
+    }
+    .hpb-microcopy kbd {
+      font-size: 10px; font-weight: 600; font-family: inherit;
+      padding: 2px 6px; border-radius: 5px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+    .hpb-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); display: inline-block; }
+    .hpb-microcopy a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 180ms ease; }
+    .hpb-microcopy a:hover { color: #fff; }
 
     /* Preloader */
     #preloader {
@@ -300,7 +338,7 @@
 
     /* Center card — always visible, always on top */
     .hiw-center {
-      position: absolute; left: 50%; top: min(71%, 630px);
+      position: absolute; left: 50%; top: min(calc(100vh - 260px), 630px);
       transform: translate(-50%, -50%);
       width: min(380px, 84vw); height: min(480px, 106vw);
       border-radius: clamp(18px, 4vw, 28px); overflow: hidden;
@@ -334,14 +372,18 @@
     @media (max-width: 768px) {
       .mkt-hiw { height: 270vh; }
       .hiw-result { width: 240px; height: 300px; }
-      .hiw-center { top: min(69%, 570px) !important; }
+      .hiw-center { top: min(calc(100vh - 260px), 540px) !important; }
     }
     @media (min-width: 769px) and (max-width: 1024px) {
-      .hiw-center { top: min(70%, 610px) !important; }
+      .hiw-center { top: min(calc(100vh - 260px), 580px) !important; }
     }
     @media (max-width: 820px) {
       .mkt-hiw-head h2 { letter-spacing: -0.8px; }
       .mkt-hiw-head { top: 100px; }
+    }
+    /* Keep flanking cards aligned with center card on short viewports */
+    @media (max-height: 860px) {
+      #hiw-c0, #hiw-c1 { top: min(calc(100vh - 260px), 630px) !important; }
     }
 
     /* ─── Capabilities (4-card full-bleed grid) ─────────── */
@@ -736,6 +778,20 @@
       .fstat { flex: 1 0 40%; padding: 18px 20px; }
       .fstat + .fstat { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); }
     }
+
+    /* ═══════════════════════════════════════════════════════
+       RESPONSIVE - short viewports (MacBook 800px height)
+       ═══════════════════════════════════════════════════════ */
+    @media (max-height: 860px) {
+      .mkt-hero {
+        justify-content: center;
+        padding-top: 96px;
+        padding-bottom: 120px;
+      }
+      .hero-top { margin-bottom: 36px; }
+      .hero-cards { height: 280px; }
+      .hero-bottom { bottom: 24px; gap: 10px; }
+    }
   </style>
 </head>
 <body>
@@ -762,12 +818,11 @@
 
     <!-- Logo + title + subtitle -->
     <div class="hero-top">
-      <img class="hero-logo" src="assets/logo-imagine-white.svg" alt="ImagineArt">
       <h1 class="hero-studio-title">Marketing<br>Studio</h1>
       <p class="hero-sub">Built for brands that ship more than one ad.</p>
     </div>
 
-    <!-- 4 video cards + frosted prompt overlapping bottom -->
+    <!-- 4 video cards -->
     <div class="hero-cards-wrap">
       <div class="hero-cards" id="heroCards">
         <div class="hi">
@@ -787,41 +842,171 @@
           <span class="hi-label">Unboxing</span>
         </div>
       </div>
-
-      <!-- Frosted white prompt — overlaps bottom of cards -->
-      <div class="hero-prompt-wrap">
-        <textarea class="hero-prompt-input" id="heroPromptInput" placeholder="Generate a campaign visual of…" rows="1"></textarea>
-        <button class="hero-prompt-btn" id="heroPromptBtn" aria-label="Generate">
-          <svg viewBox="0 0 16 16" fill="none">
-            <path d="M8 2.5L8 13.5M8 2.5L3.5 7M8 2.5L12.5 7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
     </div>
 
-    <!-- Chips — below cards, below the overhanging prompt -->
-    <div class="hero-chips">
-      <button class="hero-chip">UGC Ad</button>
-      <button class="hero-chip">Product Shot</button>
-      <button class="hero-chip">Virtual Try-On</button>
-      <button class="hero-chip">Unboxing</button>
-      <button class="hero-chip">Hypermotion</button>
+    <!-- Prompt box — exact HeroPromptBox reference port -->
+    <div class="hero-bottom">
+      <form class="hpb-form" id="hpbForm">
+        <div class="hpb-wrap" id="hpbWrap">
+          <textarea class="hpb-input" id="hpbInput" rows="2"
+            aria-label="Describe what you want to create"
+            autocomplete="off" spellcheck="false"></textarea>
+          <div class="hpb-placeholder" id="hpbPlaceholder" aria-hidden="true"></div>
+          <button type="submit" class="hpb-submit" id="hpbSubmit" aria-label="Generate">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19V5M5 12l7-7 7 7"/>
+            </svg>
+          </button>
+        </div>
+        <div class="hpb-chips-row" id="hpbChipsRow"></div>
+        <div class="hpb-microcopy">
+          <span style="display:inline-flex;align-items:center;gap:6px">
+            <kbd>⏎</kbd> to generate
+          </span>
+          <span class="hpb-dot"></span>
+          <a href="#sec-templates">or browse templates →</a>
+        </div>
+      </form>
     </div>
 
   </section>
 
   <script>
   (function() {
+    // ── Cycling placeholder prompts (exact from reference) ──
+    var PROMPTS = [
+      'Generate a campaign visual of…',
+      'Create a UGC-style ad for your product…',
+      'Design a virtual try-on campaign for…',
+      'Build an unboxing reveal video for…',
+    ];
+
+    // ── Chip pool ────────────────────────────────────────────
+    var CHIP_POOL = [
+      { label: 'UGC Ad',         prompt: 'A UGC-style ad for ' },
+      { label: 'Product Shot',   prompt: 'A clean product shot of ' },
+      { label: 'Virtual Try-On', prompt: 'A virtual try-on visual for ' },
+      { label: 'Unboxing',       prompt: 'An unboxing video thumbnail for ' },
+      { label: 'Hypermotion',    prompt: 'A hypermotion campaign visual for ' },
+    ];
+
+    function pickRandomChips(exclude) {
+      var avail = CHIP_POOL.filter(function(c) {
+        return !exclude || exclude.indexOf(c.label) === -1;
+      });
+      return avail.slice().sort(function() { return Math.random() - 0.5; }).slice(0, 4);
+    }
+
+    var FADE_MS = 320, HOLD_MS = 4200;
+    var input      = document.getElementById('hpbInput');
+    var placeholder= document.getElementById('hpbPlaceholder');
+    var wrap       = document.getElementById('hpbWrap');
+    var submitBtn  = document.getElementById('hpbSubmit');
+    var chipsRow   = document.getElementById('hpbChipsRow');
+    var form       = document.getElementById('hpbForm');
+
+    if (!input) return;
+
+    var promptIdx   = 0;
+    var focused     = false;
+    var cycleTimer  = null;
+    var currentChips = pickRandomChips([]);
+
+    function updatePlaceholder() {
+      if (focused || input.value) {
+        placeholder.style.opacity = '0';
+        placeholder.style.pointerEvents = 'none';
+      } else {
+        placeholder.textContent = PROMPTS[promptIdx];
+        placeholder.style.opacity = '1';
+      }
+    }
+
+    function startCycle() {
+      stopCycle();
+      cycleTimer = setInterval(function() {
+        placeholder.style.opacity = '0';
+        setTimeout(function() {
+          promptIdx = (promptIdx + 1) % PROMPTS.length;
+          placeholder.textContent = PROMPTS[promptIdx];
+          placeholder.style.opacity = '1';
+        }, FADE_MS);
+      }, HOLD_MS);
+    }
+
+    function stopCycle() {
+      if (cycleTimer) { clearInterval(cycleTimer); cycleTimer = null; }
+    }
+
+    function updateSubmitBtn() {
+      if (input.value) {
+        submitBtn.style.background = '#0a0a0b';
+        submitBtn.style.opacity = '1';
+      } else {
+        submitBtn.style.background = 'rgba(10,10,11,0.78)';
+        submitBtn.style.opacity = '0.92';
+      }
+    }
+
+    function renderChips() {
+      chipsRow.innerHTML = '';
+      currentChips.forEach(function(chip) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'hpb-chip';
+        btn.textContent = chip.label;
+        btn.addEventListener('click', function() {
+          input.value = chip.prompt;
+          input.focus();
+          updateSubmitBtn();
+          updatePlaceholder();
+        });
+        chipsRow.appendChild(btn);
+      });
+      // Refresh button
+      var refreshBtn = document.createElement('button');
+      refreshBtn.type = 'button';
+      refreshBtn.className = 'hpb-chip hpb-chip-icon';
+      refreshBtn.setAttribute('aria-label', 'Shuffle suggestions');
+      refreshBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-2.64-6.36L21 8"/><path d="M21 3v5h-5"/></svg>';
+      refreshBtn.addEventListener('click', function() {
+        currentChips = pickRandomChips(currentChips.map(function(c) { return c.label; }));
+        renderChips();
+      });
+      chipsRow.appendChild(refreshBtn);
+    }
+
+    input.addEventListener('focus', function() {
+      focused = true;
+      wrap.setAttribute('data-focused', 'true');
+      stopCycle();
+      updatePlaceholder();
+    });
+    input.addEventListener('blur', function() {
+      focused = false;
+      wrap.setAttribute('data-focused', 'false');
+      updatePlaceholder();
+      if (!input.value) startCycle();
+    });
+    input.addEventListener('input', function() {
+      updatePlaceholder();
+      updateSubmitBtn();
+    });
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); }
+    });
+    form.addEventListener('submit', function(e) { e.preventDefault(); });
+
+    // ── Video cycling ────────────────────────────────────────
     var DURATION = 4000;
-    var panels  = Array.from(document.querySelectorAll('#heroCards .hi'));
-    var current = 0;
-    var timer   = null;
+    var panels   = Array.from(document.querySelectorAll('#heroCards .hi'));
+    var current  = 0;
+    var vidTimer = null;
 
     function preloadVideo(index) {
       var vid = panels[index] && panels[index].querySelector('video');
       if (vid && vid.preload === 'none') vid.preload = 'auto';
     }
-
     function activate(index) {
       current = index;
       panels.forEach(function(p, i) {
@@ -830,11 +1015,11 @@
         if (i === index) { vid.currentTime = 0; vid.play().catch(function(){}); }
       });
       preloadVideo((index + 1) % panels.length);
-      clearTimeout(timer);
-      timer = setTimeout(function() { activate((current + 1) % panels.length); }, DURATION);
+      clearTimeout(vidTimer);
+      vidTimer = setTimeout(function() { activate((current + 1) % panels.length); }, DURATION);
     }
 
-    // Mouse-tracked dot grid
+    // ── Mouse-tracked dot grid ───────────────────────────────
     var hero = document.querySelector('.mkt-hero');
     if (hero) {
       hero.addEventListener('mousemove', function(e) {
@@ -848,22 +1033,11 @@
       });
     }
 
-    // Chip clicks
-    var chipPrompts = {
-      'UGC Ad': 'A UGC-style ad for ',
-      'Product Shot': 'A clean product shot of ',
-      'Virtual Try-On': 'A virtual try-on visual for ',
-      'Unboxing': 'An unboxing video thumbnail for ',
-      'Hypermotion': 'A hypermotion campaign visual for '
-    };
-    document.querySelectorAll('.hero-chip').forEach(function(chip) {
-      chip.addEventListener('click', function() {
-        var input = document.getElementById('heroPromptInput');
-        if (input) { input.value = chipPrompts[chip.textContent.trim()] || ''; input.focus(); }
-      });
-    });
-
-    activate(0);
+    // ── Init ─────────────────────────────────────────────────
+    renderChips();
+    updatePlaceholder();
+    startCycle();
+    if (panels.length) activate(0);
   })();
   </script>
 
@@ -1329,7 +1503,7 @@
         .navbar-btn-ghost { display: none !important; }
         .nav-link-active { color: #0f0f0f !important; background: rgba(15,15,15,0.09) !important; font-weight: 300 !important; }
         .navbar:not(.scrolled) .nav-link-active { color: #fff !important; background: rgba(255,255,255,0.18) !important; }
-        .navbar.scrolled .nav-link-active { color: #0f0f0f !important; background: rgba(15,15,15,0.09) !important; }
+        .navbar.scrolled .nav-link-active { color: #fff !important; background: rgba(255,255,255,0.14) !important; }
         .nav-link { font-weight: 300 !important; }
       `;
       const s = document.createElement('style');
