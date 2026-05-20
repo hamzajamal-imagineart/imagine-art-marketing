@@ -19,11 +19,11 @@
 
     /* ─── Hero v3 ────────────────────────────────────────── */
     .mkt-hero {
-      height: 100vh; min-height: 700px;
+      height: 100vh; min-height: 750px;
       background: #0f0f0f;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      padding: 56px 64px 0;
+      padding: 56px 64px 32px;
       overflow: hidden;
       position: relative;
     }
@@ -41,42 +41,42 @@
       -webkit-mask-image: radial-gradient(circle 260px at var(--mx, -9999px) var(--my, -9999px), black 0%, transparent 100%);
       mask-image: radial-gradient(circle 260px at var(--mx, -9999px) var(--my, -9999px), black 0%, transparent 100%);
     }
-    /* Teal glow */
+    /* Teal glow — larger, centered */
     .hero-glow {
-      position: absolute; top: -260px; left: 50%; transform: translateX(-20%);
-      width: 520px; height: 520px; border-radius: 50%; z-index: 0; pointer-events: none;
-      background: radial-gradient(circle, rgba(0,105,82,0.55) 0%, rgba(0,75,60,0.2) 45%, transparent 70%);
-      filter: blur(40px);
+      position: absolute; top: -420px; left: 50%; transform: translateX(-50%);
+      width: 1100px; height: 860px; border-radius: 50%; z-index: 0; pointer-events: none;
+      background: radial-gradient(circle, rgba(0,140,108,0.72) 0%, rgba(0,100,78,0.32) 38%, rgba(0,70,54,0.1) 60%, transparent 75%);
+      filter: blur(56px);
     }
 
     /* Top content — logo + heading + sub */
     .hero-top {
       position: relative; z-index: 2;
       display: flex; flex-direction: column; align-items: center;
-      gap: 8px; margin-bottom: 40px;
+      gap: 10px; margin-bottom: 56px;
     }
     .hero-logo {
-      height: 20px; width: auto; margin-bottom: 4px;
+      height: 20px; width: auto; margin-bottom: 2px;
     }
     .hero-studio-title {
       font-family: 'Monomaniac One', sans-serif;
-      font-size: clamp(36px, 5vw, 56px); font-weight: 400;
-      letter-spacing: 4px; color: #fff; text-align: center;
-      line-height: 1.1; text-transform: uppercase;
+      font-size: clamp(44px, 6.2vw, 80px); font-weight: 400;
+      letter-spacing: 6px; color: #fff; text-align: center;
+      line-height: 1.0; text-transform: uppercase;
     }
     .hero-sub {
-      font-size: clamp(15px, 1.5vw, 18px); color: #bdbdbd;
+      font-size: clamp(14px, 1.4vw, 17px); color: rgba(255,255,255,0.45);
       text-align: center; line-height: 1.5; letter-spacing: 0.01em;
-      max-width: 480px; margin-top: 4px;
+      max-width: 440px; margin-top: 2px;
     }
 
     /* Video cards row */
     .hero-cards-wrap {
       position: relative; z-index: 2;
-      width: 100%; max-width: 1100px;
+      width: 100%; max-width: 1120px;
     }
     .hero-cards {
-      display: flex; gap: 6px; width: 100%; height: 380px;
+      display: flex; gap: 6px; width: 100%; height: 420px;
     }
     .hi {
       flex: 1; min-width: 0; border-radius: 16px; overflow: hidden;
@@ -91,41 +91,59 @@
       width: 100%; height: 100%; object-fit: cover; display: block;
     }
     .hi-label {
-      position: absolute; bottom: 8px; left: 8px;
-      font-size: 13px; font-weight: 300; color: #fff;
-      letter-spacing: 0.03em; z-index: 2;
+      position: absolute; bottom: 10px; left: 10px;
+      font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.7);
+      letter-spacing: 0.04em; z-index: 2;
     }
 
     /* Prompt box — overlaps bottom of cards */
     .hero-prompt-wrap {
-      position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%);
-      width: calc(100% - 120px); max-width: 920px;
-      background: #171717; border: 1px solid #212121;
+      position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%);
+      width: calc(100% - 80px); max-width: 960px;
+      background: #171717; border: 1px solid rgba(255,255,255,0.08);
       border-radius: 20px; z-index: 10;
-      padding: 18px 18px 14px 22px;
+      padding: 16px 16px 14px 20px;
       display: flex; flex-direction: column; gap: 10px;
-      box-shadow: 0 0 24px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);
     }
     .hero-prompt-input {
       width: 100%; border: none; outline: none; resize: none;
       font-size: 15px; font-weight: 300; background: transparent;
-      color: rgba(255,255,255,0.7); font-family: inherit; line-height: 1.5;
+      color: rgba(255,255,255,0.65); font-family: inherit; line-height: 1.5;
       min-height: 20px;
     }
-    .hero-prompt-input::placeholder { color: rgba(255,255,255,0.25); }
-    .hero-prompt-footer { display: flex; justify-content: flex-end; }
+    .hero-prompt-input::placeholder { color: rgba(255,255,255,0.2); }
+    /* Prompt footer: chips left, button right */
+    .hero-prompt-footer {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    .hero-chips { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
+    .hero-chip {
+      padding: 5px 13px; border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.42);
+      font-size: 12px; font-weight: 300; font-family: inherit; letter-spacing: 0.01em;
+      cursor: pointer; white-space: nowrap;
+      transition: border-color 0.18s, color 0.18s, background 0.18s;
+    }
+    .hero-chip:hover {
+      border-color: rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.09);
+    }
     .hero-prompt-btn {
-      width: 34px; height: 34px; border-radius: 50%;
-      background: #fff; border: none; cursor: pointer; flex-shrink: 0;
+      width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+      background: #fff; border: none; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: background 0.2s, transform 0.15s;
     }
     .hero-prompt-btn:hover { background: #e0e0e0; transform: scale(1.05); }
     .hero-prompt-btn svg { width: 14px; height: 14px; }
 
-    /* Tab bar */
+    /* Tab bar — floats on lower portion of cards, above prompt overlap */
     .hero-tabs {
-      position: absolute; bottom: 20px; left: 20px;
+      position: absolute; bottom: 112px; left: 16px;
       display: flex; gap: 6px; z-index: 20; white-space: nowrap;
     }
     .hero-tab {
@@ -806,10 +824,25 @@
         </div>
       </div>
 
+      <!-- Tabs — overlaid on bottom portion of cards, above the prompt -->
+      <div class="hero-tabs" id="heroTabs">
+        <div class="hero-tab active" data-index="0"><span class="hero-tab-label">UGC</span><span class="hero-tab-bar"></span></div>
+        <div class="hero-tab" data-index="1"><span class="hero-tab-label">Virtual Try-On</span><span class="hero-tab-bar"></span></div>
+        <div class="hero-tab" data-index="2"><span class="hero-tab-label">Hypermotion</span><span class="hero-tab-bar"></span></div>
+        <div class="hero-tab" data-index="3"><span class="hero-tab-label">ASMR</span><span class="hero-tab-bar"></span></div>
+      </div>
+
       <!-- Prompt box — overlaps bottom of cards -->
       <div class="hero-prompt-wrap">
         <textarea class="hero-prompt-input" id="heroPromptInput" placeholder="Generate a campaign visual of…" rows="2"></textarea>
         <div class="hero-prompt-footer">
+          <div class="hero-chips">
+            <button class="hero-chip">UGC Ad</button>
+            <button class="hero-chip">Product Shot</button>
+            <button class="hero-chip">Virtual Try-On</button>
+            <button class="hero-chip">Unboxing</button>
+            <button class="hero-chip">Hypermotion</button>
+          </div>
           <button class="hero-prompt-btn" id="heroPromptBtn" aria-label="Generate">
             <svg viewBox="0 0 16 16" fill="none">
               <path d="M8 2.5L8 13.5M8 2.5L3.5 7M8 2.5L12.5 7" stroke="#0f0f0f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -817,14 +850,6 @@
           </button>
         </div>
       </div>
-    </div>
-
-    <!-- Tabs — bottom-left corner -->
-    <div class="hero-tabs" id="heroTabs">
-      <div class="hero-tab active" data-index="0"><span class="hero-tab-label">UGC</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="1"><span class="hero-tab-label">Virtual Try-On</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="2"><span class="hero-tab-label">Hypermotion</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="3"><span class="hero-tab-label">ASMR</span><span class="hero-tab-bar"></span></div>
     </div>
 
   </section>
@@ -866,6 +891,21 @@
 
     tabs.forEach(function(tab) {
       tab.addEventListener('click', function() { activate(parseInt(tab.dataset.index)); });
+    });
+
+    // Chip clicks — fill textarea with a starter prompt
+    var chipPrompts = {
+      'UGC Ad': 'A UGC-style ad for ',
+      'Product Shot': 'A clean product shot of ',
+      'Virtual Try-On': 'A virtual try-on visual for ',
+      'Unboxing': 'An unboxing video thumbnail for ',
+      'Hypermotion': 'A hypermotion campaign visual for '
+    };
+    document.querySelectorAll('.hero-chip').forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        var input = document.getElementById('heroPromptInput');
+        if (input) { input.value = chipPrompts[chip.textContent.trim()] || ''; input.focus(); }
+      });
     });
 
     // Mouse-tracked dot grid
