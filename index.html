@@ -399,7 +399,7 @@
         0 0 80px rgba(100,60,255,0.10);
       z-index: 10;
       will-change: transform, opacity;
-      opacity: 0;
+      opacity: 1;
     }
     .hiw-center img, .hiw-center video { display: block; width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
     #hiw-poster { opacity: 1; will-change: opacity; z-index: 1; }
@@ -414,6 +414,9 @@
       backdrop-filter: blur(12px); white-space: nowrap;
     }
 
+    @media (max-width: 599px) {
+      .hiw-center { opacity: 0; }
+    }
     @media (max-width: 768px) {
       .mkt-hiw { height: 270vh; }
       .hiw-result { width: 240px; height: 300px; }
@@ -1084,8 +1087,8 @@
       // --- Heading stays visible ---
       if (head) head.style.opacity = 1;
 
-      // --- Center card fades in once both cards have converged (p > 0.55) ---
-      var centerReveal = clamp((p - 0.55) / 0.13, 0, 1);
+      // --- Center card: always visible on desktop; fades in on mobile once cards converge ---
+      var centerReveal = isMobile ? clamp((p - 0.55) / 0.13, 0, 1) : 1;
       center.style.opacity = centerReveal;
 
       // --- Video fades in after both cards have merged (p > 0.65) ---
