@@ -349,7 +349,7 @@
     /* ─── Ads Section ───────────────────────────────────── */
     /* ── How it works ── */
     .mkt-hiw { position: relative; height: 320vh; background: #fff; }
-    .mkt-hiw-sticky { position: sticky; top: 0; height: 100vh; overflow: visible; }
+    .mkt-hiw-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
 
     /* Canvas — full viewport */
     .mkt-hiw-canvas { position: absolute; inset: 0; }
@@ -1026,36 +1026,19 @@
     // 2 cards: jacket (left) and model (right), merge one by one
     var vw = window.innerWidth;
     var isMobile = vw < 600;
-    var isTablet = vw >= 600 && vw < 1024;
     // On mobile, shrink cards to fit viewport
-    var cw, ch;
     if (isMobile) {
-      cw = Math.round(vw * 0.38); ch = Math.round(cw * 1.32);
+      var cw = Math.round(vw * 0.38), ch = Math.round(cw * 1.32);
       cards.forEach(function(c) {
         c.style.width  = cw + 'px'; c.style.height = ch + 'px';
         c.style.marginLeft = (-cw/2) + 'px'; c.style.marginTop = (-ch/2) + 'px';
       });
     }
-    var cardData;
-    if (isMobile) {
-      // Cards start above center and fly down to merge
-      var centerCardH = Math.min(480, Math.round(1.06 * vw));
-      var dyUp = -Math.round(centerCardH / 2 + ch / 2 + 20);
-      var dxNudge = Math.round(cw * 0.28);
-      cardData = [
-        { dx: -dxNudge, dy: dyUp,      rot: -8, s: 0.00, e: 0.45 },  // jacket — above-left
-        { dx:  dxNudge, dy: dyUp - 18, rot:  8, s: 0.12, e: 0.55 },  // model  — above-right (slightly higher)
-      ];
-    } else {
-      // Tablet: closer to center; Desktop: full spread
-      var dxBase = isTablet
-        ? Math.min(200, Math.round(vw * 0.18))   // tablet — tighter
-        : Math.min(320, Math.round(vw * 0.26));   // desktop — full spread
-      cardData = [
-        { dx: -dxBase, dy: 0, rot: -6, s: 0.00, e: 0.35 },  // jacket — left
-        { dx:  dxBase, dy: 0, rot:  6, s: 0.25, e: 0.60 },  // model  — right
-      ];
-    }
+    var dxBase = Math.min(320, Math.round(vw * 0.26));
+    var cardData = [
+      { dx: -dxBase, dy: 0, rot: -6,  s: 0.00, e: 0.35 },  // jacket — left
+      { dx:  dxBase, dy: 0, rot:  6,  s: 0.25, e: 0.60 },  // model  — right
+    ];
 
     // ease-in-out cubic
     function ease(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
