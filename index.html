@@ -22,25 +22,33 @@
       background: #0b0b0b;
     }
 
-    /* Full-bleed video background */
-    .hero-bg {
+    /* Full-bleed diagonal accordion panels */
+    .hero-panels {
       position: absolute; inset: 0; z-index: 0;
+      display: flex; align-items: stretch;
     }
-    .hero-bg video {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%; object-fit: cover;
-      opacity: 0; transition: opacity 0.9s ease;
+    .hi {
+      flex: 1; min-width: 0; overflow: hidden; position: relative;
+      transition: flex 0.65s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .hero-bg video.active { opacity: 1; }
+    .hi:nth-child(1) { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 100%, 0 100%); z-index: 1; }
+    .hi:nth-child(2) { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 2; }
+    .hi:nth-child(3) { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 3; }
+    .hi:nth-child(4) { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 4; }
+    .hi:nth-child(5) { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 5; }
+    .hi:nth-child(6) { clip-path: polygon(0 0, 100% 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 6; }
+    .hi video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-panels .hi.active { flex: 3.5; }
+    .hero-panels.has-active .hi:not(.active) { flex: 0.4; }
 
     /* Dark overlay */
     .hero-overlay {
       position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.55) 0%,
-        rgba(0,0,0,0.38) 50%,
-        rgba(0,0,0,0.65) 100%
+        rgba(0,0,0,0.52) 0%,
+        rgba(0,0,0,0.32) 45%,
+        rgba(0,0,0,0.62) 100%
       );
     }
 
@@ -51,83 +59,63 @@
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       text-align: center;
-      padding: 100px 24px 120px;
+      padding: 100px 24px 140px;
     }
 
-    /* Badge above H1 */
-    .hero-label {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 10.5px; font-weight: 400; letter-spacing: 2px;
-      text-transform: uppercase; color: rgba(255,255,255,0.5);
-      border: 1px solid rgba(255,255,255,0.13);
-      background: rgba(255,255,255,0.04);
-      padding: 6px 14px 6px 10px; border-radius: 100px;
-      width: fit-content; margin-bottom: 28px;
-    }
-    .hero-label span {
-      width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
-      background: #a78bfa; box-shadow: 0 0 8px rgba(167,139,250,0.8);
-      animation: pulse-dot 2s infinite;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
+    /* Eyebrow */
+    .hero-eyebrow {
+      font-size: 10.5px; font-weight: 400; letter-spacing: 2.5px;
+      text-transform: uppercase; color: rgba(255,255,255,0.55);
+      margin-bottom: 24px;
     }
 
     .hero-h1 {
-      font-size: clamp(40px, 5.5vw, 72px); font-weight: 400;
-      line-height: 1.07; letter-spacing: -2.5px; color: #fff;
-      margin-bottom: 22px;
+      font-size: clamp(42px, 5.5vw, 76px); font-weight: 400;
+      line-height: 1.06; letter-spacing: -2.5px; color: #fff;
+      margin-bottom: 40px;
     }
     .hero-h1 em { font-style: italic; font-weight: 400; color: rgba(255,255,255,0.38); }
-    .hero-sub {
-      font-size: 18px; color: rgba(255,255,255,0.5);
-      line-height: 1.72; max-width: 520px; margin-bottom: 36px;
-    }
 
-    /* CTAs */
-    .hero-ctas { display: flex; gap: 12px; align-items: center; justify-content: center; margin-bottom: 48px; }
-    .btn-hero {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      height: 40px; padding: 8px 14px; border-radius: 14px;
-      font-size: 14px; font-weight: 400; letter-spacing: 0.1px;
-      white-space: nowrap; cursor: pointer; text-decoration: none;
-      transition: opacity 0.15s, transform 0.15s, box-shadow 0.15s;
+    /* Prompt box */
+    .hero-prompt-wrap {
+      width: 100%; max-width: 580px;
+      background: #fff; border-radius: 18px;
+      padding: 14px 14px 14px 22px;
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 16px 60px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.2);
     }
-    .btn-hero:hover { transform: translateY(-1px); }
-    .btn-demo {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.14);
-      color: rgba(255,255,255,0.75);
+    .hero-prompt-input {
+      flex: 1; border: none; outline: none;
+      font-size: 15px; font-weight: 400; background: transparent;
+      color: #0f0f0f; font-family: inherit;
     }
-    .btn-demo:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.24); color: #fff; }
-    .btn-get-started {
-      background: #fff; color: #0f0f0f; border: none;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.08);
+    .hero-prompt-input::placeholder { color: rgba(0,0,0,0.35); }
+    .hero-prompt-btn {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: #0f0f0f; border: none; cursor: pointer; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.15s;
     }
-    .btn-get-started:hover { background: #f2f2f2; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+    .hero-prompt-btn:hover { background: #333; transform: scale(1.05); }
+    .hero-prompt-btn svg { width: 16px; height: 16px; }
 
-    /* Stats row */
-    .hero-stats {
-      display: flex; gap: 0;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 28px;
+    /* Chips */
+    .hero-chips {
+      display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+      max-width: 580px;
     }
-    .hero-stat {
-      display: flex; flex-direction: column; gap: 5px;
-      padding: 0 32px;
-      border-right: 1px solid rgba(255,255,255,0.1);
+    .hero-chip {
+      padding: 7px 16px; border-radius: 100px;
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.80);
+      font-size: 12.5px; font-weight: 400; cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      user-select: none;
     }
-    .hero-stat:first-child { padding-left: 0; }
-    .hero-stat:last-child { border-right: none; padding-right: 0; }
-    .hero-stat-num {
-      font-size: 28px; font-weight: 400; color: #fff;
-      letter-spacing: -1.2px; line-height: 1;
-    }
-    .hero-stat-lbl {
-      font-size: 11.5px; color: rgba(255,255,255,0.32);
-      line-height: 1.45; letter-spacing: 0.1px;
-    }
+    .hero-chip:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.3); color: #fff; }
 
     /* Tabs — bottom-center */
     .hero-tabs {
@@ -137,37 +125,23 @@
     }
     .hero-tab {
       position: relative; overflow: hidden;
-      padding: 9px 16px;
-      border-radius: 8px;
+      padding: 8px 16px; border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(12px);
+      background: rgba(0,0,0,0.40); backdrop-filter: blur(12px);
       cursor: pointer;
       font-size: 11px; font-weight: 400; letter-spacing: 0.2px;
-      color: rgba(255,255,255,0.45);
-      text-align: center;
-      transition: color 0.3s, border-color 0.3s;
-      user-select: none;
+      color: rgba(255,255,255,0.45); text-align: center;
+      transition: color 0.3s, border-color 0.3s; user-select: none;
     }
     .hero-tab .hero-tab-label { position: relative; z-index: 1; }
-    .hero-tab.active {
-      border-color: rgba(255,255,255,0.28);
-      color: rgba(255,255,255,0.95);
-    }
+    .hero-tab.active { border-color: rgba(255,255,255,0.28); color: rgba(255,255,255,0.95); }
     .hero-tab-bar {
-      position: absolute; inset: 0;
-      width: 0%; height: 100%;
-      background: rgba(255,255,255,0.10);
-      border-radius: 8px;
+      position: absolute; inset: 0; width: 0%; height: 100%;
+      background: rgba(255,255,255,0.10); border-radius: 8px;
       transition: none; z-index: 0;
     }
-    .hero-tab.active .hero-tab-bar {
-      animation: tabProgress var(--tab-duration, 3s) linear forwards;
-    }
-    @keyframes tabProgress {
-      from { width: 0% }
-      to   { width: 100% }
-    }
+    .hero-tab.active .hero-tab-bar { animation: tabProgress var(--tab-duration, 4s) linear forwards; }
+    @keyframes tabProgress { from { width: 0% } to { width: 100% } }
 
     /* Preloader */
     #preloader {
@@ -805,14 +779,14 @@
   <!-- ─── Hero v2 ──────────────────────────────────────── -->
   <section class="mkt-hero">
 
-    <!-- Full-bleed video background -->
-    <div class="hero-bg" id="heroBg">
-      <video src="assets/marketing/hero-1.mp4"    loop muted playsinline data-index="0"></video>
-      <video src="assets/marketing/hero-2.mp4"    loop muted playsinline data-index="1"></video>
-      <video src="assets/marketing/hero-3.mp4"    loop muted playsinline data-index="2"></video>
-      <video src="assets/marketing/hero-4.mp4"    loop muted playsinline data-index="3"></video>
-      <video src="assets/marketing/hero-asmr.mp4" loop muted playsinline data-index="4"></video>
-      <video src="assets/marketing/hero-provt.mp4" loop muted playsinline data-index="5"></video>
+    <!-- Full-bleed diagonal accordion panels -->
+    <div class="hero-panels has-active" id="heroPanels">
+      <div class="hi active"><video src="assets/marketing/hero-1.mp4"     loop muted playsinline></video></div>
+      <div class="hi"><video src="assets/marketing/hero-2.mp4"     loop muted playsinline></video></div>
+      <div class="hi"><video src="assets/marketing/hero-3.mp4"     loop muted playsinline></video></div>
+      <div class="hi"><video src="assets/marketing/hero-4.mp4"     loop muted playsinline></video></div>
+      <div class="hi"><video src="assets/marketing/hero-asmr.mp4"  loop muted playsinline></video></div>
+      <div class="hi"><video src="assets/marketing/hero-provt.mp4" loop muted playsinline></video></div>
     </div>
 
     <!-- Dark overlay -->
@@ -821,30 +795,29 @@
     <!-- Centered content -->
     <div class="hero-content">
 
+      <p class="hero-eyebrow">Marketing Studio</p>
+
       <h1 class="hero-h1">
         Campaigns at the<br><em>speed of ideas.</em>
       </h1>
-      <p class="hero-sub">
-        Generate campaign visuals, product shots, and social assets in seconds. No studio, no waiting, no budget blowouts.
-      </p>
-      <div class="hero-ctas">
-        <a href="https://calendly.com/d/cr9s-6pt-mr3/one-on-one-demo-with-an-imagineart-expert" target="_blank" rel="noopener" class="btn-hero btn-get-started">Book a demo</a>
-        <a href="https://www.imagine.art/flow" target="_blank" rel="noopener" class="btn-hero btn-demo">Get Started</a>
+
+      <!-- Prompt box -->
+      <div class="hero-prompt-wrap">
+        <input class="hero-prompt-input" type="text" placeholder="Generate a campaign visual of…" id="heroPromptInput">
+        <button class="hero-prompt-btn" id="heroPromptBtn" aria-label="Generate">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 2.5L8 13.5M8 2.5L3.5 7M8 2.5L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
 
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-num">10×</div>
-          <div class="hero-stat-lbl">faster brief to<br>final asset</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">80%</div>
-          <div class="hero-stat-lbl">lower production<br>cost per campaign</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">30M+</div>
-          <div class="hero-stat-lbl">creators on<br>ImagineArt</div>
-        </div>
+      <!-- Suggestion chips -->
+      <div class="hero-chips">
+        <span class="hero-chip" data-prompt="a UGC-style ad for my product">UGC Ad</span>
+        <span class="hero-chip" data-prompt="a virtual try-on video for my fashion brand">Virtual Try-On</span>
+        <span class="hero-chip" data-prompt="a hypermotion campaign video">Hypermotion</span>
+        <span class="hero-chip" data-prompt="an unboxing video for my product launch">Unboxing</span>
+        <span class="hero-chip" data-prompt="an ASMR-style product showcase">ASMR</span>
       </div>
 
     </div>
@@ -864,40 +837,49 @@
   <script>
   (function() {
     var DURATION = 4000;
-    var videos = Array.from(document.querySelectorAll('#heroBg video'));
-    var tabs   = Array.from(document.querySelectorAll('#heroTabs .hero-tab'));
+    var panels  = Array.from(document.querySelectorAll('#heroPanels .hi'));
+    var strip   = document.getElementById('heroPanels');
+    var tabs    = Array.from(document.querySelectorAll('#heroTabs .hero-tab'));
     var current = 0;
     var timer   = null;
 
     function activate(index) {
       current = index;
-
-      // Crossfade videos
-      videos.forEach(function(v, i) {
+      panels.forEach(function(p, i) {
         var isActive = i === index;
-        v.classList.toggle('active', isActive);
-        if (isActive) {
-          v.currentTime = 0;
-          v.play();
-        } else {
-          v.pause();
-        }
+        p.classList.toggle('active', isActive);
+        var vid = p.querySelector('video');
+        if (!vid) return;
+        if (isActive) { vid.currentTime = 0; vid.play(); }
+        else vid.pause();
       });
-
-      // Tabs
+      strip.classList.add('has-active');
       tabs.forEach(function(t) {
         t.classList.remove('active');
-        void t.querySelector('.hero-tab-bar').offsetWidth; // force reflow for animation restart
+        void t.querySelector('.hero-tab-bar').offsetWidth;
       });
       tabs[index].classList.add('active');
       tabs[index].style.setProperty('--tab-duration', (DURATION / 1000) + 's');
-
       clearTimeout(timer);
-      timer = setTimeout(function() { activate((current + 1) % videos.length); }, DURATION);
+      timer = setTimeout(function() { activate((current + 1) % panels.length); }, DURATION);
     }
 
     tabs.forEach(function(tab) {
       tab.addEventListener('click', function() { activate(parseInt(tab.dataset.index)); });
+    });
+
+    // Chips fill the prompt input
+    var promptInput = document.getElementById('heroPromptInput');
+    document.querySelectorAll('.hero-chip').forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        if (promptInput) { promptInput.value = chip.dataset.prompt; promptInput.focus(); }
+      });
+    });
+
+    // Prompt submit → imagine.art/flow
+    document.getElementById('heroPromptBtn').addEventListener('click', function() {
+      var val = promptInput ? promptInput.value.trim() : '';
+      window.open('https://www.imagine.art/flow' + (val ? '?prompt=' + encodeURIComponent(val) : ''), '_blank');
     });
 
     activate(0);
