@@ -5,7 +5,7 @@
   <link rel="icon" href="https://www.imagine.art/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI for Marketing Agencies - ImagineArt</title>
-  <link rel="preload" href="assets/marketing/hero-1.mp4" as="video" type="video/mp4">
+  <link rel="preload" href="assets/marketing/mkt-hero-1.mp4" as="video" type="video/mp4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..900&family=Google+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Monomaniac+One&display=swap" rel="stylesheet">
@@ -119,24 +119,27 @@
 
     /* ─── Full-width angled video strip ──────────────────── */
     .hero-strip {
-      width: 100%; flex: 1; min-height: 200px;
+      width: 100%; height: 230px; flex-shrink: 0;
       display: flex; align-items: stretch;
       position: relative; z-index: 1;
     }
     .hero-strip .hi {
       flex: 1; min-width: 0; overflow: hidden; position: relative;
-      transition: flex 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
     }
-    /* Angled diagonal cuts */
-    .hero-strip .hi:nth-child(1) { clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 100%, 0 100%); z-index: 1; }
-    .hero-strip .hi:nth-child(2) { clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 100%, 32px 100%); margin-left: -32px; z-index: 2; }
-    .hero-strip .hi:nth-child(3) { clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 100%, 32px 100%); margin-left: -32px; z-index: 3; }
-    .hero-strip .hi:nth-child(4) { clip-path: polygon(0 0, 100% 0, 100% 100%, 32px 100%); margin-left: -32px; z-index: 4; }
+    /* Angled diagonal cuts — 22px for 7 tighter panels */
+    .hero-strip .hi:nth-child(1) { clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 100%, 0 100%); z-index: 1; }
+    .hero-strip .hi:nth-child(2) { clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 100%, 22px 100%); margin-left: -22px; z-index: 2; }
+    .hero-strip .hi:nth-child(3) { clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 100%, 22px 100%); margin-left: -22px; z-index: 3; }
+    .hero-strip .hi:nth-child(4) { clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 100%, 22px 100%); margin-left: -22px; z-index: 4; }
+    .hero-strip .hi:nth-child(5) { clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 100%, 22px 100%); margin-left: -22px; z-index: 5; }
+    .hero-strip .hi:nth-child(6) { clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 100%, 22px 100%); margin-left: -22px; z-index: 6; }
+    .hero-strip .hi:nth-child(7) { clip-path: polygon(0 0, 100% 0, 100% 100%, 22px 100%); margin-left: -22px; z-index: 7; }
     .hero-strip .hi video { width: 100%; height: 100%; object-fit: cover; display: block; }
     /* Accordion states */
-    .hero-strip .hi.active { flex: 3.5; }
-    .hero-strip.has-active .hi:not(.active) { flex: 0.4; }
+    .hero-strip .hi.active { flex: 4; }
+    .hero-strip.has-active .hi:not(.active) { flex: 0.35; }
     /* Per-panel bottom gradient */
     .hero-strip .hi::before {
       content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
@@ -823,32 +826,47 @@
       <button class="hero-chip">Hypermotion</button>
     </div>
 
-    <!-- Full-width angled video strip -->
+    <!-- Full-width angled video strip — 7 panels -->
     <div class="hero-strip" id="heroStrip">
       <div class="hi">
-        <video src="assets/marketing/hero-1.mp4" loop muted playsinline preload="auto"></video>
+        <video src="assets/marketing/mkt-hero-1.mp4" loop muted playsinline preload="auto"></video>
         <span class="hi-label">UGC</span>
       </div>
       <div class="hi">
-        <video src="assets/marketing/hero-2.mp4" loop muted playsinline preload="none"></video>
+        <video src="assets/marketing/mkt-hero-2.mp4" loop muted playsinline preload="none"></video>
         <span class="hi-label">Virtual Try-On</span>
       </div>
       <div class="hi">
-        <video src="assets/marketing/hero-3.mp4" loop muted playsinline preload="none"></video>
+        <video src="assets/marketing/mkt-hero-3.mp4" loop muted playsinline preload="none"></video>
         <span class="hi-label">Hypermotion</span>
       </div>
       <div class="hi">
-        <video src="assets/marketing/hero-asmr.mp4" loop muted playsinline preload="none"></video>
+        <video src="assets/marketing/mkt-hero-4.mp4" loop muted playsinline preload="none"></video>
+        <span class="hi-label">Unboxing</span>
+      </div>
+      <div class="hi">
+        <video src="assets/marketing/mkt-hero-5.mp4" loop muted playsinline preload="none"></video>
         <span class="hi-label">ASMR</span>
+      </div>
+      <div class="hi">
+        <video src="assets/marketing/mkt-hero-6.mp4" loop muted playsinline preload="none"></video>
+        <span class="hi-label">Product Shot</span>
+      </div>
+      <div class="hi">
+        <video src="assets/marketing/mkt-hero-7.mp4" loop muted playsinline preload="none"></video>
+        <span class="hi-label">Campaign</span>
       </div>
     </div>
 
     <!-- Tabs — bottom-center of hero -->
     <div class="hero-tabs" id="heroTabs">
       <div class="hero-tab active" data-index="0"><span class="hero-tab-label">UGC</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="1"><span class="hero-tab-label">Virtual Try-On</span><span class="hero-tab-bar"></span></div>
+      <div class="hero-tab" data-index="1"><span class="hero-tab-label">Try-On</span><span class="hero-tab-bar"></span></div>
       <div class="hero-tab" data-index="2"><span class="hero-tab-label">Hypermotion</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="3"><span class="hero-tab-label">ASMR</span><span class="hero-tab-bar"></span></div>
+      <div class="hero-tab" data-index="3"><span class="hero-tab-label">Unboxing</span><span class="hero-tab-bar"></span></div>
+      <div class="hero-tab" data-index="4"><span class="hero-tab-label">ASMR</span><span class="hero-tab-bar"></span></div>
+      <div class="hero-tab" data-index="5"><span class="hero-tab-label">Product</span><span class="hero-tab-bar"></span></div>
+      <div class="hero-tab" data-index="6"><span class="hero-tab-label">Campaign</span><span class="hero-tab-bar"></span></div>
     </div>
 
   </section>
