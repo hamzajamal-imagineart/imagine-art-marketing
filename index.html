@@ -63,7 +63,7 @@
       line-height: 1.0; text-transform: uppercase;
     }
     .hero-sub {
-      font-size: clamp(13px, 1.3vw, 16px); color: rgba(255,255,255,0.42);
+      font-size: clamp(15px, 1.6vw, 20px); color: rgba(255,255,255,0.75);
       text-align: center; line-height: 1.5;
       max-width: 420px;
     }
@@ -82,9 +82,11 @@
     }
     .hi video { width: 100%; height: 100%; object-fit: cover; display: block; }
     .hi-label {
-      position: absolute; bottom: 10px; left: 12px;
-      font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.7);
-      letter-spacing: 0.05em; z-index: 2;
+      position: absolute; top: 12px; left: 12px;
+      background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.82);
+      font-size: 9.5px; font-weight: 300; letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 100px; z-index: 2;
     }
 
     /* ── HeroPromptBox — exact reference port ───────────────── */
@@ -93,57 +95,74 @@
       display: flex; flex-direction: column; align-items: center;
       z-index: 10; padding: 0 40px;
     }
-    .hpb-form { position: relative; width: 100%; max-width: 760px; margin: 0 auto; }
+    .hpb-form {
+      position: relative; width: 100%; max-width: 480px; margin: 0 auto;
+      transition: max-width 1.0s cubic-bezier(0.16,1,0.3,1);
+    }
+    .hpb-form.hpb-expanded { max-width: 760px; }
     .hpb-wrap {
-      position: relative; border-radius: 22px;
-      background: rgba(255,255,255,0.86);
-      border: 1px solid rgba(255,255,255,0.18);
-      backdrop-filter: blur(18px) saturate(1.2);
-      -webkit-backdrop-filter: blur(18px) saturate(1.2);
-      box-shadow: 0 24px 80px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.2);
+      position: relative; border-radius: 18px;
+      background: rgba(28,28,28,0.88);
+      border: 1px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 4px 14px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.07);
       transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
     }
     .hpb-wrap:hover {
-      border-color: rgba(255,255,255,0.26);
-      background: rgba(255,255,255,0.9);
+      border-color: rgba(255,255,255,0.30);
+      background: rgba(32,32,32,0.92);
     }
     .hpb-wrap[data-focused="true"] {
-      border-color: rgba(255,255,255,0.32);
-      background: rgba(255,255,255,0.92);
-      box-shadow: 0 0 0 4px rgba(255,255,255,0.08), 0 28px 90px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.22);
+      border-color: rgba(255,255,255,0.36);
+      background: rgba(32,32,32,0.94);
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.06), 0 24px 70px rgba(0,0,0,0.55), 0 4px 14px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.07);
     }
     .hpb-input {
-      width: 100%; padding: 12px 22px 56px;
+      width: 100%; padding: 10px 20px 50px;
       background: transparent; border: none; outline: none;
-      color: #0a0a0b; font-family: inherit;
-      font-size: 16px; line-height: 1.5; letter-spacing: -0.01em;
-      caret-color: rgba(10,10,11,0.85);
+      color: rgba(255,255,255,0.88); font-family: inherit;
+      font-size: 15px; line-height: 1.5; letter-spacing: -0.01em;
+      caret-color: rgba(255,255,255,0.85);
       resize: none; display: block; box-sizing: border-box;
       max-height: 220px; overflow: auto;
     }
     .hpb-input::placeholder { color: transparent; }
     .hpb-placeholder {
-      position: absolute; top: 12px; left: 22px; right: 22px;
+      position: absolute; top: 10px; left: 20px; right: 20px;
       pointer-events: none; font-family: inherit;
-      font-size: 16px; line-height: 1.5; letter-spacing: -0.01em;
-      color: rgba(10,10,11,0.42);
+      font-size: 15px; line-height: 1.5; letter-spacing: -0.01em;
+      color: rgba(255,255,255,0.50);
       transition: opacity 320ms ease;
     }
     .hpb-submit {
-      position: absolute; right: 14px; bottom: 14px;
-      width: 42px; height: 42px; border-radius: 50%;
-      border: none; background: rgba(10,10,11,0.78); color: #fff;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, opacity 180ms ease;
+      position: absolute; right: 10px; bottom: 14px;
+      height: 34px; padding: 0 20px; border-radius: 14px;
+      border: none; background: #8A3FFC;
+      color: #fff; font-family: inherit; font-size: 13px; font-weight: 400;
+      letter-spacing: 0.2px; line-height: 1;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; white-space: nowrap;
+      box-shadow: 0 5px 0 0 #5323a2, 0 8px 18px rgba(28, 6, 64, 0.70);
+      transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
     }
-    .hpb-submit:hover { transform: scale(1.06); box-shadow: 0 8px 24px rgba(0,0,0,0.28); }
-    .hpb-submit:active { transform: scale(0.97); }
+    .hpb-submit:hover { background: #9a52fd; box-shadow: 0 5px 0 0 #5323a2, 0 10px 24px rgba(28, 6, 64, 0.75); }
+    .hpb-submit:active { transform: translateY(3px); box-shadow: 0 2px 0 0 #5323a2, 0 4px 10px rgba(28, 6, 64, 0.50); }
     .hpb-chips-row {
       margin-top: 18px;
       display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px;
     }
+    @media (max-width: 768px) {
+      .hpb-chips-row {
+        flex-wrap: nowrap; justify-content: flex-start;
+        overflow-x: auto; scrollbar-width: none;
+        padding: 2px 4px; margin-left: -4px; margin-right: -4px;
+      }
+      .hpb-chips-row::-webkit-scrollbar { display: none; }
+      .hpb-chip { flex-shrink: 0; }
+      .hpb-chip-icon { flex-shrink: 0; width: 36px; height: 36px; min-width: 36px; }
+    }
     .hpb-chip {
-      font-size: 13px; font-weight: 500; font-family: inherit;
+      font-size: 13px; font-weight: 300; font-family: inherit;
       color: rgba(255,255,255,0.85);
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.14);
@@ -367,7 +386,7 @@
     }
 
     @media (max-width: 599px) {
-      .hiw-center { opacity: 0; }
+      .hiw-center { opacity: 1; transform: translate(-50%, -50%) scale(0.40); }
     }
     @media (max-width: 768px) {
       .mkt-hiw { height: 270vh; }
@@ -691,6 +710,8 @@
       /* Hero v3 tablet */
       .hero-top { padding: 0 40px; margin-bottom: 20px; }
       .hero-prompt-wrap, .hero-chips { width: calc(100% - 80px); }
+      /* Reduce card height slightly on tablet */
+      .hero-cards { height: 240px; }
       .styles-bento { grid-template-columns: repeat(6, 1fr); }
       .s-card:nth-child(1) { grid-column: span 3; height: 320px; }
       .s-card:nth-child(2) { grid-column: span 3; height: 320px; }
@@ -712,18 +733,26 @@
     @media (max-width: 768px) {
 
       /* ── Hero v3 mobile ──────────────────────────────── */
-      .mkt-hero { padding-top: 44px; }
+      .mkt-hero { padding-top: 44px; padding-left: 0; padding-right: 0; padding-bottom: 160px; }
       .hero-top { padding: 0 24px; margin-bottom: 18px; gap: 8px; }
       .hero-studio-title { font-size: clamp(30px, 9vw, 48px); letter-spacing: 3px; }
-      .hero-sub { font-size: 13px; }
-      .hero-prompt-wrap { width: calc(100% - 48px); height: 46px; padding: 0 8px 0 16px; margin-bottom: 10px; }
-      .hero-chips { width: calc(100% - 48px); margin-bottom: 16px; gap: 5px; }
-      .hero-chip { padding: 4px 10px; font-size: 11px; }
-      .hero-strip .hi:nth-child(1) { clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 100%, 0 100%); }
-      .hero-strip .hi:nth-child(2) { clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 100%, 18px 100%); margin-left: -18px; }
-      .hero-strip .hi:nth-child(3) { clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 100%, 18px 100%); margin-left: -18px; }
-      .hero-strip .hi:nth-child(4) { clip-path: polygon(0 0, 100% 0, 100% 100%, 18px 100%); margin-left: -18px; }
-      .hero-tabs { bottom: 14px; }
+      .hero-sub { font-size: 15px; }
+
+      /* ── Hero cards — expanding accordion ─────────────── */
+      .hero-cards-wrap { max-width: none; }
+      .hero-cards {
+        height: 180px;
+        overflow: hidden;
+        padding: 0 20px;
+        gap: 6px;
+      }
+      .hi { flex: 1; width: auto; transition: flex 0.52s cubic-bezier(0.4,0,0.2,1); }
+      .hi.active { flex: 5; }
+      .hi-label {
+        opacity: 0; transform: translateY(3px);
+        transition: opacity 280ms ease 180ms, transform 280ms ease 180ms;
+      }
+      .hi.active .hi-label { opacity: 1; transform: translateY(0); }
 
       /* ── Shared ───────────────────────────────────────── */
       .mkt-inner { padding: 0 20px; }
@@ -826,19 +855,19 @@
     <div class="hero-cards-wrap">
       <div class="hero-cards" id="heroCards">
         <div class="hi">
-          <video src="assets/marketing/mkt-hero-1.mp4" loop muted playsinline preload="auto"></video>
+          <video src="assets/marketing/hero-ugc.mp4" loop muted playsinline preload="auto"></video>
           <span class="hi-label">UGC</span>
         </div>
         <div class="hi">
-          <video src="assets/marketing/mkt-hero-2.mp4" loop muted playsinline preload="none"></video>
+          <video src="assets/marketing/hero-tryon.mp4" loop muted playsinline preload="none"></video>
           <span class="hi-label">Virtual Try-On</span>
         </div>
         <div class="hi">
-          <video src="assets/marketing/mkt-hero-3.mp4" loop muted playsinline preload="none"></video>
+          <video src="assets/marketing/hero-hypermotion.mp4" loop muted playsinline preload="none"></video>
           <span class="hi-label">Hypermotion</span>
         </div>
         <div class="hi">
-          <video src="assets/marketing/mkt-hero-4.mp4" loop muted playsinline preload="none"></video>
+          <video src="assets/marketing/hero-unboxing.mp4" loop muted playsinline preload="none"></video>
           <span class="hi-label">Unboxing</span>
         </div>
       </div>
@@ -853,9 +882,7 @@
             autocomplete="off" spellcheck="false"></textarea>
           <div class="hpb-placeholder" id="hpbPlaceholder" aria-hidden="true"></div>
           <button type="submit" class="hpb-submit" id="hpbSubmit" aria-label="Generate">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 19V5M5 12l7-7 7 7"/>
-            </svg>
+            Create
           </button>
         </div>
         <div class="hpb-chips-row" id="hpbChipsRow"></div>
@@ -939,13 +966,8 @@
     }
 
     function updateSubmitBtn() {
-      if (input.value) {
-        submitBtn.style.background = '#0a0a0b';
-        submitBtn.style.opacity = '1';
-      } else {
-        submitBtn.style.background = 'rgba(10,10,11,0.78)';
-        submitBtn.style.opacity = '0.92';
-      }
+      submitBtn.style.background = '';
+      submitBtn.style.opacity = '';
     }
 
     function renderChips() {
@@ -998,7 +1020,8 @@
     form.addEventListener('submit', function(e) { e.preventDefault(); });
 
     // ── Video cycling ────────────────────────────────────────
-    var DURATION = 4000;
+    var isMobileHero = window.innerWidth <= 768;
+    var DURATION = isMobileHero ? 2500 : 4000;
     var panels   = Array.from(document.querySelectorAll('#heroCards .hi'));
     var current  = 0;
     var vidTimer = null;
@@ -1010,6 +1033,7 @@
     function activate(index) {
       current = index;
       panels.forEach(function(p, i) {
+        p.classList.toggle('active', i === index);
         var vid = p.querySelector('video');
         if (!vid) return;
         if (i === index) { vid.currentTime = 0; vid.play().catch(function(){}); }
@@ -1017,6 +1041,15 @@
       preloadVideo((index + 1) % panels.length);
       clearTimeout(vidTimer);
       vidTimer = setTimeout(function() { activate((current + 1) % panels.length); }, DURATION);
+    }
+
+    // ── Tap to expand on mobile ──────────────────────────────
+    if (isMobileHero) {
+      panels.forEach(function(panel, i) {
+        panel.addEventListener('click', function() {
+          if (i !== current) activate(i);
+        });
+      });
     }
 
     // ── Mouse-tracked dot grid ───────────────────────────────
@@ -1142,9 +1175,9 @@
       // --- Heading stays visible ---
       if (head) head.style.opacity = 1;
 
-      // --- Center card: always visible on desktop; fades in on mobile once cards converge ---
-      var centerReveal = isMobile ? clamp((p - 0.55) / 0.13, 0, 1) : 1;
-      center.style.opacity = centerReveal;
+      // --- Center card opacity ---
+      // Mobile: always visible (opacity 1); Desktop: always shown
+      center.style.opacity = 1;
 
       // --- Video fades in after both cards have merged (p > 0.65) ---
       var revealP = clamp((p - 0.65) / 0.20, 0, 1);
@@ -1156,9 +1189,19 @@
         video.pause(); video.currentTime = 0; videoPlaying = false;
       }
 
-      // --- Center pulse after video appears ---
+      // --- Center scale ---
+      // Mobile: starts at 0.55 (visible but small), grows to 1.0 as flanking cards converge (p: 0.10 → 0.68)
+      // Desktop: stays at 1.0 baseline
+      var baseScale;
+      if (isMobile) {
+        var growP = clamp((p - 0.10) / 0.58, 0, 1);
+        baseScale = lerp(0.40, 1.0, ease(growP));
+      } else {
+        baseScale = 1.0;
+      }
+      // Subtle pulse on top once video is fully revealed
       var pulseP = clamp((p - 0.72) / 0.16, 0, 1);
-      var sc     = lerp(1.0, 1.06, ease(pulseP));
+      var sc     = lerp(baseScale, baseScale * (isMobile ? 1.04 : 1.06), ease(pulseP));
       center.style.transform = 'translate(-50%, -50%) scale('+sc+')';
     }
 
@@ -1377,6 +1420,11 @@
       document.querySelectorAll('.mkt-hero .reveal').forEach((el, i) => {
         setTimeout(() => el.classList.add('in'), 80 + i * 110);
       });
+      // Prompt box expand — desktop only (mobile is already full-width)
+      if (window.innerWidth > 768) {
+        const form = document.getElementById('hpbForm');
+        if (form) setTimeout(() => form.classList.add('hpb-expanded'), 180);
+      }
     }
 
     // Nav scrim
