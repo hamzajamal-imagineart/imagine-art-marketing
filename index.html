@@ -85,17 +85,21 @@
     .hero-prompt-wrap {
       width: 100%; max-width: 580px;
       background: #fff; border-radius: 18px;
-      padding: 22px 14px 22px 22px;
-      display: flex; align-items: center; gap: 12px;
+      padding: 20px 20px 16px 22px;
+      display: flex; flex-direction: column; gap: 12px;
       margin-bottom: 14px;
       box-shadow: 0 16px 60px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.2);
     }
     .hero-prompt-input {
-      flex: 1; border: none; outline: none;
+      width: 100%; border: none; outline: none; resize: none;
       font-size: 15px; font-weight: 300; background: transparent;
-      color: #0f0f0f; font-family: inherit;
+      color: #0f0f0f; font-family: inherit; line-height: 1.6;
+      min-height: 72px;
     }
     .hero-prompt-input::placeholder { color: rgba(0,0,0,0.35); }
+    .hero-prompt-footer {
+      display: flex; justify-content: flex-end;
+    }
     .hero-prompt-btn {
       width: 38px; height: 38px; border-radius: 50%;
       background: #0f0f0f; border: none; cursor: pointer; flex-shrink: 0;
@@ -811,12 +815,14 @@
 
       <!-- Prompt box -->
       <div class="hero-prompt-wrap">
-        <input class="hero-prompt-input" type="text" placeholder="Generate a campaign visual of…" id="heroPromptInput">
-        <button class="hero-prompt-btn" id="heroPromptBtn" aria-label="Generate">
-          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 2.5L8 13.5M8 2.5L3.5 7M8 2.5L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
+        <textarea class="hero-prompt-input" placeholder="Generate a campaign visual of…" id="heroPromptInput" rows="3"></textarea>
+        <div class="hero-prompt-footer">
+          <button class="hero-prompt-btn" id="heroPromptBtn" aria-label="Generate">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 2.5L8 13.5M8 2.5L3.5 7M8 2.5L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
       <!-- Suggestion chips -->
