@@ -17,141 +17,120 @@
     body { font-family: 'Google Sans Flex', 'Google Sans', sans-serif; background: #fff; color: #0f0f0f; overflow-x: hidden; font-weight: 300; }
     h1, h2, h3, h4, h5, h6 { font-weight: 400; }
 
-    /* ─── Hero v2 ────────────────────────────────────────── */
+    /* ─── Hero v1 ────────────────────────────────────────── */
     .mkt-hero {
       height: 100vh; min-height: 700px;
-      position: relative; overflow: hidden;
       background: #0b0b0b;
+      display: grid;
+      grid-template-columns: minmax(380px, 48%) minmax(0, 52%);
+      padding-left: clamp(40px, 8vw, 160px);
+      overflow: hidden;
+      position: relative;
+    }
+    .mkt-hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.11) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .mkt-hero::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px);
+      background-size: 28px 28px;
+      -webkit-mask-image: radial-gradient(circle 260px at var(--mx, -9999px) var(--my, -9999px), black 0%, transparent 100%);
+      mask-image: radial-gradient(circle 260px at var(--mx, -9999px) var(--my, -9999px), black 0%, transparent 100%);
     }
 
-    /* Full-bleed diagonal accordion panels */
-    .hero-panels {
-      position: absolute; inset: 0; z-index: 0;
-      display: flex; align-items: stretch;
-    }
-    .hi {
-      flex: 1; min-width: 0; overflow: hidden; position: relative;
-      transition: flex 0.65s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .hi:nth-child(1) { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 100%, 0 100%); z-index: 1; }
-    .hi:nth-child(2) { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 2; }
-    .hi:nth-child(3) { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 3; }
-    .hi:nth-child(4) { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 4; }
-    .hi:nth-child(5) { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 5; }
-    .hi:nth-child(6) { clip-path: polygon(0 0, 100% 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 6; }
-    .hi video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .hero-panels .hi.active { flex: 3.5; }
-    .hero-panels.has-active .hi:not(.active) { flex: 0.4; }
-
-    /* Dark overlay */
-    .hero-overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.52) 0%,
-        rgba(0,0,0,0.32) 45%,
-        rgba(0,0,0,0.62) 100%
-      );
-    }
-
-    /* Centered content */
-    .hero-content {
+    /* Left: text content */
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 40px 80px 0;
       position: relative; z-index: 3;
-      height: 100%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
-      padding: 100px 24px 140px;
     }
-
-    /* Eyebrow */
-    .hero-eyebrow {
-      font-size: 10.5px; font-weight: 300; letter-spacing: 2.5px;
-      text-transform: uppercase; color: rgba(255,255,255,0.55);
-      margin-bottom: 24px;
-    }
-
     .hero-h1 {
-      font-size: clamp(42px, 5.5vw, 76px); font-weight: 400;
-      line-height: 1.06; letter-spacing: -2.5px; color: #fff;
+      font-size: clamp(40px, 5vw, 64px); font-weight: 400;
+      line-height: 1.07; letter-spacing: -2.5px; color: #fff;
       margin-bottom: 16px;
     }
     .hero-h1 em { font-style: normal; font-weight: 400; color: rgba(255,255,255,0.38); }
     .hero-sub {
-      font-size: 18px; color: rgba(255,255,255,0.5);
-      line-height: 1.72; max-width: 520px; margin-bottom: 56px;
+      font-size: 18px; color: rgba(255,255,255,0.4);
+      line-height: 1.72; max-width: 520px; margin-bottom: 36px;
     }
+    .hero-ctas { display: flex; gap: 12px; align-items: center; margin-bottom: 48px; }
+    .btn-hero {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      height: 40px; padding: 8px 14px; border-radius: 14px;
+      font-size: 14px; font-weight: 300; letter-spacing: 0.1px;
+      white-space: nowrap; cursor: pointer; text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-hero:hover { transform: translateY(-1px); }
+    .btn-demo {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.75);
+    }
+    .btn-demo:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.24); color: #fff; }
+    .btn-get-started {
+      background: #fff; color: #0f0f0f; border: none;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.08);
+    }
+    .btn-get-started:hover { background: #f2f2f2; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+    .hero-stats {
+      display: flex; gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.07); padding-top: 28px;
+    }
+    .hero-stat {
+      flex: 1; display: flex; flex-direction: column; gap: 5px;
+      padding-right: 28px; border-right: 1px solid rgba(255,255,255,0.07); margin-right: 28px;
+    }
+    .hero-stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+    .hero-stat-num { font-size: 28px; font-weight: 400; color: #fff; letter-spacing: -1.2px; line-height: 1; }
+    .hero-stat-lbl { font-size: 11.5px; color: rgba(255,255,255,0.32); line-height: 1.45; letter-spacing: 0.1px; }
 
-    /* Prompt box */
-    .hero-prompt-wrap {
-      width: 100%; max-width: 680px;
-      background: #fff; border-radius: 18px;
-      padding: 10px 10px 8px 16px;
-      display: flex; flex-direction: column; gap: 6px;
-      margin-bottom: 14px;
-      box-shadow: 0 16px 60px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.2);
+    /* Right: accordion */
+    .hero-right { position: relative; overflow: hidden; display: flex; align-items: center; }
+    .hero-imgs {
+      display: flex; width: 100%; height: 90%; gap: 0;
+      align-items: stretch; position: relative; z-index: 1;
     }
-    .hero-prompt-input {
-      width: 100%; border: none; outline: none; resize: none;
-      font-size: 15px; font-weight: 300; background: transparent;
-      color: #0f0f0f; font-family: inherit; line-height: 1.6;
-      min-height: 18px;
+    .hi {
+      flex: 1; min-width: 0; border-radius: 0; overflow: hidden;
+      position: relative; cursor: pointer;
+      transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s ease;
     }
-    .hero-prompt-input::placeholder { color: rgba(0,0,0,0.35); }
-    .hero-prompt-footer {
-      display: flex; justify-content: flex-end;
-    }
-    .hero-prompt-btn {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: #0f0f0f; border: none; cursor: pointer; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .hero-prompt-btn:hover { background: #333; transform: scale(1.05); }
-    .hero-prompt-btn svg { width: 16px; height: 16px; }
+    .hi:nth-child(1) { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 100%, 28px 100%); z-index: 1; }
+    .hi:nth-child(2) { clip-path: polygon(0 0, 100% 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 2; }
+    .hi:nth-child(3) { clip-path: polygon(0 0, 100% 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 3; }
+    .hi:nth-child(4) { clip-path: polygon(0 0, 100% 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 4; }
+    .hero-imgs .hi.active { flex: 3; z-index: 10; box-shadow: 0 32px 80px rgba(0,0,0,0.5); }
+    .hero-imgs.has-active .hi:not(.active) { flex: 0.35; }
+    .hi video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1); }
+    .hi.active video { transform: scale(1.05); }
 
-    /* Chips */
-    .hero-chips {
-      display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
-      max-width: 680px;
-    }
-    .hero-chip {
-      padding: 7px 16px; border-radius: 100px;
-      background: rgba(255,255,255,0.10);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.16);
-      color: rgba(255,255,255,0.80);
-      font-size: 12.5px; font-weight: 300; cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
-      user-select: none;
-    }
-    .hero-chip:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.3); color: #fff; }
-
-    /* Tabs — bottom-center */
+    /* Tabs — bottom-left inside accordion */
     .hero-tabs {
-      position: absolute; bottom: 28px; right: 32px;
-      display: flex; gap: 6px; z-index: 10;
-      white-space: nowrap;
+      position: absolute; bottom: 20px; left: 20px;
+      display: flex; gap: 6px; z-index: 20; white-space: nowrap;
     }
     .hero-tab {
       position: relative; overflow: hidden;
-      padding: 8px 16px; border-radius: 8px;
+      width: 130px; flex-shrink: 0; padding: 9px 14px; border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(0,0,0,0.40); backdrop-filter: blur(12px);
-      cursor: pointer;
-      font-size: 11px; font-weight: 300; letter-spacing: 0.2px;
-      color: rgba(255,255,255,0.45); text-align: center;
+      background: rgba(255,255,255,0.06); backdrop-filter: blur(10px);
+      cursor: pointer; font-size: 11px; font-weight: 300; letter-spacing: 0.2px;
+      color: rgba(255,255,255,0.45); white-space: nowrap; text-align: center;
       transition: color 0.3s, border-color 0.3s; user-select: none;
     }
     .hero-tab .hero-tab-label { position: relative; z-index: 1; }
     .hero-tab.active { border-color: rgba(255,255,255,0.28); color: rgba(255,255,255,0.95); }
     .hero-tab-bar {
       position: absolute; inset: 0; width: 0%; height: 100%;
-      background: rgba(255,255,255,0.10); border-radius: 8px;
+      background: rgba(255,255,255,0.12); border-radius: 8px;
       transition: none; z-index: 0;
     }
-    .hero-tab.active .hero-tab-bar { animation: tabProgress var(--tab-duration, 4s) linear forwards; }
+    .hero-tab.active .hero-tab-bar { animation: tabProgress var(--tab-duration, 3s) linear forwards; }
     @keyframes tabProgress { from { width: 0% } to { width: 100% } }
+    .hi::after { display: none; }
 
     /* Preloader */
     #preloader {
@@ -786,75 +765,61 @@
   <!-- Navbar -->
   <header id="site-nav"></header>
 
-  <!-- ─── Hero v2 ──────────────────────────────────────── -->
+  <!-- ─── Hero v1 ──────────────────────────────────────── -->
   <section class="mkt-hero">
 
-    <!-- Full-bleed diagonal accordion panels -->
-    <div class="hero-panels has-active" id="heroPanels">
-      <div class="hi active"><video src="assets/marketing/hero-1.mp4"     loop muted playsinline preload="auto"></video></div>
-      <div class="hi"><video src="assets/marketing/hero-2.mp4"     loop muted playsinline preload="none"></video></div>
-      <div class="hi"><video src="assets/marketing/hero-3.mp4"     loop muted playsinline preload="none"></video></div>
-      <div class="hi"><video src="assets/marketing/hero-4.mp4"     loop muted playsinline preload="none"></video></div>
-      <div class="hi"><video src="assets/marketing/hero-asmr.mp4"  loop muted playsinline preload="none"></video></div>
-      <div class="hi"><video src="assets/marketing/hero-provt.mp4" loop muted playsinline preload="none"></video></div>
-    </div>
-
-    <!-- Dark overlay -->
-    <div class="hero-overlay"></div>
-
-    <!-- Centered content -->
-    <div class="hero-content">
-
-      <p class="hero-eyebrow">Marketing Studio</p>
-
+    <!-- Left: copy -->
+    <div class="hero-left">
       <h1 class="hero-h1">
         Campaigns at the<br><em>speed of ideas.</em>
       </h1>
-      <p class="hero-sub">
+      <p class="hero-sub reveal reveal-d2">
         Generate campaign visuals, product shots, and social assets in seconds. No studio, no waiting, no budget blowouts.
       </p>
-
-      <!-- Prompt box -->
-      <div class="hero-prompt-wrap">
-        <textarea class="hero-prompt-input" placeholder="Generate a campaign visual of…" id="heroPromptInput" rows="3"></textarea>
-        <div class="hero-prompt-footer">
-          <button class="hero-prompt-btn" id="heroPromptBtn" aria-label="Generate">
-            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 2.5L8 13.5M8 2.5L3.5 7M8 2.5L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
+      <div class="hero-ctas reveal reveal-d2">
+        <a href="https://calendly.com/d/cr9s-6pt-mr3/one-on-one-demo-with-an-imagineart-expert" target="_blank" rel="noopener" class="btn-hero btn-get-started">Book a demo</a>
+        <a href="https://www.imagine.art/flow" target="_blank" rel="noopener" class="btn-hero btn-demo">Get Started</a>
+      </div>
+      <div class="hero-stats reveal reveal-d3">
+        <div class="hero-stat">
+          <div class="hero-stat-num">10×</div>
+          <div class="hero-stat-lbl">faster brief to<br>final asset</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">80%</div>
+          <div class="hero-stat-lbl">lower production<br>cost per campaign</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">30M+</div>
+          <div class="hero-stat-lbl">creators on<br>ImagineArt</div>
         </div>
       </div>
-
-      <!-- Suggestion chips -->
-      <div class="hero-chips">
-        <span class="hero-chip" data-prompt="a UGC-style ad for my product">UGC Ad</span>
-        <span class="hero-chip" data-prompt="a virtual try-on video for my fashion brand">Virtual Try-On</span>
-        <span class="hero-chip" data-prompt="a hypermotion campaign video">Hypermotion</span>
-        <span class="hero-chip" data-prompt="an unboxing video for my product launch">Unboxing</span>
-        <span class="hero-chip" data-prompt="an ASMR-style product showcase">ASMR</span>
-      </div>
-
     </div>
 
-    <!-- Tabs — bottom-center -->
-    <div class="hero-tabs" id="heroTabs">
-      <div class="hero-tab active" data-index="0"><span class="hero-tab-label">UGC</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="1"><span class="hero-tab-label">Virtual Try-On</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="2"><span class="hero-tab-label">Hypermotion</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="3"><span class="hero-tab-label">Unboxing</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="4"><span class="hero-tab-label">ASMR</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="5"><span class="hero-tab-label">Pro Virtual Try-On</span><span class="hero-tab-bar"></span></div>
+    <!-- Right: accordion panels -->
+    <div class="hero-right">
+      <div class="hero-imgs" id="heroImgs">
+        <div class="hi"><video src="assets/marketing/hero-1.mp4" loop muted playsinline preload="auto"></video></div>
+        <div class="hi"><video src="assets/marketing/hero-2.mp4" loop muted playsinline preload="none"></video></div>
+        <div class="hi"><video src="assets/marketing/hero-3.mp4" loop muted playsinline preload="none"></video></div>
+        <div class="hi"><video src="assets/marketing/hero-4.mp4" loop muted playsinline preload="none"></video></div>
+        <div class="hero-tabs" id="heroTabs">
+          <div class="hero-tab active" data-index="0"><span class="hero-tab-label">UGC</span><span class="hero-tab-bar"></span></div>
+          <div class="hero-tab" data-index="1"><span class="hero-tab-label">Virtual Try-On</span><span class="hero-tab-bar"></span></div>
+          <div class="hero-tab" data-index="2"><span class="hero-tab-label">Hypermotion</span><span class="hero-tab-bar"></span></div>
+          <div class="hero-tab" data-index="3"><span class="hero-tab-label">Unboxing</span><span class="hero-tab-bar"></span></div>
+        </div>
+      </div>
     </div>
 
   </section>
 
   <script>
   (function() {
-    var DURATION = 4000;
-    var panels  = Array.from(document.querySelectorAll('#heroPanels .hi'));
-    var strip   = document.getElementById('heroPanels');
-    var tabs    = Array.from(document.querySelectorAll('#heroTabs .hero-tab'));
+    var DURATION = 3000;
+    var panels = Array.from(document.querySelectorAll('.hero-imgs .hi'));
+    var tabs   = Array.from(document.querySelectorAll('#heroTabs .hero-tab'));
+    var imgs   = document.getElementById('heroImgs');
     var current = 0;
     var timer   = null;
 
@@ -866,16 +831,14 @@
     function activate(index) {
       current = index;
       panels.forEach(function(p, i) {
-        var isActive = i === index;
-        p.classList.toggle('active', isActive);
+        p.classList.toggle('active', i === index);
         var vid = p.querySelector('video');
         if (!vid) return;
-        if (isActive) { vid.currentTime = 0; vid.play(); }
+        if (i === index) { vid.currentTime = 0; vid.play(); }
         else vid.pause();
       });
-      // Preload next video in advance
       preloadVideo((index + 1) % panels.length);
-      strip.classList.add('has-active');
+      imgs.classList.add('has-active');
       tabs.forEach(function(t) {
         t.classList.remove('active');
         void t.querySelector('.hero-tab-bar').offsetWidth;
@@ -890,19 +853,34 @@
       tab.addEventListener('click', function() { activate(parseInt(tab.dataset.index)); });
     });
 
-    // Chips fill the prompt input
-    var promptInput = document.getElementById('heroPromptInput');
-    document.querySelectorAll('.hero-chip').forEach(function(chip) {
-      chip.addEventListener('click', function() {
-        if (promptInput) { promptInput.value = chip.dataset.prompt; promptInput.focus(); }
+    // Hover expand
+    panels.forEach(function(panel, i) {
+      panel.addEventListener('mouseenter', function() {
+        clearTimeout(timer);
+        panels.forEach(function(p) { p.classList.remove('active'); });
+        panel.classList.add('active');
+        imgs.classList.add('has-active');
+        var vid = panel.querySelector('video');
+        if (vid) { vid.currentTime = 0; vid.play(); }
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        if (tabs[i]) tabs[i].classList.add('active');
       });
     });
-
-    // Prompt submit → imagine.art/flow
-    document.getElementById('heroPromptBtn').addEventListener('click', function() {
-      var val = promptInput ? promptInput.value.trim() : '';
-      window.open('https://www.imagine.art/flow' + (val ? '?prompt=' + encodeURIComponent(val) : ''), '_blank');
+    imgs.addEventListener('mouseleave', function() {
+      panels.forEach(function(p, i) { p.classList.toggle('active', i === current); });
+      tabs.forEach(function(t, i) { t.classList.toggle('active', i === current); });
+      timer = setTimeout(function() { activate((current + 1) % panels.length); }, DURATION);
     });
+
+    // Mouse-tracked dot grid
+    var hero = document.querySelector('.mkt-hero');
+    if (hero) {
+      hero.addEventListener('mousemove', function(e) {
+        var r = hero.getBoundingClientRect();
+        hero.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    }
 
     activate(0);
   })();
