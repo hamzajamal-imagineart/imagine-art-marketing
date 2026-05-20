@@ -973,11 +973,25 @@
       tab.addEventListener('click', function() { activate(parseInt(tab.dataset.index)); });
     });
 
-    // Pause on hover over hero-right
-    var heroRight = document.querySelector('.hero-right');
-    if (heroRight) {
-      heroRight.addEventListener('mouseenter', function() { clearTimeout(timer); });
-      heroRight.addEventListener('mouseleave', function() {
+    // Hover: expand the hovered panel, pause auto-advance
+    panels.forEach(function(panel, i) {
+      panel.addEventListener('mouseenter', function() {
+        clearTimeout(timer);
+        panels.forEach(function(p) { p.classList.remove('active'); });
+        panel.classList.add('active');
+        imgs.classList.add('has-active');
+        var vid = panel.querySelector('video');
+        if (vid) { vid.currentTime = 0; vid.play(); }
+        // sync tab highlight
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        if (tabs[i]) tabs[i].classList.add('active');
+      });
+    });
+    // On leaving the whole strip, restore current tab panel and resume timer
+    if (imgs) {
+      imgs.addEventListener('mouseleave', function() {
+        panels.forEach(function(p, i) { p.classList.toggle('active', i === current); });
+        tabs.forEach(function(t, i) { t.classList.toggle('active', i === current); });
         timer = setTimeout(function() { activate((current + 1) % panels.length); }, DURATION);
       });
     }
