@@ -22,8 +22,8 @@
       height: 100vh; min-height: 750px;
       background: #0f0f0f;
       display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      padding: 56px 64px 32px;
+      align-items: center; justify-content: flex-start;
+      padding: 52px 0 0;
       overflow: hidden;
       position: relative;
     }
@@ -41,7 +41,7 @@
       -webkit-mask-image: radial-gradient(circle 260px at var(--mx, -9999px) var(--my, -9999px), black 0%, transparent 100%);
       mask-image: radial-gradient(circle 260px at var(--mx, -9999px) var(--my, -9999px), black 0%, transparent 100%);
     }
-    /* Teal glow — larger, centered */
+    /* Teal glow */
     .hero-glow {
       position: absolute; top: -420px; left: 50%; transform: translateX(-50%);
       width: 1100px; height: 860px; border-radius: 50%; z-index: 0; pointer-events: none;
@@ -53,11 +53,10 @@
     .hero-top {
       position: relative; z-index: 2;
       display: flex; flex-direction: column; align-items: center;
-      gap: 10px; margin-bottom: 56px;
+      gap: 10px; margin-bottom: 26px;
+      width: 100%; padding: 0 64px;
     }
-    .hero-logo {
-      height: 20px; width: auto; margin-bottom: 2px;
-    }
+    .hero-logo { height: 20px; width: auto; }
     .hero-studio-title {
       font-family: 'Monomaniac One', sans-serif;
       font-size: clamp(44px, 6.2vw, 80px); font-weight: 400;
@@ -65,85 +64,97 @@
       line-height: 1.0; text-transform: uppercase;
     }
     .hero-sub {
-      font-size: clamp(14px, 1.4vw, 17px); color: rgba(255,255,255,0.45);
+      font-size: clamp(13px, 1.3vw, 16px); color: rgba(255,255,255,0.42);
       text-align: center; line-height: 1.5; letter-spacing: 0.01em;
-      max-width: 440px; margin-top: 2px;
+      max-width: 420px;
     }
 
-    /* Video cards row */
-    .hero-cards-wrap {
-      position: relative; z-index: 2;
-      width: 100%; max-width: 1120px;
-    }
-    .hero-cards {
-      display: flex; gap: 6px; width: 100%; height: 420px;
-    }
-    .hi {
-      flex: 1; min-width: 0; border-radius: 16px; overflow: hidden;
-      position: relative; padding: 4px;
-      background: transparent;
-    }
-    .hi-inner {
-      width: 100%; height: 100%; border-radius: 12px; overflow: hidden;
-      position: relative; background: rgba(183,180,180,0.15);
-    }
-    .hi video {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-    }
-    .hi-label {
-      position: absolute; bottom: 10px; left: 10px;
-      font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.7);
-      letter-spacing: 0.04em; z-index: 2;
-    }
-
-    /* Prompt box — overlaps bottom of cards */
+    /* Prompt box — single row, in-flow */
     .hero-prompt-wrap {
-      position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%);
-      width: calc(100% - 80px); max-width: 960px;
+      position: relative; z-index: 2;
+      width: calc(100% - 128px); max-width: 620px;
       background: #171717; border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px; z-index: 10;
-      padding: 16px 16px 14px 20px;
-      display: flex; flex-direction: column; gap: 10px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);
+      border-radius: 14px; height: 50px;
+      display: flex; align-items: center; gap: 10px;
+      padding: 0 10px 0 18px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.03);
+      margin-bottom: 12px;
     }
     .hero-prompt-input {
-      width: 100%; border: none; outline: none; resize: none;
-      font-size: 15px; font-weight: 300; background: transparent;
-      color: rgba(255,255,255,0.65); font-family: inherit; line-height: 1.5;
-      min-height: 20px;
+      flex: 1; border: none; outline: none; resize: none;
+      font-size: 14px; font-weight: 300; background: transparent;
+      color: rgba(255,255,255,0.65); font-family: inherit;
+      line-height: 1; height: 100%; padding: 0;
     }
     .hero-prompt-input::placeholder { color: rgba(255,255,255,0.2); }
-    /* Prompt footer: chips left, button right */
-    .hero-prompt-footer {
-      display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    }
-    .hero-chips { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
-    .hero-chip {
-      padding: 5px 13px; border-radius: 100px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.05);
-      color: rgba(255,255,255,0.42);
-      font-size: 12px; font-weight: 300; font-family: inherit; letter-spacing: 0.01em;
-      cursor: pointer; white-space: nowrap;
-      transition: border-color 0.18s, color 0.18s, background 0.18s;
-    }
-    .hero-chip:hover {
-      border-color: rgba(255,255,255,0.22);
-      color: rgba(255,255,255,0.75);
-      background: rgba(255,255,255,0.09);
-    }
     .hero-prompt-btn {
-      width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
       background: #fff; border: none; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: background 0.2s, transform 0.15s;
     }
     .hero-prompt-btn:hover { background: #e0e0e0; transform: scale(1.05); }
-    .hero-prompt-btn svg { width: 14px; height: 14px; }
+    .hero-prompt-btn svg { width: 13px; height: 13px; }
 
-    /* Tab bar — floats on lower portion of cards, above prompt overlap */
+    /* Chips row — below prompt */
+    .hero-chips {
+      position: relative; z-index: 2;
+      display: flex; gap: 7px; flex-wrap: wrap; justify-content: center;
+      width: calc(100% - 128px); max-width: 620px;
+      margin-bottom: 22px;
+    }
+    .hero-chip {
+      padding: 5px 13px; border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.45);
+      font-size: 12px; font-weight: 300; font-family: inherit;
+      cursor: pointer; white-space: nowrap;
+      transition: border-color 0.18s, color 0.18s, background 0.18s;
+    }
+    .hero-chip:hover {
+      border-color: rgba(255,255,255,0.22); color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.09);
+    }
+
+    /* ─── Full-width angled video strip ──────────────────── */
+    .hero-strip {
+      width: 100%; flex: 1; min-height: 200px;
+      display: flex; align-items: stretch;
+      position: relative; z-index: 1;
+    }
+    .hero-strip .hi {
+      flex: 1; min-width: 0; overflow: hidden; position: relative;
+      transition: flex 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+    /* Angled diagonal cuts */
+    .hero-strip .hi:nth-child(1) { clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 100%, 0 100%); z-index: 1; }
+    .hero-strip .hi:nth-child(2) { clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 100%, 32px 100%); margin-left: -32px; z-index: 2; }
+    .hero-strip .hi:nth-child(3) { clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 100%, 32px 100%); margin-left: -32px; z-index: 3; }
+    .hero-strip .hi:nth-child(4) { clip-path: polygon(0 0, 100% 0, 100% 100%, 32px 100%); margin-left: -32px; z-index: 4; }
+    .hero-strip .hi video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* Accordion states */
+    .hero-strip .hi.active { flex: 3.5; }
+    .hero-strip.has-active .hi:not(.active) { flex: 0.4; }
+    /* Per-panel bottom gradient */
+    .hero-strip .hi::before {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.6) 100%);
+    }
+    /* Panel label */
+    .hi-label {
+      position: absolute; bottom: 16px; left: 20px;
+      font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.85);
+      letter-spacing: 0.05em; z-index: 3;
+      opacity: 0; transform: translateY(5px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .hero-strip .hi.active .hi-label { opacity: 1; transform: translateY(0); }
+
+    /* Tab bar — bottom-center of hero */
     .hero-tabs {
-      position: absolute; bottom: 112px; left: 16px;
+      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
       display: flex; gap: 6px; z-index: 20; white-space: nowrap;
     }
     .hero-tab {
@@ -673,8 +684,8 @@
        ═══════════════════════════════════════════════════════ */
     @media (max-width: 1024px) {
       /* Hero v3 tablet */
-      .hero-cards { height: 300px; }
-      .mkt-hero { padding: 40px 32px 0; }
+      .hero-top { padding: 0 40px; margin-bottom: 20px; }
+      .hero-prompt-wrap, .hero-chips { width: calc(100% - 80px); }
       .styles-bento { grid-template-columns: repeat(6, 1fr); }
       .s-card:nth-child(1) { grid-column: span 3; height: 320px; }
       .s-card:nth-child(2) { grid-column: span 3; height: 320px; }
@@ -696,13 +707,18 @@
     @media (max-width: 768px) {
 
       /* ── Hero v3 mobile ──────────────────────────────── */
-      .mkt-hero { padding: 40px 20px 0; justify-content: flex-start; padding-top: 80px; }
-      .hero-top { margin-bottom: 28px; }
-      .hero-studio-title { font-size: clamp(28px, 8vw, 40px); letter-spacing: 2px; }
-      .hero-sub { font-size: 14px; }
-      .hero-cards { height: 220px; gap: 4px; }
-      .hero-prompt-wrap { width: calc(100% - 24px); bottom: -16px; padding: 14px 14px 10px 16px; }
-      .hero-tabs { bottom: 14px; left: 12px; }
+      .mkt-hero { padding-top: 44px; }
+      .hero-top { padding: 0 24px; margin-bottom: 18px; gap: 8px; }
+      .hero-studio-title { font-size: clamp(30px, 9vw, 48px); letter-spacing: 3px; }
+      .hero-sub { font-size: 13px; }
+      .hero-prompt-wrap { width: calc(100% - 48px); height: 46px; padding: 0 8px 0 16px; margin-bottom: 10px; }
+      .hero-chips { width: calc(100% - 48px); margin-bottom: 16px; gap: 5px; }
+      .hero-chip { padding: 4px 10px; font-size: 11px; }
+      .hero-strip .hi:nth-child(1) { clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 100%, 0 100%); }
+      .hero-strip .hi:nth-child(2) { clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 100%, 18px 100%); margin-left: -18px; }
+      .hero-strip .hi:nth-child(3) { clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 100%, 18px 100%); margin-left: -18px; }
+      .hero-strip .hi:nth-child(4) { clip-path: polygon(0 0, 100% 0, 100% 100%, 18px 100%); margin-left: -18px; }
+      .hero-tabs { bottom: 14px; }
 
       /* ── Shared ───────────────────────────────────────── */
       .mkt-inner { padding: 0 20px; }
@@ -737,14 +753,7 @@
       .gallery-item { aspect-ratio: 1/1; }
 
       /* ── Hero tabs (mobile) ──────────────────────────── */
-      .hero-tabs {
-        width: calc(100% - 40px);
-        bottom: 12px; left: 12px;
-      }
-      .hero-tab {
-        width: auto; flex: 1; min-width: 0;
-        padding: 7px 8px; font-size: 10px;
-      }
+      .hero-tab { padding: 6px 10px; font-size: 10px; }
 
       /* ── HIW card labels (mobile) ─────────────────────── */
       .hiw-card-label { font-size: 8px; padding: 3px 7px; }
@@ -788,79 +797,71 @@
 
     <div class="hero-glow"></div>
 
-    <!-- Top: logo + title + subtitle -->
+    <!-- Logo + title + subtitle -->
     <div class="hero-top">
       <img class="hero-logo" src="assets/logo-imagine-white.svg" alt="ImagineArt">
       <h1 class="hero-studio-title">Marketing<br>Studio</h1>
       <p class="hero-sub">Built for brands that ship more than one ad.</p>
     </div>
 
-    <!-- Cards + prompt box -->
-    <div class="hero-cards-wrap">
-      <div class="hero-cards" id="heroCards">
-        <div class="hi">
-          <div class="hi-inner">
-            <video src="assets/marketing/hero-1.mp4" loop muted playsinline preload="auto"></video>
-            <span class="hi-label">UGC</span>
-          </div>
-        </div>
-        <div class="hi">
-          <div class="hi-inner">
-            <video src="assets/marketing/hero-2.mp4" loop muted playsinline preload="none"></video>
-            <span class="hi-label">Virtual Try-On</span>
-          </div>
-        </div>
-        <div class="hi">
-          <div class="hi-inner">
-            <video src="assets/marketing/hero-3.mp4" loop muted playsinline preload="none"></video>
-            <span class="hi-label">Hypermotion</span>
-          </div>
-        </div>
-        <div class="hi">
-          <div class="hi-inner">
-            <video src="assets/marketing/hero-asmr.mp4" loop muted playsinline preload="none"></video>
-            <span class="hi-label">ASMR</span>
-          </div>
-        </div>
-      </div>
+    <!-- Prompt — single row -->
+    <div class="hero-prompt-wrap">
+      <textarea class="hero-prompt-input" id="heroPromptInput" placeholder="Generate a campaign visual of…" rows="1"></textarea>
+      <button class="hero-prompt-btn" id="heroPromptBtn" aria-label="Generate">
+        <svg viewBox="0 0 16 16" fill="none">
+          <path d="M8 2.5L8 13.5M8 2.5L3.5 7M8 2.5L12.5 7" stroke="#0f0f0f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
 
-      <!-- Tabs — overlaid on bottom portion of cards, above the prompt -->
-      <div class="hero-tabs" id="heroTabs">
-        <div class="hero-tab active" data-index="0"><span class="hero-tab-label">UGC</span><span class="hero-tab-bar"></span></div>
-        <div class="hero-tab" data-index="1"><span class="hero-tab-label">Virtual Try-On</span><span class="hero-tab-bar"></span></div>
-        <div class="hero-tab" data-index="2"><span class="hero-tab-label">Hypermotion</span><span class="hero-tab-bar"></span></div>
-        <div class="hero-tab" data-index="3"><span class="hero-tab-label">ASMR</span><span class="hero-tab-bar"></span></div>
-      </div>
+    <!-- Chips — below prompt -->
+    <div class="hero-chips">
+      <button class="hero-chip">UGC Ad</button>
+      <button class="hero-chip">Product Shot</button>
+      <button class="hero-chip">Virtual Try-On</button>
+      <button class="hero-chip">Unboxing</button>
+      <button class="hero-chip">Hypermotion</button>
+    </div>
 
-      <!-- Prompt box — overlaps bottom of cards -->
-      <div class="hero-prompt-wrap">
-        <textarea class="hero-prompt-input" id="heroPromptInput" placeholder="Generate a campaign visual of…" rows="2"></textarea>
-        <div class="hero-prompt-footer">
-          <div class="hero-chips">
-            <button class="hero-chip">UGC Ad</button>
-            <button class="hero-chip">Product Shot</button>
-            <button class="hero-chip">Virtual Try-On</button>
-            <button class="hero-chip">Unboxing</button>
-            <button class="hero-chip">Hypermotion</button>
-          </div>
-          <button class="hero-prompt-btn" id="heroPromptBtn" aria-label="Generate">
-            <svg viewBox="0 0 16 16" fill="none">
-              <path d="M8 2.5L8 13.5M8 2.5L3.5 7M8 2.5L12.5 7" stroke="#0f0f0f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
+    <!-- Full-width angled video strip -->
+    <div class="hero-strip" id="heroStrip">
+      <div class="hi">
+        <video src="assets/marketing/hero-1.mp4" loop muted playsinline preload="auto"></video>
+        <span class="hi-label">UGC</span>
       </div>
+      <div class="hi">
+        <video src="assets/marketing/hero-2.mp4" loop muted playsinline preload="none"></video>
+        <span class="hi-label">Virtual Try-On</span>
+      </div>
+      <div class="hi">
+        <video src="assets/marketing/hero-3.mp4" loop muted playsinline preload="none"></video>
+        <span class="hi-label">Hypermotion</span>
+      </div>
+      <div class="hi">
+        <video src="assets/marketing/hero-asmr.mp4" loop muted playsinline preload="none"></video>
+        <span class="hi-label">ASMR</span>
+      </div>
+    </div>
+
+    <!-- Tabs — bottom-center of hero -->
+    <div class="hero-tabs" id="heroTabs">
+      <div class="hero-tab active" data-index="0"><span class="hero-tab-label">UGC</span><span class="hero-tab-bar"></span></div>
+      <div class="hero-tab" data-index="1"><span class="hero-tab-label">Virtual Try-On</span><span class="hero-tab-bar"></span></div>
+      <div class="hero-tab" data-index="2"><span class="hero-tab-label">Hypermotion</span><span class="hero-tab-bar"></span></div>
+      <div class="hero-tab" data-index="3"><span class="hero-tab-label">ASMR</span><span class="hero-tab-bar"></span></div>
     </div>
 
   </section>
 
   <script>
   (function() {
-    var DURATION = 3500;
-    var panels  = Array.from(document.querySelectorAll('#heroCards .hi'));
+    var DURATION = 4000;
+    var strip   = document.getElementById('heroStrip');
+    var panels  = Array.from(document.querySelectorAll('#heroStrip .hi'));
     var tabs    = Array.from(document.querySelectorAll('#heroTabs .hero-tab'));
     var current = 0;
     var timer   = null;
+    var hovering = false;
 
     function preloadVideo(index) {
       var vid = panels[index] && panels[index].querySelector('video');
@@ -870,43 +871,54 @@
     function activate(index) {
       current = index;
       panels.forEach(function(p, i) {
+        p.classList.toggle('active', i === index);
         var vid = p.querySelector('video');
         if (!vid) return;
         if (i === index) { vid.currentTime = 0; vid.play().catch(function(){}); }
         else vid.pause();
       });
+      if (strip) strip.classList.add('has-active');
       preloadVideo((index + 1) % panels.length);
       tabs.forEach(function(t) {
         t.classList.remove('active');
         var bar = t.querySelector('.hero-tab-bar');
-        if (bar) { void bar.offsetWidth; }
+        if (bar) void bar.offsetWidth;
       });
       if (tabs[index]) {
         tabs[index].classList.add('active');
         tabs[index].style.setProperty('--tab-duration', (DURATION / 1000) + 's');
       }
       clearTimeout(timer);
-      timer = setTimeout(function() { activate((current + 1) % panels.length); }, DURATION);
+      timer = setTimeout(function() {
+        if (!hovering) activate((current + 1) % panels.length);
+      }, DURATION);
     }
 
+    // Tab clicks
     tabs.forEach(function(tab) {
       tab.addEventListener('click', function() { activate(parseInt(tab.dataset.index)); });
     });
 
-    // Chip clicks — fill textarea with a starter prompt
-    var chipPrompts = {
-      'UGC Ad': 'A UGC-style ad for ',
-      'Product Shot': 'A clean product shot of ',
-      'Virtual Try-On': 'A virtual try-on visual for ',
-      'Unboxing': 'An unboxing video thumbnail for ',
-      'Hypermotion': 'A hypermotion campaign visual for '
-    };
-    document.querySelectorAll('.hero-chip').forEach(function(chip) {
-      chip.addEventListener('click', function() {
-        var input = document.getElementById('heroPromptInput');
-        if (input) { input.value = chipPrompts[chip.textContent.trim()] || ''; input.focus(); }
+    // Hover accordion
+    panels.forEach(function(panel, i) {
+      panel.addEventListener('mouseenter', function() {
+        hovering = true;
+        clearTimeout(timer);
+        panels.forEach(function(p) { p.classList.remove('active'); });
+        panel.classList.add('active');
+        if (strip) strip.classList.add('has-active');
+        var vid = panel.querySelector('video');
+        if (vid) vid.play().catch(function(){});
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        if (tabs[i]) tabs[i].classList.add('active');
       });
     });
+    if (strip) {
+      strip.addEventListener('mouseleave', function() {
+        hovering = false;
+        activate(current);
+      });
+    }
 
     // Mouse-tracked dot grid
     var hero = document.querySelector('.mkt-hero');
@@ -921,6 +933,21 @@
         hero.style.setProperty('--my', '-9999px');
       });
     }
+
+    // Chip clicks
+    var chipPrompts = {
+      'UGC Ad': 'A UGC-style ad for ',
+      'Product Shot': 'A clean product shot of ',
+      'Virtual Try-On': 'A virtual try-on visual for ',
+      'Unboxing': 'An unboxing video thumbnail for ',
+      'Hypermotion': 'A hypermotion campaign visual for '
+    };
+    document.querySelectorAll('.hero-chip').forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        var input = document.getElementById('heroPromptInput');
+        if (input) { input.value = chipPrompts[chip.textContent.trim()] || ''; input.focus(); }
+      });
+    });
 
     activate(0);
   })();
