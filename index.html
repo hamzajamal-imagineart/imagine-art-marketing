@@ -22,8 +22,8 @@
       height: 100vh; min-height: 750px;
       background: #0f0f0f;
       display: flex; flex-direction: column;
-      align-items: center; justify-content: flex-start;
-      padding: 52px 0 0;
+      align-items: center; justify-content: center;
+      padding: 56px 64px 60px;
       overflow: hidden;
       position: relative;
     }
@@ -53,8 +53,7 @@
     .hero-top {
       position: relative; z-index: 2;
       display: flex; flex-direction: column; align-items: center;
-      gap: 10px; margin-bottom: 26px;
-      width: 100%; padding: 0 64px;
+      gap: 10px; margin-bottom: 32px;
     }
     .hero-logo { height: 20px; width: auto; }
     .hero-studio-title {
@@ -65,119 +64,80 @@
     }
     .hero-sub {
       font-size: clamp(13px, 1.3vw, 16px); color: rgba(255,255,255,0.42);
-      text-align: center; line-height: 1.5; letter-spacing: 0.01em;
+      text-align: center; line-height: 1.5;
       max-width: 420px;
     }
 
-    /* Prompt box — single row, in-flow */
-    .hero-prompt-wrap {
+    /* 4-card row */
+    .hero-cards-wrap {
       position: relative; z-index: 2;
-      width: calc(100% - 128px); max-width: 620px;
-      background: #171717; border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px; height: 50px;
-      display: flex; align-items: center; gap: 10px;
-      padding: 0 10px 0 18px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.03);
-      margin-bottom: 12px;
+      width: 100%; max-width: 1120px;
+    }
+    .hero-cards {
+      display: flex; gap: 6px; width: 100%; height: 400px;
+    }
+    .hi {
+      flex: 1; min-width: 0; border-radius: 14px; overflow: hidden;
+      position: relative; background: rgba(255,255,255,0.08);
+    }
+    .hi video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hi-label {
+      position: absolute; bottom: 10px; left: 12px;
+      font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.7);
+      letter-spacing: 0.05em; z-index: 2;
+    }
+
+    /* Frosted white prompt box — overlaps bottom of cards */
+    .hero-prompt-wrap {
+      position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%);
+      width: calc(100% - 80px); max-width: 720px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 22px; z-index: 10;
+      height: 58px;
+      display: flex; align-items: center; gap: 12px;
+      padding: 0 12px 0 22px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.2);
+      backdrop-filter: blur(18px) saturate(1.2);
+      -webkit-backdrop-filter: blur(18px) saturate(1.2);
     }
     .hero-prompt-input {
       flex: 1; border: none; outline: none; resize: none;
-      font-size: 14px; font-weight: 300; background: transparent;
-      color: rgba(255,255,255,0.65); font-family: inherit;
-      line-height: 1; height: 100%; padding: 0;
+      font-size: 15px; font-weight: 300; background: transparent;
+      color: #0a0a0b; font-family: inherit;
+      line-height: 1.5; height: 100%; padding: 0;
     }
-    .hero-prompt-input::placeholder { color: rgba(255,255,255,0.2); }
+    .hero-prompt-input::placeholder { color: rgba(10,10,11,0.35); }
     .hero-prompt-btn {
-      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
-      background: #fff; border: none; cursor: pointer;
+      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+      background: #0a0a0b; border: none; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s, transform 0.15s;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
     }
-    .hero-prompt-btn:hover { background: #e0e0e0; transform: scale(1.05); }
-    .hero-prompt-btn svg { width: 13px; height: 13px; }
+    .hero-prompt-btn:hover { background: #333; transform: scale(1.06); box-shadow: 0 8px 24px rgba(0,0,0,0.28); }
+    .hero-prompt-btn svg { width: 14px; height: 14px; }
 
-    /* Chips row — below prompt */
+    /* Chips — below the cards-wrap (clear of overlapping prompt) */
     .hero-chips {
       position: relative; z-index: 2;
-      display: flex; gap: 7px; flex-wrap: wrap; justify-content: center;
-      width: calc(100% - 128px); max-width: 620px;
-      margin-bottom: 22px;
+      display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+      margin-top: 54px;
     }
     .hero-chip {
-      padding: 5px 13px; border-radius: 100px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.05);
-      color: rgba(255,255,255,0.45);
-      font-size: 12px; font-weight: 300; font-family: inherit;
+      padding: 7px 16px; border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      color: rgba(255,255,255,0.75);
+      font-size: 12.5px; font-weight: 300; font-family: inherit;
       cursor: pointer; white-space: nowrap;
-      transition: border-color 0.18s, color 0.18s, background 0.18s;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
     }
     .hero-chip:hover {
-      border-color: rgba(255,255,255,0.22); color: rgba(255,255,255,0.8);
-      background: rgba(255,255,255,0.09);
+      background: rgba(255,255,255,0.13);
+      border-color: rgba(255,255,255,0.26);
+      color: #fff;
     }
-
-    /* ─── Full-width angled video strip ──────────────────── */
-    .hero-strip {
-      width: 100%; height: 230px; flex-shrink: 0;
-      display: flex; align-items: stretch;
-      position: relative; z-index: 1;
-    }
-    .hero-strip .hi {
-      flex: 1; min-width: 0; overflow: hidden; position: relative;
-      transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: pointer;
-    }
-    /* Angled diagonal cuts — 22px for 7 tighter panels */
-    .hero-strip .hi:nth-child(1) { clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 100%, 0 100%); z-index: 1; }
-    .hero-strip .hi:nth-child(2) { clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 100%, 22px 100%); margin-left: -22px; z-index: 2; }
-    .hero-strip .hi:nth-child(3) { clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 100%, 22px 100%); margin-left: -22px; z-index: 3; }
-    .hero-strip .hi:nth-child(4) { clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 100%, 22px 100%); margin-left: -22px; z-index: 4; }
-    .hero-strip .hi:nth-child(5) { clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 100%, 22px 100%); margin-left: -22px; z-index: 5; }
-    .hero-strip .hi:nth-child(6) { clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 100%, 22px 100%); margin-left: -22px; z-index: 6; }
-    .hero-strip .hi:nth-child(7) { clip-path: polygon(0 0, 100% 0, 100% 100%, 22px 100%); margin-left: -22px; z-index: 7; }
-    .hero-strip .hi video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    /* Accordion states */
-    .hero-strip .hi.active { flex: 4; }
-    .hero-strip.has-active .hi:not(.active) { flex: 0.35; }
-    /* Per-panel bottom gradient */
-    .hero-strip .hi::before {
-      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.6) 100%);
-    }
-    /* Panel label */
-    .hi-label {
-      position: absolute; bottom: 16px; left: 20px;
-      font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.85);
-      letter-spacing: 0.05em; z-index: 3;
-      opacity: 0; transform: translateY(5px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    .hero-strip .hi.active .hi-label { opacity: 1; transform: translateY(0); }
-
-    /* Tab bar — bottom-center of hero */
-    .hero-tabs {
-      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-      display: flex; gap: 6px; z-index: 20; white-space: nowrap;
-    }
-    .hero-tab {
-      position: relative; overflow: hidden;
-      padding: 7px 14px; border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.06); backdrop-filter: blur(10px);
-      cursor: pointer; font-size: 11px; font-weight: 300; letter-spacing: 0.2px;
-      color: rgba(255,255,255,0.45); text-align: center;
-      transition: color 0.3s, border-color 0.3s; user-select: none;
-    }
-    .hero-tab .hero-tab-label { position: relative; z-index: 1; }
-    .hero-tab.active { border-color: rgba(255,255,255,0.28); color: rgba(255,255,255,0.95); }
-    .hero-tab-bar {
-      position: absolute; inset: 0; width: 0%; height: 100%;
-      background: rgba(255,255,255,0.12); border-radius: 8px;
-      transition: none; z-index: 0;
-    }
-    .hero-tab.active .hero-tab-bar { animation: tabProgress var(--tab-duration, 3s) linear forwards; }
-    @keyframes tabProgress { from { width: 0% } to { width: 100% } }
 
     /* Preloader */
     #preloader {
@@ -807,17 +767,39 @@
       <p class="hero-sub">Built for brands that ship more than one ad.</p>
     </div>
 
-    <!-- Prompt — single row -->
-    <div class="hero-prompt-wrap">
-      <textarea class="hero-prompt-input" id="heroPromptInput" placeholder="Generate a campaign visual of…" rows="1"></textarea>
-      <button class="hero-prompt-btn" id="heroPromptBtn" aria-label="Generate">
-        <svg viewBox="0 0 16 16" fill="none">
-          <path d="M8 2.5L8 13.5M8 2.5L3.5 7M8 2.5L12.5 7" stroke="#0f0f0f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
+    <!-- 4 video cards + frosted prompt overlapping bottom -->
+    <div class="hero-cards-wrap">
+      <div class="hero-cards" id="heroCards">
+        <div class="hi">
+          <video src="assets/marketing/mkt-hero-1.mp4" loop muted playsinline preload="auto"></video>
+          <span class="hi-label">UGC</span>
+        </div>
+        <div class="hi">
+          <video src="assets/marketing/mkt-hero-2.mp4" loop muted playsinline preload="none"></video>
+          <span class="hi-label">Virtual Try-On</span>
+        </div>
+        <div class="hi">
+          <video src="assets/marketing/mkt-hero-3.mp4" loop muted playsinline preload="none"></video>
+          <span class="hi-label">Hypermotion</span>
+        </div>
+        <div class="hi">
+          <video src="assets/marketing/mkt-hero-4.mp4" loop muted playsinline preload="none"></video>
+          <span class="hi-label">Unboxing</span>
+        </div>
+      </div>
+
+      <!-- Frosted white prompt — overlaps bottom of cards -->
+      <div class="hero-prompt-wrap">
+        <textarea class="hero-prompt-input" id="heroPromptInput" placeholder="Generate a campaign visual of…" rows="1"></textarea>
+        <button class="hero-prompt-btn" id="heroPromptBtn" aria-label="Generate">
+          <svg viewBox="0 0 16 16" fill="none">
+            <path d="M8 2.5L8 13.5M8 2.5L3.5 7M8 2.5L12.5 7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <!-- Chips — below prompt -->
+    <!-- Chips — below cards, below the overhanging prompt -->
     <div class="hero-chips">
       <button class="hero-chip">UGC Ad</button>
       <button class="hero-chip">Product Shot</button>
@@ -826,60 +808,14 @@
       <button class="hero-chip">Hypermotion</button>
     </div>
 
-    <!-- Full-width angled video strip — 7 panels -->
-    <div class="hero-strip" id="heroStrip">
-      <div class="hi">
-        <video src="assets/marketing/mkt-hero-1.mp4" loop muted playsinline preload="auto"></video>
-        <span class="hi-label">UGC</span>
-      </div>
-      <div class="hi">
-        <video src="assets/marketing/mkt-hero-2.mp4" loop muted playsinline preload="none"></video>
-        <span class="hi-label">Virtual Try-On</span>
-      </div>
-      <div class="hi">
-        <video src="assets/marketing/mkt-hero-3.mp4" loop muted playsinline preload="none"></video>
-        <span class="hi-label">Hypermotion</span>
-      </div>
-      <div class="hi">
-        <video src="assets/marketing/mkt-hero-4.mp4" loop muted playsinline preload="none"></video>
-        <span class="hi-label">Unboxing</span>
-      </div>
-      <div class="hi">
-        <video src="assets/marketing/mkt-hero-5.mp4" loop muted playsinline preload="none"></video>
-        <span class="hi-label">ASMR</span>
-      </div>
-      <div class="hi">
-        <video src="assets/marketing/mkt-hero-6.mp4" loop muted playsinline preload="none"></video>
-        <span class="hi-label">Product Shot</span>
-      </div>
-      <div class="hi">
-        <video src="assets/marketing/mkt-hero-7.mp4" loop muted playsinline preload="none"></video>
-        <span class="hi-label">Campaign</span>
-      </div>
-    </div>
-
-    <!-- Tabs — bottom-center of hero -->
-    <div class="hero-tabs" id="heroTabs">
-      <div class="hero-tab active" data-index="0"><span class="hero-tab-label">UGC</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="1"><span class="hero-tab-label">Try-On</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="2"><span class="hero-tab-label">Hypermotion</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="3"><span class="hero-tab-label">Unboxing</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="4"><span class="hero-tab-label">ASMR</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="5"><span class="hero-tab-label">Product</span><span class="hero-tab-bar"></span></div>
-      <div class="hero-tab" data-index="6"><span class="hero-tab-label">Campaign</span><span class="hero-tab-bar"></span></div>
-    </div>
-
   </section>
 
   <script>
   (function() {
     var DURATION = 4000;
-    var strip   = document.getElementById('heroStrip');
-    var panels  = Array.from(document.querySelectorAll('#heroStrip .hi'));
-    var tabs    = Array.from(document.querySelectorAll('#heroTabs .hero-tab'));
+    var panels  = Array.from(document.querySelectorAll('#heroCards .hi'));
     var current = 0;
     var timer   = null;
-    var hovering = false;
 
     function preloadVideo(index) {
       var vid = panels[index] && panels[index].querySelector('video');
@@ -889,53 +825,13 @@
     function activate(index) {
       current = index;
       panels.forEach(function(p, i) {
-        p.classList.toggle('active', i === index);
         var vid = p.querySelector('video');
         if (!vid) return;
         if (i === index) { vid.currentTime = 0; vid.play().catch(function(){}); }
-        else vid.pause();
       });
-      if (strip) strip.classList.add('has-active');
       preloadVideo((index + 1) % panels.length);
-      tabs.forEach(function(t) {
-        t.classList.remove('active');
-        var bar = t.querySelector('.hero-tab-bar');
-        if (bar) void bar.offsetWidth;
-      });
-      if (tabs[index]) {
-        tabs[index].classList.add('active');
-        tabs[index].style.setProperty('--tab-duration', (DURATION / 1000) + 's');
-      }
       clearTimeout(timer);
-      timer = setTimeout(function() {
-        if (!hovering) activate((current + 1) % panels.length);
-      }, DURATION);
-    }
-
-    // Tab clicks
-    tabs.forEach(function(tab) {
-      tab.addEventListener('click', function() { activate(parseInt(tab.dataset.index)); });
-    });
-
-    // Hover accordion
-    panels.forEach(function(panel, i) {
-      panel.addEventListener('mouseenter', function() {
-        hovering = true;
-        clearTimeout(timer);
-        panels.forEach(function(p) { p.classList.remove('active'); });
-        panel.classList.add('active');
-        if (strip) strip.classList.add('has-active');
-        var vid = panel.querySelector('video');
-        if (vid) vid.play().catch(function(){});
-        tabs.forEach(function(t) { t.classList.remove('active'); });
-        if (tabs[i]) tabs[i].classList.add('active');
-      });
-    });
-    if (strip) {
-      strip.addEventListener('mouseleave', function() {
-        hovering = false;
-        activate(current);
-      });
+      timer = setTimeout(function() { activate((current + 1) % panels.length); }, DURATION);
     }
 
     // Mouse-tracked dot grid
