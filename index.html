@@ -397,7 +397,8 @@
         0 0 0 1px rgba(255,255,255,0.04),
         0 0 80px rgba(100,60,255,0.10);
       z-index: 10;
-      will-change: transform;
+      will-change: transform, opacity;
+      opacity: 0;
     }
     .hiw-center img, .hiw-center video { display: block; width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
     #hiw-poster { opacity: 1; will-change: opacity; z-index: 1; }
@@ -1071,6 +1072,10 @@
 
       // --- Heading stays visible ---
       if (head) head.style.opacity = 1;
+
+      // --- Center card fades in once both cards have converged (p > 0.55) ---
+      var centerReveal = clamp((p - 0.55) / 0.13, 0, 1);
+      center.style.opacity = centerReveal;
 
       // --- Video fades in after both cards have merged (p > 0.65) ---
       var revealP = clamp((p - 0.65) / 0.20, 0, 1);

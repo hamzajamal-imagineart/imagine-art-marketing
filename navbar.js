@@ -264,7 +264,7 @@
       <div class="nav-mobile-divider"></div>
       <div class="nav-mobile-actions" style="gap:10px;">
         <a href="https://calendly.com/d/cr9s-6pt-mr3/one-on-one-demo-with-an-imagineart-expert" target="_blank" rel="noopener" class="navbar-btn navbar-btn-dark">Book a demo</a>
-        <a href="https://www.imagine.art/flow" target="_blank" rel="noopener" class="navbar-btn navbar-btn-dark" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);">Get Started</a>
+        <a href="https://www.imagine.art/flow" target="_blank" rel="noopener" class="navbar-btn navbar-btn-dark">Get Started</a>
       </div>
     </div>
   </div>`;
