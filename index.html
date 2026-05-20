@@ -8,7 +8,7 @@
   <link rel="preload" href="assets/marketing/hero-1.mp4" as="video" type="video/mp4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..900&family=Google+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..900&family=Google+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Monomaniac+One&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root { --px: 40px; --dark: #0b0b0b; }
@@ -17,108 +17,124 @@
     body { font-family: 'Google Sans Flex', 'Google Sans', sans-serif; background: #fff; color: #0f0f0f; overflow-x: hidden; font-weight: 300; }
     h1, h2, h3, h4, h5, h6 { font-weight: 400; }
 
-    /* ─── Hero v1 ────────────────────────────────────────── */
+    /* ─── Hero v3 ────────────────────────────────────────── */
     .mkt-hero {
       height: 100vh; min-height: 700px;
-      background: #0b0b0b;
-      display: grid;
-      grid-template-columns: minmax(380px, 48%) minmax(0, 52%);
-      padding-left: clamp(40px, 8vw, 160px);
+      background: #0f0f0f;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 56px 64px 0;
       overflow: hidden;
       position: relative;
     }
+    /* Dot grid base */
     .mkt-hero::before {
       content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.11) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(255,255,255,0.09) 1px, transparent 1px);
       background-size: 28px 28px;
     }
+    /* Mouse-tracked highlight dot grid */
     .mkt-hero::after {
       content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(255,255,255,0.45) 1px, transparent 1px);
       background-size: 28px 28px;
       -webkit-mask-image: radial-gradient(circle 260px at var(--mx, -9999px) var(--my, -9999px), black 0%, transparent 100%);
       mask-image: radial-gradient(circle 260px at var(--mx, -9999px) var(--my, -9999px), black 0%, transparent 100%);
     }
+    /* Teal glow */
+    .hero-glow {
+      position: absolute; top: -260px; left: 50%; transform: translateX(-20%);
+      width: 520px; height: 520px; border-radius: 50%; z-index: 0; pointer-events: none;
+      background: radial-gradient(circle, rgba(0,105,82,0.55) 0%, rgba(0,75,60,0.2) 45%, transparent 70%);
+      filter: blur(40px);
+    }
 
-    /* Left: text content */
-    .hero-left {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 120px 40px 80px 0;
-      position: relative; z-index: 3;
+    /* Top content — logo + heading + sub */
+    .hero-top {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 8px; margin-bottom: 40px;
     }
-    .hero-h1 {
-      font-size: clamp(40px, 5vw, 64px); font-weight: 400;
-      line-height: 1.07; letter-spacing: -2.5px; color: #fff;
-      margin-bottom: 16px;
+    .hero-logo {
+      height: 20px; width: auto; margin-bottom: 4px;
     }
-    .hero-h1 em { font-style: normal; font-weight: 400; color: rgba(255,255,255,0.38); }
+    .hero-studio-title {
+      font-family: 'Monomaniac One', sans-serif;
+      font-size: clamp(36px, 5vw, 56px); font-weight: 400;
+      letter-spacing: 4px; color: #fff; text-align: center;
+      line-height: 1.1; text-transform: uppercase;
+    }
     .hero-sub {
-      font-size: 18px; color: rgba(255,255,255,0.4);
-      line-height: 1.72; max-width: 520px; margin-bottom: 36px;
+      font-size: clamp(15px, 1.5vw, 18px); color: #bdbdbd;
+      text-align: center; line-height: 1.5; letter-spacing: 0.01em;
+      max-width: 480px; margin-top: 4px;
     }
-    .hero-ctas { display: flex; gap: 12px; align-items: center; margin-bottom: 48px; }
-    .btn-hero {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      height: 40px; padding: 8px 14px; border-radius: 14px;
-      font-size: 14px; font-weight: 300; letter-spacing: 0.1px;
-      white-space: nowrap; cursor: pointer; text-decoration: none;
-      transition: opacity 0.15s, transform 0.15s, box-shadow 0.15s;
-    }
-    .btn-hero:hover { transform: translateY(-1px); }
-    .btn-demo {
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
-      color: rgba(255,255,255,0.75);
-    }
-    .btn-demo:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.24); color: #fff; }
-    .btn-get-started {
-      background: #fff; color: #0f0f0f; border: none;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.08);
-    }
-    .btn-get-started:hover { background: #f2f2f2; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
-    .hero-stats {
-      display: flex; gap: 0;
-      border-top: 1px solid rgba(255,255,255,0.07); padding-top: 28px;
-    }
-    .hero-stat {
-      flex: 1; display: flex; flex-direction: column; gap: 5px;
-      padding-right: 28px; border-right: 1px solid rgba(255,255,255,0.07); margin-right: 28px;
-    }
-    .hero-stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
-    .hero-stat-num { font-size: 28px; font-weight: 400; color: #fff; letter-spacing: -1.2px; line-height: 1; }
-    .hero-stat-lbl { font-size: 11.5px; color: rgba(255,255,255,0.32); line-height: 1.45; letter-spacing: 0.1px; }
 
-    /* Right: accordion */
-    .hero-right { position: relative; overflow: hidden; display: flex; align-items: center; }
-    .hero-imgs {
-      display: flex; width: 100%; height: 90%; gap: 0;
-      align-items: stretch; position: relative; z-index: 1;
+    /* Video cards row */
+    .hero-cards-wrap {
+      position: relative; z-index: 2;
+      width: 100%; max-width: 1100px;
+    }
+    .hero-cards {
+      display: flex; gap: 6px; width: 100%; height: 380px;
     }
     .hi {
-      flex: 1; min-width: 0; border-radius: 0; overflow: hidden;
-      position: relative; cursor: pointer;
-      transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s ease;
+      flex: 1; min-width: 0; border-radius: 16px; overflow: hidden;
+      position: relative; padding: 4px;
+      background: transparent;
     }
-    .hi:nth-child(1) { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 100%, 28px 100%); z-index: 1; }
-    .hi:nth-child(2) { clip-path: polygon(0 0, 100% 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 2; }
-    .hi:nth-child(3) { clip-path: polygon(0 0, 100% 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 3; }
-    .hi:nth-child(4) { clip-path: polygon(0 0, 100% 0, 100% 100%, 28px 100%); margin-left: -28px; z-index: 4; }
-    .hero-imgs .hi.active { flex: 3; z-index: 10; box-shadow: 0 32px 80px rgba(0,0,0,0.5); }
-    .hero-imgs.has-active .hi:not(.active) { flex: 0.35; }
-    .hi video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1); }
-    .hi.active video { transform: scale(1.05); }
+    .hi-inner {
+      width: 100%; height: 100%; border-radius: 12px; overflow: hidden;
+      position: relative; background: rgba(183,180,180,0.15);
+    }
+    .hi video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .hi-label {
+      position: absolute; bottom: 8px; left: 8px;
+      font-size: 13px; font-weight: 300; color: #fff;
+      letter-spacing: 0.03em; z-index: 2;
+    }
 
-    /* Tabs — bottom-left inside accordion */
+    /* Prompt box — overlaps bottom of cards */
+    .hero-prompt-wrap {
+      position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%);
+      width: calc(100% - 120px); max-width: 920px;
+      background: #171717; border: 1px solid #212121;
+      border-radius: 20px; z-index: 10;
+      padding: 18px 18px 14px 22px;
+      display: flex; flex-direction: column; gap: 10px;
+      box-shadow: 0 0 24px rgba(0,0,0,0.4);
+    }
+    .hero-prompt-input {
+      width: 100%; border: none; outline: none; resize: none;
+      font-size: 15px; font-weight: 300; background: transparent;
+      color: rgba(255,255,255,0.7); font-family: inherit; line-height: 1.5;
+      min-height: 20px;
+    }
+    .hero-prompt-input::placeholder { color: rgba(255,255,255,0.25); }
+    .hero-prompt-footer { display: flex; justify-content: flex-end; }
+    .hero-prompt-btn {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: #fff; border: none; cursor: pointer; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .hero-prompt-btn:hover { background: #e0e0e0; transform: scale(1.05); }
+    .hero-prompt-btn svg { width: 14px; height: 14px; }
+
+    /* Tab bar */
     .hero-tabs {
       position: absolute; bottom: 20px; left: 20px;
       display: flex; gap: 6px; z-index: 20; white-space: nowrap;
     }
     .hero-tab {
       position: relative; overflow: hidden;
-      width: 130px; flex-shrink: 0; padding: 9px 14px; border-radius: 8px;
+      padding: 7px 14px; border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.14);
       background: rgba(255,255,255,0.06); backdrop-filter: blur(10px);
       cursor: pointer; font-size: 11px; font-weight: 300; letter-spacing: 0.2px;
-      color: rgba(255,255,255,0.45); white-space: nowrap; text-align: center;
+      color: rgba(255,255,255,0.45); text-align: center;
       transition: color 0.3s, border-color 0.3s; user-select: none;
     }
     .hero-tab .hero-tab-label { position: relative; z-index: 1; }
@@ -130,7 +146,6 @@
     }
     .hero-tab.active .hero-tab-bar { animation: tabProgress var(--tab-duration, 3s) linear forwards; }
     @keyframes tabProgress { from { width: 0% } to { width: 100% } }
-    .hi::after { display: none; }
 
     /* Preloader */
     #preloader {
@@ -639,7 +654,9 @@
        RESPONSIVE - tablet ≤ 1024px
        ═══════════════════════════════════════════════════════ */
     @media (max-width: 1024px) {
-      .mkt-hero { grid-template-columns: 1fr 1fr; }
+      /* Hero v3 tablet */
+      .hero-cards { height: 300px; }
+      .mkt-hero { padding: 40px 32px 0; }
       .styles-bento { grid-template-columns: repeat(6, 1fr); }
       .s-card:nth-child(1) { grid-column: span 3; height: 320px; }
       .s-card:nth-child(2) { grid-column: span 3; height: 320px; }
@@ -660,31 +677,14 @@
        ═══════════════════════════════════════════════════════ */
     @media (max-width: 768px) {
 
-      /* ── Hero ─────────────────────────────────────────── */
-      .mkt-hero {
-        grid-template-columns: 1fr;
-        height: auto;
-        min-height: 100svh;
-        padding-left: 0;
-      }
-      .hero-left {
-        padding: 96px 24px 40px;
-        order: 1;
-      }
-      .hero-right {
-        order: 2;
-        height: 56vw;
-        min-height: 240px;
-        max-height: 340px;
-      }
-      .hero-right::before { display: none; }
-      .hero-h1 { font-size: clamp(36px, 4.5vw, 56px); letter-spacing: -1.5px; }
-      .hero-sub { font-size: 14px; max-width: 100%; }
-      .hero-ctas { flex-direction: row; align-items: center; gap: 8px; flex-wrap: nowrap; margin-bottom: 32px; }
-      .btn-hero { width: auto; height: 40px; padding: 8px 14px; font-size: 14px; border-radius: 14px; }
-      .hero-stats { flex-wrap: wrap; }
-      .hero-stat { min-width: 45%; flex: 0 0 45%; margin-bottom: 16px; }
-      .hero-stat:last-child { margin-bottom: 0; }
+      /* ── Hero v3 mobile ──────────────────────────────── */
+      .mkt-hero { padding: 40px 20px 0; justify-content: flex-start; padding-top: 80px; }
+      .hero-top { margin-bottom: 28px; }
+      .hero-studio-title { font-size: clamp(28px, 8vw, 40px); letter-spacing: 2px; }
+      .hero-sub { font-size: 14px; }
+      .hero-cards { height: 220px; gap: 4px; }
+      .hero-prompt-wrap { width: calc(100% - 24px); bottom: -16px; padding: 14px 14px 10px 16px; }
+      .hero-tabs { bottom: 14px; left: 12px; }
 
       /* ── Shared ───────────────────────────────────────── */
       .mkt-inner { padding: 0 20px; }
@@ -765,61 +765,75 @@
   <!-- Navbar -->
   <header id="site-nav"></header>
 
-  <!-- ─── Hero v1 ──────────────────────────────────────── -->
+  <!-- ─── Hero v3 ──────────────────────────────────────── -->
   <section class="mkt-hero">
 
-    <!-- Left: copy -->
-    <div class="hero-left">
-      <h1 class="hero-h1">
-        Campaigns at the<br><em>speed of ideas.</em>
-      </h1>
-      <p class="hero-sub reveal reveal-d2">
-        Generate campaign visuals, product shots, and social assets in seconds. No studio, no waiting, no budget blowouts.
-      </p>
-      <div class="hero-ctas reveal reveal-d2">
-        <a href="https://calendly.com/d/cr9s-6pt-mr3/one-on-one-demo-with-an-imagineart-expert" target="_blank" rel="noopener" class="btn-hero btn-get-started">Book a demo</a>
-        <a href="https://www.imagine.art/flow" target="_blank" rel="noopener" class="btn-hero btn-demo">Get Started</a>
+    <div class="hero-glow"></div>
+
+    <!-- Top: logo + title + subtitle -->
+    <div class="hero-top">
+      <img class="hero-logo" src="assets/logo-imagine-white.svg" alt="ImagineArt">
+      <h1 class="hero-studio-title">Marketing<br>Studio</h1>
+      <p class="hero-sub">Built for brands that ship more than one ad.</p>
+    </div>
+
+    <!-- Cards + prompt box -->
+    <div class="hero-cards-wrap">
+      <div class="hero-cards" id="heroCards">
+        <div class="hi">
+          <div class="hi-inner">
+            <video src="assets/marketing/hero-1.mp4" loop muted playsinline preload="auto"></video>
+            <span class="hi-label">UGC</span>
+          </div>
+        </div>
+        <div class="hi">
+          <div class="hi-inner">
+            <video src="assets/marketing/hero-2.mp4" loop muted playsinline preload="none"></video>
+            <span class="hi-label">Virtual Try-On</span>
+          </div>
+        </div>
+        <div class="hi">
+          <div class="hi-inner">
+            <video src="assets/marketing/hero-3.mp4" loop muted playsinline preload="none"></video>
+            <span class="hi-label">Hypermotion</span>
+          </div>
+        </div>
+        <div class="hi">
+          <div class="hi-inner">
+            <video src="assets/marketing/hero-asmr.mp4" loop muted playsinline preload="none"></video>
+            <span class="hi-label">ASMR</span>
+          </div>
+        </div>
       </div>
-      <div class="hero-stats reveal reveal-d3">
-        <div class="hero-stat">
-          <div class="hero-stat-num">10×</div>
-          <div class="hero-stat-lbl">faster brief to<br>final asset</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">80%</div>
-          <div class="hero-stat-lbl">lower production<br>cost per campaign</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">30M+</div>
-          <div class="hero-stat-lbl">creators on<br>ImagineArt</div>
+
+      <!-- Prompt box — overlaps bottom of cards -->
+      <div class="hero-prompt-wrap">
+        <textarea class="hero-prompt-input" id="heroPromptInput" placeholder="Generate a campaign visual of…" rows="2"></textarea>
+        <div class="hero-prompt-footer">
+          <button class="hero-prompt-btn" id="heroPromptBtn" aria-label="Generate">
+            <svg viewBox="0 0 16 16" fill="none">
+              <path d="M8 2.5L8 13.5M8 2.5L3.5 7M8 2.5L12.5 7" stroke="#0f0f0f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- Right: accordion panels -->
-    <div class="hero-right">
-      <div class="hero-imgs" id="heroImgs">
-        <div class="hi"><video src="assets/marketing/hero-1.mp4" loop muted playsinline preload="auto"></video></div>
-        <div class="hi"><video src="assets/marketing/hero-2.mp4" loop muted playsinline preload="none"></video></div>
-        <div class="hi"><video src="assets/marketing/hero-3.mp4" loop muted playsinline preload="none"></video></div>
-        <div class="hi"><video src="assets/marketing/hero-4.mp4" loop muted playsinline preload="none"></video></div>
-        <div class="hero-tabs" id="heroTabs">
-          <div class="hero-tab active" data-index="0"><span class="hero-tab-label">UGC</span><span class="hero-tab-bar"></span></div>
-          <div class="hero-tab" data-index="1"><span class="hero-tab-label">Virtual Try-On</span><span class="hero-tab-bar"></span></div>
-          <div class="hero-tab" data-index="2"><span class="hero-tab-label">Hypermotion</span><span class="hero-tab-bar"></span></div>
-          <div class="hero-tab" data-index="3"><span class="hero-tab-label">Unboxing</span><span class="hero-tab-bar"></span></div>
-        </div>
-      </div>
+    <!-- Tabs — bottom-left corner -->
+    <div class="hero-tabs" id="heroTabs">
+      <div class="hero-tab active" data-index="0"><span class="hero-tab-label">UGC</span><span class="hero-tab-bar"></span></div>
+      <div class="hero-tab" data-index="1"><span class="hero-tab-label">Virtual Try-On</span><span class="hero-tab-bar"></span></div>
+      <div class="hero-tab" data-index="2"><span class="hero-tab-label">Hypermotion</span><span class="hero-tab-bar"></span></div>
+      <div class="hero-tab" data-index="3"><span class="hero-tab-label">ASMR</span><span class="hero-tab-bar"></span></div>
     </div>
 
   </section>
 
   <script>
   (function() {
-    var DURATION = 3000;
-    var panels = Array.from(document.querySelectorAll('.hero-imgs .hi'));
-    var tabs   = Array.from(document.querySelectorAll('#heroTabs .hero-tab'));
-    var imgs   = document.getElementById('heroImgs');
+    var DURATION = 3500;
+    var panels  = Array.from(document.querySelectorAll('#heroCards .hi'));
+    var tabs    = Array.from(document.querySelectorAll('#heroTabs .hero-tab'));
     var current = 0;
     var timer   = null;
 
@@ -831,45 +845,27 @@
     function activate(index) {
       current = index;
       panels.forEach(function(p, i) {
-        p.classList.toggle('active', i === index);
         var vid = p.querySelector('video');
         if (!vid) return;
-        if (i === index) { vid.currentTime = 0; vid.play(); }
+        if (i === index) { vid.currentTime = 0; vid.play().catch(function(){}); }
         else vid.pause();
       });
       preloadVideo((index + 1) % panels.length);
-      imgs.classList.add('has-active');
       tabs.forEach(function(t) {
         t.classList.remove('active');
-        void t.querySelector('.hero-tab-bar').offsetWidth;
+        var bar = t.querySelector('.hero-tab-bar');
+        if (bar) { void bar.offsetWidth; }
       });
-      tabs[index].classList.add('active');
-      tabs[index].style.setProperty('--tab-duration', (DURATION / 1000) + 's');
+      if (tabs[index]) {
+        tabs[index].classList.add('active');
+        tabs[index].style.setProperty('--tab-duration', (DURATION / 1000) + 's');
+      }
       clearTimeout(timer);
       timer = setTimeout(function() { activate((current + 1) % panels.length); }, DURATION);
     }
 
     tabs.forEach(function(tab) {
       tab.addEventListener('click', function() { activate(parseInt(tab.dataset.index)); });
-    });
-
-    // Hover expand
-    panels.forEach(function(panel, i) {
-      panel.addEventListener('mouseenter', function() {
-        clearTimeout(timer);
-        panels.forEach(function(p) { p.classList.remove('active'); });
-        panel.classList.add('active');
-        imgs.classList.add('has-active');
-        var vid = panel.querySelector('video');
-        if (vid) { vid.currentTime = 0; vid.play(); }
-        tabs.forEach(function(t) { t.classList.remove('active'); });
-        if (tabs[i]) tabs[i].classList.add('active');
-      });
-    });
-    imgs.addEventListener('mouseleave', function() {
-      panels.forEach(function(p, i) { p.classList.toggle('active', i === current); });
-      tabs.forEach(function(t, i) { t.classList.toggle('active', i === current); });
-      timer = setTimeout(function() { activate((current + 1) % panels.length); }, DURATION);
     });
 
     // Mouse-tracked dot grid
@@ -879,6 +875,10 @@
         var r = hero.getBoundingClientRect();
         hero.style.setProperty('--mx', (e.clientX - r.left) + 'px');
         hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+      hero.addEventListener('mouseleave', function() {
+        hero.style.setProperty('--mx', '-9999px');
+        hero.style.setProperty('--my', '-9999px');
       });
     }
 
@@ -1284,51 +1284,7 @@
       });
     })();
 
-    // Hero dot-grid mouse tracking
-    (function() {
-      const hero = document.querySelector('.mkt-hero');
-      if (!hero) return;
-      hero.addEventListener('mousemove', e => {
-        const r = hero.getBoundingClientRect();
-        hero.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-        hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
-      });
-      hero.addEventListener('mouseleave', () => {
-        hero.style.setProperty('--mx', '-9999px');
-        hero.style.setProperty('--my', '-9999px');
-      });
-    })();
-
-    // Auto-slide accordion
-    (function() {
-      const wrap = document.querySelector('.hero-imgs');
-      if (!wrap) return;
-      const panels = wrap.querySelectorAll('.hi');
-      let current = 0;
-      let timer;
-      let paused = false;
-
-      function activate(index) {
-        panels.forEach(p => p.classList.remove('active'));
-        wrap.classList.add('has-active');
-        panels[index].classList.add('active');
-        current = index;
-      }
-
-      function next() {
-        if (!paused) activate((current + 1) % panels.length);
-      }
-
-      function startTimer() { timer = setInterval(next, 3000); }
-      function stopTimer()  { clearInterval(timer); }
-
-      // Pause on manual hover
-      wrap.addEventListener('mouseenter', () => { paused = true; stopTimer(); wrap.classList.remove('has-active'); panels.forEach(p => p.classList.remove('active')); });
-      wrap.addEventListener('mouseleave', () => { paused = false; activate(current); startTimer(); });
-
-      // Kick off after entrance animation
-      setTimeout(() => { activate(0); startTimer(); }, 1200);
-    })();
+    // Hero dot-grid mouse tracking handled by inline script in hero section
 
     // ── Skeleton loaders ─────────────────────────────────────
     (function() {
@@ -1440,9 +1396,9 @@
       }
       init();
 
-      // Character-by-character hero reveal
+      // Character-by-character hero title reveal (v3)
       (function() {
-        const el = document.querySelector('.hero-h1');
+        const el = document.querySelector('.hero-studio-title');
         if (!el) return;
         function splitChars(node, counter) {
           const children = Array.from(node.childNodes);
