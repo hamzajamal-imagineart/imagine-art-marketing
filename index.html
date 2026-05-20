@@ -5,6 +5,7 @@
   <link rel="icon" href="https://www.imagine.art/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI for Marketing Agencies - ImagineArt</title>
+  <link rel="preload" href="assets/marketing/hero-1.mp4" as="video" type="video/mp4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..900&family=Google+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
@@ -790,12 +791,12 @@
 
     <!-- Full-bleed diagonal accordion panels -->
     <div class="hero-panels has-active" id="heroPanels">
-      <div class="hi active"><video src="assets/marketing/hero-1.mp4"     loop muted playsinline></video></div>
-      <div class="hi"><video src="assets/marketing/hero-2.mp4"     loop muted playsinline></video></div>
-      <div class="hi"><video src="assets/marketing/hero-3.mp4"     loop muted playsinline></video></div>
-      <div class="hi"><video src="assets/marketing/hero-4.mp4"     loop muted playsinline></video></div>
-      <div class="hi"><video src="assets/marketing/hero-asmr.mp4"  loop muted playsinline></video></div>
-      <div class="hi"><video src="assets/marketing/hero-provt.mp4" loop muted playsinline></video></div>
+      <div class="hi active"><video src="assets/marketing/hero-1.mp4"     loop muted playsinline preload="auto"></video></div>
+      <div class="hi"><video src="assets/marketing/hero-2.mp4"     loop muted playsinline preload="none"></video></div>
+      <div class="hi"><video src="assets/marketing/hero-3.mp4"     loop muted playsinline preload="none"></video></div>
+      <div class="hi"><video src="assets/marketing/hero-4.mp4"     loop muted playsinline preload="none"></video></div>
+      <div class="hi"><video src="assets/marketing/hero-asmr.mp4"  loop muted playsinline preload="none"></video></div>
+      <div class="hi"><video src="assets/marketing/hero-provt.mp4" loop muted playsinline preload="none"></video></div>
     </div>
 
     <!-- Dark overlay -->
@@ -857,6 +858,11 @@
     var current = 0;
     var timer   = null;
 
+    function preloadVideo(index) {
+      var vid = panels[index] && panels[index].querySelector('video');
+      if (vid && vid.preload === 'none') vid.preload = 'auto';
+    }
+
     function activate(index) {
       current = index;
       panels.forEach(function(p, i) {
@@ -867,6 +873,8 @@
         if (isActive) { vid.currentTime = 0; vid.play(); }
         else vid.pause();
       });
+      // Preload next video in advance
+      preloadVideo((index + 1) % panels.length);
       strip.classList.add('has-active');
       tabs.forEach(function(t) {
         t.classList.remove('active');
