@@ -417,10 +417,10 @@
     @media (max-width: 768px) {
       .mkt-hiw { height: 320vh; }
       .hiw-result { width: 240px; height: 300px; }
-      .hiw-center { top: min(48%, 400px) !important; }
+      .hiw-center { top: min(51%, 424px) !important; }
     }
     @media (min-width: 769px) and (max-width: 1024px) {
-      .hiw-center { top: min(50%, 460px) !important; }
+      .hiw-center { top: min(53%, 484px) !important; }
     }
     @media (max-width: 820px) {
       .mkt-hiw-head h2 { letter-spacing: -0.8px; }
@@ -1039,12 +1039,12 @@
       var cw = Math.round(vw * 0.38), ch = Math.round(cw * 1.32);
       cards.forEach(function(c) {
         c.style.width  = cw + 'px'; c.style.height = ch + 'px';
-        c.style.top    = 'min(48%, 400px)';
+        c.style.top    = 'min(51%, 424px)';
         c.style.marginLeft = (-cw/2) + 'px'; c.style.marginTop = (-ch/2) + 'px';
       });
     } else if (isTablet) {
       // Tablet: pull cards up to reduce gap from heading
-      cards.forEach(function(c) { c.style.top = 'min(50%, 460px)'; });
+      cards.forEach(function(c) { c.style.top = 'min(53%, 484px)'; });
     }
     var dxBase = Math.min(320, Math.round(vw * 0.26));
     var cardData = [
