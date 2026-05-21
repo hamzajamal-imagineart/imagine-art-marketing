@@ -700,6 +700,82 @@
 
     /* Footer injected via footer.js */
 
+    /* ─── How It Works Z-fold ────────────────────────────── */
+    .hiw-zfold {
+      background: #fff;
+      padding: 120px var(--px) 100px;
+    }
+    .hiw-zfold-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    .hiw-zfold-header {
+      margin-bottom: 80px;
+    }
+    .hiw-zfold-list {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(56px, 8vw, 96px);
+    }
+    .hiw-zfold-item {
+      display: flex;
+      align-items: center;
+      gap: clamp(40px, 6vw, 96px);
+    }
+    .hiw-zfold-item.hiw-zfold-reverse {
+      flex-direction: row-reverse;
+    }
+    .hiw-zfold-media {
+      flex: 0 0 clamp(260px, 44%, 540px);
+      height: clamp(220px, 30vw, 420px);
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: #ebebeb;
+    }
+    .hiw-zfold-media img,
+    .hiw-zfold-media video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hiw-zfold-play {
+      position: absolute; bottom: 12px; right: 12px;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(0,0,0,0.55);
+      border: none; cursor: pointer; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(6px);
+      transition: background 0.15s;
+    }
+    .hiw-zfold-play:hover { background: rgba(0,0,0,0.78); }
+    .hiw-zfold-text {
+      flex: 1; min-width: 0;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .hiw-zfold-step {
+      font-size: 10.5px; font-weight: 600; letter-spacing: 1.8px;
+      text-transform: uppercase; color: rgba(15,15,15,0.45); margin: 0;
+    }
+    .hiw-zfold-title {
+      font-size: clamp(22px, 2.6vw, 34px); font-weight: 600;
+      line-height: 1.1; letter-spacing: -0.5px;
+      color: #0f0f0f; margin: 0;
+    }
+    .hiw-zfold-body {
+      font-size: 16px; font-weight: 400; line-height: 1.75;
+      color: #525252; margin: 0 0 24px; max-width: 460px;
+    }
+    .hiw-zfold-cta {
+      display: inline-flex; align-items: center;
+      width: fit-content; height: 46px; padding: 0 22px;
+      border-radius: 10px; background: #f0f0f0;
+      color: #0f0f0f; font-size: 14px; font-weight: 500;
+      text-decoration: none;
+      transition: background 0.18s;
+    }
+    .hiw-zfold-cta:hover { background: #e0e0e0; }
+
     /* ═══════════════════════════════════════════════════════
        RESPONSIVE - tablet ≤ 1024px
        ═══════════════════════════════════════════════════════ */
@@ -788,6 +864,14 @@
 
       /* ── HIW card labels (mobile) ─────────────────────── */
       .hiw-card-label { font-size: 8px; padding: 3px 7px; }
+
+      /* ── How It Works Z-fold ─────────────────────────────── */
+      .hiw-zfold { padding: 72px 20px 60px; }
+      .hiw-zfold-header { margin-bottom: 48px; }
+      .hiw-zfold-item,
+      .hiw-zfold-item.hiw-zfold-reverse { flex-direction: column; gap: 24px; }
+      .hiw-zfold-media { flex: none; width: 100%; height: clamp(200px, 55vw, 320px); }
+      .hiw-zfold-body { max-width: 100%; }
 
       /* ── Final CTA ────────────────────────────────────── */
       .mkt-final { padding: 80px 24px 64px; }
@@ -1233,6 +1317,81 @@
       </div>
     </div>
   </section>
+
+  <!-- ─── How It Works Z-fold ────────────────────────────────── -->
+  <section class="hiw-zfold" id="sec-how-it-works">
+    <div class="hiw-zfold-inner">
+
+      <div class="hiw-zfold-header reveal">
+        <div class="sec-label dark">How It Works</div>
+        <h2 class="sec-h2 dark">From brief to campaign-ready.<br>In three steps.</h2>
+        <p class="sec-sub dark">No production team. No studio. No wait. Just describe what you need and ImagineArt builds the creative for you.</p>
+      </div>
+
+      <div class="hiw-zfold-list">
+
+        <!-- Step 01 — image left, text right -->
+        <div class="hiw-zfold-item reveal">
+          <div class="hiw-zfold-media">
+            <img src="assets/marketing/hiw-jacket.webp" alt="Upload your product photo" loading="lazy">
+          </div>
+          <div class="hiw-zfold-text">
+            <p class="hiw-zfold-step">Step 01</p>
+            <h3 class="hiw-zfold-title">Upload Your Product.</h3>
+            <p class="hiw-zfold-body">Drop in a product photo — any angle, any background. ImagineArt reads your asset and pairs it with the right AI model, style, and ad format. No retouching required.</p>
+            <a href="https://www.imagine.art/flow" target="_blank" rel="noopener" class="hiw-zfold-cta">Start for free →</a>
+          </div>
+        </div>
+
+        <!-- Step 02 — text left, image right (reversed) -->
+        <div class="hiw-zfold-item hiw-zfold-reverse reveal">
+          <div class="hiw-zfold-media" id="hiwVideoWrap">
+            <video id="hiwVideo" src="assets/marketing/hiw-video.mp4" poster="assets/marketing/hiw-video-poster.webp" loop playsinline></video>
+            <button class="hiw-zfold-play" id="hiwPlayBtn" aria-label="Play video">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2.5L13 8L4 13.5V2.5Z" fill="currentColor"/></svg>
+            </button>
+          </div>
+          <div class="hiw-zfold-text">
+            <p class="hiw-zfold-step">Step 02</p>
+            <h3 class="hiw-zfold-title">Describe the Ad You Need.</h3>
+            <p class="hiw-zfold-body">Write a prompt — or pick a template. Choose from UGC, Virtual Try-On, Hyper Motion, Unboxing, and more. The AI generates a complete, scroll-stopping video ad in seconds.</p>
+            <a href="https://www.imagine.art/flow?tab=discover" target="_blank" rel="noopener" class="hiw-zfold-cta">Browse templates →</a>
+          </div>
+        </div>
+
+        <!-- Step 03 — image left, text right -->
+        <div class="hiw-zfold-item reveal">
+          <div class="hiw-zfold-media">
+            <img src="assets/marketing/hiw-model.webp" alt="Export and publish your ad" loading="lazy">
+          </div>
+          <div class="hiw-zfold-text">
+            <p class="hiw-zfold-step">Step 03</p>
+            <h3 class="hiw-zfold-title">Export and Publish.</h3>
+            <p class="hiw-zfold-body">Download your ad in the right format for every platform — Meta, TikTok, YouTube, Google. Iterate in seconds, ship in minutes. No revision rounds, no production bottleneck.</p>
+            <a href="https://www.imagine.art/flow" target="_blank" rel="noopener" class="hiw-zfold-cta">Try it free →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <script>
+    (function() {
+      var video = document.getElementById('hiwVideo');
+      var btn   = document.getElementById('hiwPlayBtn');
+      if (!video || !btn) return;
+      var playIcon = '<path d="M4 2.5L13 8L4 13.5V2.5Z" fill="currentColor"/>';
+      var pauseIcon = '<rect x="3" y="2" width="4" height="12" rx="1.5" fill="currentColor"/><rect x="9" y="2" width="4" height="12" rx="1.5" fill="currentColor"/>';
+      function setIcon(playing) {
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none">' + (playing ? pauseIcon : playIcon) + '</svg>';
+      }
+      btn.addEventListener('click', function() {
+        if (video.paused) { video.play(); setIcon(true); }
+        else { video.pause(); setIcon(false); }
+      });
+      video.addEventListener('ended', function() { setIcon(false); });
+    })();
+  </script>
 
   <!-- ─── Ads ───────────────────────────────────────────────── -->
   <section class="mkt-ads" id="sec-ads">
