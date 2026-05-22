@@ -770,6 +770,69 @@
     }
     .mkt-step-time svg { flex-shrink: 0; opacity: 0.5; }
 
+    /* ─── FAQ ───────────────────────────────────────────── */
+    .mkt-faq {
+      background: #fff;
+      padding: 120px var(--px) 110px;
+      border-top: 1px solid rgba(15,15,15,0.06);
+    }
+    .mkt-faq-inner {
+      max-width: 1140px; margin: 0 auto;
+      display: flex; gap: 80px; align-items: flex-start;
+    }
+    .mkt-faq-left {
+      flex-shrink: 0; max-width: 360px; position: sticky; top: 100px;
+    }
+    .mkt-faq-h2 {
+      font-size: clamp(28px, 3vw, 42px); font-weight: 400;
+      letter-spacing: -1.2px; line-height: 1.1;
+      color: #0f0f0f; margin: 0 0 16px;
+    }
+    .mkt-faq-sub {
+      font-size: 15px; font-weight: 300; line-height: 1.7;
+      color: rgba(15,15,15,0.45); margin: 0;
+    }
+    .mkt-faq-list {
+      flex: 1; min-width: 0;
+    }
+    .mkt-faq-item {
+      border-top: 1px solid rgba(15,15,15,0.08);
+    }
+    .mkt-faq-item:last-child {
+      border-bottom: 1px solid rgba(15,15,15,0.08);
+    }
+    .mkt-faq-trigger {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; width: 100%; padding: 26px 0;
+      background: none; border: none; cursor: pointer; text-align: left;
+      font-family: inherit; font-size: 15px; font-weight: 400;
+      line-height: 1.5; color: #0f0f0f; letter-spacing: -0.1px;
+      transition: color 0.2s ease;
+    }
+    .mkt-faq-trigger[aria-expanded="true"] { color: #8A3FFC; }
+    .mkt-faq-icon {
+      flex-shrink: 0; width: 26px; height: 26px;
+      border-radius: 50%; border: 1px solid rgba(15,15,15,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 300; color: rgba(15,15,15,0.5);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .mkt-faq-trigger[aria-expanded="true"] .mkt-faq-icon {
+      border-color: #8A3FFC; color: #8A3FFC;
+      background: rgba(138,63,252,0.06);
+    }
+    .mkt-faq-answer {
+      display: grid; grid-template-rows: 0fr;
+      transition: grid-template-rows 0.34s cubic-bezier(0.16,1,0.3,1);
+    }
+    .mkt-faq-answer[data-open="true"] { grid-template-rows: 1fr; }
+    .mkt-faq-answer-inner { overflow: hidden; }
+    .mkt-faq-answer-text {
+      padding: 0 40px 26px 0;
+      font-size: 14.5px; font-weight: 300; line-height: 1.75;
+      color: rgba(15,15,15,0.55); margin: 0;
+    }
+
     /* ─── Comparison table ───────────────────────────────── */
     .mkt-compare {
       background: #0b0b0b;
@@ -1027,6 +1090,11 @@
 
       /* ── HIW card labels (mobile) ─────────────────────── */
       .hiw-card-label { font-size: 8px; padding: 3px 7px; }
+
+      /* ── FAQ ─────────────────────────────────────────────── */
+      .mkt-faq { padding: 80px 20px 72px; }
+      .mkt-faq-inner { flex-direction: column; gap: 40px; }
+      .mkt-faq-left { max-width: 100%; position: static; }
 
       /* ── Comparison table ────────────────────────────────── */
       .mkt-compare { padding: 80px 20px 72px; }
@@ -1879,6 +1947,131 @@
     </div>
   </section>
 
+  <!-- ─── FAQ ─────────────────────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Will the ads look obviously AI-generated?", "acceptedAnswer": { "@type": "Answer", "text": "Judge by the output, not the label. ImagineArt uses Seedance 2.0 with native lip-sync, physics-aware motion, and consistent characters across shots. The formats are built for paid social — they read as creator content, not as AI experiments." } },
+      { "@type": "Question", "name": "Does this work for my product type?", "acceptedAnswer": { "@type": "Answer", "text": "If your product has a page or a photo, the studio works with it. Proven across beauty, skincare, supplements, apparel, footwear, accessories, electronics, home goods, food and beverage, and digital products. Virtual try-on and hyper motion formats perform especially well for fashion and luxury." } },
+      { "@type": "Question", "name": "Can I run the ads on Meta, TikTok, and YouTube?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every export is sized to platform spec — correct aspect ratios for Stories, Reels, Feed, TikTok, YouTube pre-roll, and more. Paid plans export without watermarks, ready for direct upload to Ads Manager." } },
+      { "@type": "Question", "name": "What if I need full control over the script?", "acceptedAnswer": { "@type": "Answer", "text": "You have it. The AI writes a first draft — you can edit every line before hitting generate, adjust the hook, rewrite the CTA, or skip editing entirely and let the AI handle it." } },
+      { "@type": "Question", "name": "How many ad variants can I generate?", "acceptedAnswer": { "@type": "Answer", "text": "Generation volume depends on your plan. A single session can produce 20–50 variants: different formats, avatars, hooks, and product angles — in the time it would take an agency to write one brief." } },
+      { "@type": "Question", "name": "Why not just use a creative agency?", "acceptedAnswer": { "@type": "Answer", "text": "Agencies are right for hero brand campaigns. For the volume of ongoing ad creative a modern ad account demands, the math doesn't work — $5–15K per agency shoot versus a monthly studio subscription that produces the same output in minutes." } }
+    ]
+  }
+  </script>
+
+  <section class="mkt-faq" id="sec-faq">
+    <div class="mkt-faq-inner">
+
+      <div class="mkt-faq-left reveal">
+        <div class="sec-label dark">FAQ</div>
+        <h2 class="mkt-faq-h2">Questions we hear a lot.</h2>
+        <p class="mkt-faq-sub">Everything brands and agencies ask before they start shipping.</p>
+      </div>
+
+      <div class="mkt-faq-list reveal">
+
+        <div class="mkt-faq-item">
+          <button class="mkt-faq-trigger" aria-expanded="false">
+            <span>Will the ads look obviously AI-generated?</span>
+            <span class="mkt-faq-icon">+</span>
+          </button>
+          <div class="mkt-faq-answer">
+            <div class="mkt-faq-answer-inner">
+              <p class="mkt-faq-answer-text">Judge by the output, not the label. ImagineArt uses Seedance 2.0 with native lip-sync, physics-aware motion, and consistent characters across shots. The formats are built for paid social — they read as creator content, not as AI experiments.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mkt-faq-item">
+          <button class="mkt-faq-trigger" aria-expanded="false">
+            <span>Does this work for my product type?</span>
+            <span class="mkt-faq-icon">+</span>
+          </button>
+          <div class="mkt-faq-answer">
+            <div class="mkt-faq-answer-inner">
+              <p class="mkt-faq-answer-text">If your product has a page or a photo, the studio works with it. Proven across beauty, skincare, supplements, apparel, footwear, accessories, electronics, home goods, food and beverage, and digital products. Virtual try-on and hyper motion formats perform especially well for fashion and luxury.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mkt-faq-item">
+          <button class="mkt-faq-trigger" aria-expanded="false">
+            <span>Can I run the ads on Meta, TikTok, and YouTube?</span>
+            <span class="mkt-faq-icon">+</span>
+          </button>
+          <div class="mkt-faq-answer">
+            <div class="mkt-faq-answer-inner">
+              <p class="mkt-faq-answer-text">Yes. Every export is sized to platform spec — correct aspect ratios for Stories, Reels, Feed, TikTok, YouTube pre-roll, and more. Paid plans export without watermarks, ready for direct upload to Ads Manager.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mkt-faq-item">
+          <button class="mkt-faq-trigger" aria-expanded="false">
+            <span>What if I need full control over the script?</span>
+            <span class="mkt-faq-icon">+</span>
+          </button>
+          <div class="mkt-faq-answer">
+            <div class="mkt-faq-answer-inner">
+              <p class="mkt-faq-answer-text">You have it. The AI writes a first draft — you can edit every line before hitting generate, adjust the hook, rewrite the CTA, or skip editing entirely and let the AI handle it.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mkt-faq-item">
+          <button class="mkt-faq-trigger" aria-expanded="false">
+            <span>How many ad variants can I generate?</span>
+            <span class="mkt-faq-icon">+</span>
+          </button>
+          <div class="mkt-faq-answer">
+            <div class="mkt-faq-answer-inner">
+              <p class="mkt-faq-answer-text">Generation volume depends on your plan. A single session can produce 20–50 variants: different formats, avatars, hooks, and product angles — in the time it would take an agency to write one brief.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mkt-faq-item">
+          <button class="mkt-faq-trigger" aria-expanded="false">
+            <span>Why not just use a creative agency?</span>
+            <span class="mkt-faq-icon">+</span>
+          </button>
+          <div class="mkt-faq-answer">
+            <div class="mkt-faq-answer-inner">
+              <p class="mkt-faq-answer-text">Agencies are right for hero brand campaigns. For the volume of ongoing ad creative a modern ad account demands, the math doesn't work — $5–15K per agency shoot versus a monthly studio subscription that produces the same output in minutes.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <script>
+    (function() {
+      document.querySelectorAll('.mkt-faq-trigger').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var expanded = btn.getAttribute('aria-expanded') === 'true';
+          var answer   = btn.nextElementSibling;
+          var icon     = btn.querySelector('.mkt-faq-icon');
+          // Close all others
+          document.querySelectorAll('.mkt-faq-trigger').forEach(function(b) {
+            b.setAttribute('aria-expanded', 'false');
+            b.nextElementSibling.removeAttribute('data-open');
+            b.querySelector('.mkt-faq-icon').textContent = '+';
+          });
+          if (!expanded) {
+            btn.setAttribute('aria-expanded', 'true');
+            answer.setAttribute('data-open', 'true');
+            icon.textContent = '−';
+          }
+        });
+      });
+    })();
+  </script>
+
   <!-- ─── Final CTA ────────────────────────────────────────── -->
   <!-- ─── Final CTA ──────────────────────────────────────── -->
   <section class="mkt-final" id="sec-final">
@@ -2068,6 +2261,7 @@
         { label: 'Templates',      href: '#sec-templates'      },
         { label: 'How it Works',   href: '#sec-how-it-works'   },
         { label: 'Gallery',        href: '#sec-gallery'        },
+        { label: 'FAQ',            href: '#sec-faq'            },
       ];
       const SHARED_STYLE = `
         .navbar-btn-ghost { display: none !important; }
