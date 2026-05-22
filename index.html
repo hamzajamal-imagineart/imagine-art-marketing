@@ -770,6 +770,99 @@
     }
     .mkt-step-time svg { flex-shrink: 0; opacity: 0.5; }
 
+    /* ─── Comparison table ───────────────────────────────── */
+    .mkt-compare {
+      background: #0b0b0b;
+      padding: 120px var(--px) 110px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .mkt-compare-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .mkt-compare-header {
+      margin-bottom: 72px;
+    }
+    .mkt-compare-eyebrow {
+      font-size: 10px; font-weight: 300; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,0.3);
+      margin: 0 0 28px;
+    }
+    .mkt-compare-h2 {
+      font-size: clamp(32px, 4vw, 54px); font-weight: 400;
+      letter-spacing: -2px; line-height: 1.04;
+      color: #fff; margin: 0 0 20px; max-width: 600px;
+    }
+    .mkt-compare-sub {
+      font-size: 15px; color: rgba(255,255,255,0.36);
+      line-height: 1.7; max-width: 500px; margin: 0;
+    }
+    /* Table grid: label col + 3 value cols */
+    .mkt-compare-table {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .mkt-compare-row {
+      display: grid;
+      grid-template-columns: 240px 1fr 1fr 1fr;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mkt-compare-row:last-child { border-bottom: none; }
+    /* Column head row */
+    .mkt-compare-row.mkt-compare-head {
+      background: rgba(255,255,255,0.02);
+    }
+    .mkt-compare-cell {
+      padding: 22px 28px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      display: flex; flex-direction: column; justify-content: center; gap: 4px;
+    }
+    .mkt-compare-cell:last-child { border-right: none; }
+    /* Highlight — ImagineArt column (2nd cell = index 1) */
+    .mkt-compare-row .mkt-compare-cell:nth-child(2) {
+      background: rgba(0,140,90,0.07);
+      border-right-color: rgba(0,140,90,0.12);
+    }
+    .mkt-compare-head .mkt-compare-cell:nth-child(2) {
+      border-top: 2px solid rgba(0,180,110,0.4);
+    }
+    /* Head cell labels */
+    .mkt-col-name {
+      font-size: 11px; font-weight: 500; letter-spacing: 1.2px;
+      text-transform: uppercase; color: rgba(255,255,255,0.55);
+      margin: 0;
+    }
+    .mkt-col-sub {
+      font-size: 11px; font-weight: 300;
+      color: rgba(255,255,255,0.22); margin: 0;
+    }
+    /* Row label */
+    .mkt-row-label {
+      font-size: 14px; font-weight: 400;
+      color: rgba(255,255,255,0.55); margin: 0;
+    }
+    /* Cell value */
+    .mkt-cell-val {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; font-weight: 300;
+      color: rgba(255,255,255,0.72); line-height: 1.5;
+    }
+    .mkt-cell-val.mkt-neutral { color: rgba(255,255,255,0.35); }
+    /* Icons */
+    .mkt-icon-check, .mkt-icon-minus {
+      flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .mkt-icon-check {
+      background: rgba(0,160,100,0.18);
+      color: #3dba80;
+    }
+    .mkt-icon-minus {
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.22);
+    }
+
     /* ─── How It Works Z-fold ────────────────────────────── */
     .hiw-zfold {
       background: #F7F7F7;
@@ -934,6 +1027,19 @@
 
       /* ── HIW card labels (mobile) ─────────────────────── */
       .hiw-card-label { font-size: 8px; padding: 3px 7px; }
+
+      /* ── Comparison table ────────────────────────────────── */
+      .mkt-compare { padding: 80px 20px 72px; }
+      .mkt-compare-header { margin-bottom: 48px; }
+      .mkt-compare-table { border-radius: 12px; }
+      .mkt-compare-row { grid-template-columns: 1fr; }
+      .mkt-compare-row.mkt-compare-head { display: none; }
+      .mkt-compare-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 16px 20px; }
+      .mkt-compare-cell:last-child { border-bottom: none; }
+      .mkt-compare-row .mkt-compare-cell:nth-child(2) { border-right: none; }
+      .mkt-compare-row:last-child .mkt-compare-cell:last-child { border-bottom: none; }
+      .mkt-compare-cell::before { content: attr(data-col); display: block; font-size: 9.5px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 6px; }
+      .mkt-compare-cell:first-child::before { display: none; }
 
       /* ── Steps section ───────────────────────────────────── */
       .mkt-steps { padding: 80px 20px 72px; }
@@ -1613,6 +1719,136 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ─── Comparison ──────────────────────────────────────────── -->
+  <section class="mkt-compare" id="sec-compare">
+    <div class="mkt-compare-inner">
+
+      <div class="mkt-compare-header reveal">
+        <p class="mkt-compare-eyebrow">Why not just use something else?</p>
+        <h2 class="mkt-compare-h2">Built differently from every other tool.</h2>
+        <p class="mkt-compare-sub">Generic AI video tools were built for filmmakers. UGC platforms can't move at the speed your ad account demands.</p>
+      </div>
+
+      <div class="mkt-compare-table reveal">
+
+        <!-- Column headers -->
+        <div class="mkt-compare-row mkt-compare-head">
+          <div class="mkt-compare-cell"></div>
+          <div class="mkt-compare-cell">
+            <p class="mkt-col-name">ImagineArt Studio</p>
+          </div>
+          <div class="mkt-compare-cell">
+            <p class="mkt-col-name">Generic AI Video Tools</p>
+            <p class="mkt-col-sub">Runway, Sora, etc.</p>
+          </div>
+          <div class="mkt-compare-cell">
+            <p class="mkt-col-name">UGC Platforms</p>
+            <p class="mkt-col-sub">Billo, Insense, etc.</p>
+          </div>
+        </div>
+
+        <!-- Row: Paste URL → ad ready -->
+        <div class="mkt-compare-row">
+          <div class="mkt-compare-cell"><p class="mkt-row-label">Paste URL → ad ready</p></div>
+          <div class="mkt-compare-cell" data-col="ImagineArt Studio">
+            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Yes — no setup required</span>
+          </div>
+          <div class="mkt-compare-cell" data-col="Generic AI Video Tools">
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Requires detailed prompting</span>
+          </div>
+          <div class="mkt-compare-cell" data-col="UGC Platforms">
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Not applicable</span>
+          </div>
+        </div>
+
+        <!-- Row: Built for ecommerce -->
+        <div class="mkt-compare-row">
+          <div class="mkt-compare-cell"><p class="mkt-row-label">Built for ecommerce</p></div>
+          <div class="mkt-compare-cell" data-col="ImagineArt Studio">
+            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Native to ecommerce</span>
+          </div>
+          <div class="mkt-compare-cell" data-col="Generic AI Video Tools">
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>General purpose tool</span>
+          </div>
+          <div class="mkt-compare-cell" data-col="UGC Platforms">
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Ad-focused, not ecommerce-native</span>
+          </div>
+        </div>
+
+        <!-- Row: Ad formats -->
+        <div class="mkt-compare-row">
+          <div class="mkt-compare-cell"><p class="mkt-row-label">UGC, demo, cinematic, try-on</p></div>
+          <div class="mkt-compare-cell" data-col="ImagineArt Studio">
+            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>9 ad formats</span>
+          </div>
+          <div class="mkt-compare-cell" data-col="Generic AI Video Tools">
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Video only, no ad modes</span>
+          </div>
+          <div class="mkt-compare-cell" data-col="UGC Platforms">
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>UGC only</span>
+          </div>
+        </div>
+
+        <!-- Row: AI avatar library -->
+        <div class="mkt-compare-row">
+          <div class="mkt-compare-cell"><p class="mkt-row-label">AI avatar library</p></div>
+          <div class="mkt-compare-cell" data-col="ImagineArt Studio">
+            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>40+ avatars + custom generation</span>
+          </div>
+          <div class="mkt-compare-cell" data-col="Generic AI Video Tools">
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>No avatars</span>
+          </div>
+          <div class="mkt-compare-cell" data-col="UGC Platforms">
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Real creators, 5–14 day wait</span>
+          </div>
+        </div>
+
+        <!-- Row: Time from brief to ad -->
+        <div class="mkt-compare-row">
+          <div class="mkt-compare-cell"><p class="mkt-row-label">Time from brief to ad</p></div>
+          <div class="mkt-compare-cell" data-col="ImagineArt Studio">
+            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Under 3 minutes</span>
+          </div>
+          <div class="mkt-compare-cell" data-col="Generic AI Video Tools">
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Minutes, needs prompt skill</span>
+          </div>
+          <div class="mkt-compare-cell" data-col="UGC Platforms">
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>5–14 days</span>
+          </div>
+        </div>
+
+        <!-- Row: Cost per ad -->
+        <div class="mkt-compare-row">
+          <div class="mkt-compare-cell"><p class="mkt-row-label">Cost per ad at volume</p></div>
+          <div class="mkt-compare-cell" data-col="ImagineArt Studio">
+            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Fraction of a cent</span>
+          </div>
+          <div class="mkt-compare-cell" data-col="Generic AI Video Tools">
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Per-generation credits</span>
+          </div>
+          <div class="mkt-compare-cell" data-col="UGC Platforms">
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>$150–$500 per video</span>
+          </div>
+        </div>
+
+        <!-- Row: Platform-ready export -->
+        <div class="mkt-compare-row">
+          <div class="mkt-compare-cell"><p class="mkt-row-label">Platform-ready export</p></div>
+          <div class="mkt-compare-cell" data-col="ImagineArt Studio">
+            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta, TikTok, YouTube, Google</span>
+          </div>
+          <div class="mkt-compare-cell" data-col="Generic AI Video Tools">
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Manual resizing needed</span>
+          </div>
+          <div class="mkt-compare-cell" data-col="UGC Platforms">
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Manual formatting</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
