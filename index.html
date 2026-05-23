@@ -1050,6 +1050,22 @@
       width: 5px; height: 5px; border-radius: 50%;
       background: #3dba80; flex-shrink: 0;
     }
+    .hiw-zfold-controls {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8px; margin-bottom: 28px;
+    }
+    .hiw-zfold-control {
+      display: flex; flex-direction: column; gap: 4px;
+      padding: 14px 16px; border-radius: 12px;
+      border: 1px solid rgba(15,15,15,0.07); background: #fff;
+    }
+    .hiw-zfold-control-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 1.4px;
+      text-transform: uppercase; color: rgba(15,15,15,0.35);
+    }
+    .hiw-zfold-control-val {
+      font-size: 13px; font-weight: 400; color: #0f0f0f; line-height: 1.4;
+    }
 
     /* ═══════════════════════════════════════════════════════
        RESPONSIVE - tablet ≤ 1024px
@@ -1743,19 +1759,28 @@
           <div class="hiw-zfold-text">
             <p class="hiw-zfold-step">Tool 02 — Ad Studio</p>
             <h3 class="hiw-zfold-title">Full creative control.<br>Zero production overhead.</h3>
-            <p class="hiw-zfold-body">Ad Studio is URL to Video with full creative direction layered on top. You choose the avatar, write the script direction, pick the hook, and set the environment — the AI handles the production.</p>
+            <p class="hiw-zfold-body">UGC converts 29% better but costs $400/video and takes 5–14 days per creator. Ad Studio gives you an AI presenter, a proven hook, a custom script, and a background — in one session.</p>
 
-            <div class="hiw-zfold-callout">
-              <span class="hiw-zfold-callout-icon">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v6M7 10v.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/></svg>
-              </span>
-              <p>UGC converts 29% better but costs $400/video and takes 5–14 days per creator. Ad Studio gives you an AI presenter, a proven hook, a custom script, and a background — in one session.</p>
+            <div class="hiw-zfold-controls">
+              <div class="hiw-zfold-control">
+                <span class="hiw-zfold-control-label">Avatar</span>
+                <span class="hiw-zfold-control-val">40+ AI presenters or custom</span>
+              </div>
+              <div class="hiw-zfold-control">
+                <span class="hiw-zfold-control-label">Hook</span>
+                <span class="hiw-zfold-control-val">AI-written or write your own</span>
+              </div>
+              <div class="hiw-zfold-control">
+                <span class="hiw-zfold-control-label">Script</span>
+                <span class="hiw-zfold-control-val">Edit every line before generating</span>
+              </div>
+              <div class="hiw-zfold-control">
+                <span class="hiw-zfold-control-label">Background</span>
+                <span class="hiw-zfold-control-val">Studio, lifestyle, or product scene</span>
+              </div>
             </div>
 
-            <span class="hiw-zfold-badge">
-              <span class="hiw-zfold-badge-dot"></span>
-              Replace your entire creator + production workflow
-            </span>
+            <a href="https://www.imagine.art/flow" target="_blank" rel="noopener" class="hiw-zfold-cta">Try Ad Studio free →</a>
           </div>
         </div>
 
