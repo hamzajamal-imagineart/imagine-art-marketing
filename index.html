@@ -1001,6 +1001,55 @@
       transition: background 0.18s;
     }
     .hiw-zfold-cta:hover { background: #e0e0e0; }
+    /* Z-fold extras */
+    .hiw-zfold-callout {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 16px 18px; border-radius: 12px;
+      background: rgba(15,15,15,0.04);
+      border: 1px solid rgba(15,15,15,0.07);
+      margin-bottom: 20px;
+    }
+    .hiw-zfold-callout-icon {
+      flex-shrink: 0; margin-top: 2px;
+      color: rgba(15,15,15,0.35);
+    }
+    .hiw-zfold-callout p {
+      font-size: 13px; font-weight: 300; line-height: 1.65;
+      color: rgba(15,15,15,0.5); margin: 0;
+    }
+    .hiw-zfold-ministeps {
+      display: flex; flex-direction: column; gap: 10px;
+      margin-bottom: 28px;
+    }
+    .hiw-zfold-ministep {
+      display: flex; align-items: baseline; gap: 16px;
+      padding: 14px 18px; border-radius: 12px;
+      border: 1px solid rgba(15,15,15,0.07);
+      background: #fff;
+    }
+    .hiw-zfold-ministep-n {
+      font-size: 13px; font-weight: 300; color: rgba(15,15,15,0.28);
+      flex-shrink: 0; min-width: 12px; line-height: 1;
+    }
+    .hiw-zfold-ministep-text { display: flex; flex-direction: column; gap: 2px; }
+    .hiw-zfold-ministep-title {
+      font-size: 13.5px; font-weight: 500; color: #0f0f0f; line-height: 1.3;
+    }
+    .hiw-zfold-ministep-sub {
+      font-size: 12px; font-weight: 300; color: rgba(15,15,15,0.42); line-height: 1.4;
+    }
+    .hiw-zfold-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 16px; border-radius: 100px;
+      border: 1px solid rgba(15,15,15,0.1);
+      background: rgba(15,15,15,0.03);
+      font-size: 12px; font-weight: 400; color: rgba(15,15,15,0.5);
+      letter-spacing: 0.1px; margin-top: 4px;
+    }
+    .hiw-zfold-badge-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #3dba80; flex-shrink: 0;
+    }
 
     /* ═══════════════════════════════════════════════════════
        RESPONSIVE - tablet ≤ 1024px
@@ -1638,13 +1687,48 @@
         <!-- Step 01 — image left, text right -->
         <div class="hiw-zfold-item reveal">
           <div class="hiw-zfold-media">
-            <img src="assets/marketing/hiw-jacket.webp" alt="Upload your product photo" loading="lazy">
+            <img src="assets/marketing/hiw-jacket.webp" alt="Paste product URL to get a finished video" loading="lazy">
           </div>
           <div class="hiw-zfold-text">
-            <p class="hiw-zfold-step">Step 01</p>
-            <h3 class="hiw-zfold-title">Upload Your Product.</h3>
-            <p class="hiw-zfold-body">Drop in a product photo — any angle, any background. ImagineArt reads your asset and pairs it with the right AI model, style, and ad format. No retouching required.</p>
-            <a href="https://www.imagine.art/flow" target="_blank" rel="noopener" class="hiw-zfold-cta">Start for free →</a>
+            <p class="hiw-zfold-step">Tool 01 — URL to Video</p>
+            <h3 class="hiw-zfold-title">Paste your product URL.<br>Get a finished video.</h3>
+            <p class="hiw-zfold-body">Drop in any product page URL. The studio scrapes your product images automatically, picks the right visuals, and builds a complete video around your chosen template. You don't write a single word.</p>
+
+            <div class="hiw-zfold-callout">
+              <span class="hiw-zfold-callout-icon">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v6M7 10v.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/></svg>
+              </span>
+              <p>A single product shoot costs $5,000–$15,000 and takes 2–4 weeks. Paste a URL instead — the studio does the rest automatically.</p>
+            </div>
+
+            <div class="hiw-zfold-ministeps">
+              <div class="hiw-zfold-ministep">
+                <span class="hiw-zfold-ministep-n">1</span>
+                <div class="hiw-zfold-ministep-text">
+                  <span class="hiw-zfold-ministep-title">Paste your product URL</span>
+                  <span class="hiw-zfold-ministep-sub">Any Shopify, WooCommerce, Amazon, or DTC product page</span>
+                </div>
+              </div>
+              <div class="hiw-zfold-ministep">
+                <span class="hiw-zfold-ministep-n">2</span>
+                <div class="hiw-zfold-ministep-text">
+                  <span class="hiw-zfold-ministep-title">Select a template</span>
+                  <span class="hiw-zfold-ministep-sub">UGC · Tutorial · Product unboxing — and more</span>
+                </div>
+              </div>
+              <div class="hiw-zfold-ministep">
+                <span class="hiw-zfold-ministep-n">3</span>
+                <div class="hiw-zfold-ministep-text">
+                  <span class="hiw-zfold-ministep-title">Studio scrapes &amp; generates</span>
+                  <span class="hiw-zfold-ministep-sub">Product images extracted automatically — video ready in minutes</span>
+                </div>
+              </div>
+            </div>
+
+            <span class="hiw-zfold-badge">
+              <span class="hiw-zfold-badge-dot"></span>
+              From $5K shoot + 14 days → $0 + 3 minutes
+            </span>
           </div>
         </div>
 
