@@ -243,7 +243,7 @@
             <span class="sf-col-h">Contact Us</span>
             <ul>
               <li><a href="${BASE}/teams-plan/contact-us" target="_blank" rel="noopener">Contact Sales</a></li>
-              <li><a href="https://calendly.com/d/cr9s-6pt-mr3/one-on-one-demo-with-an-imagineart-expert" target="_blank" rel="noopener">Book a Demo</a></li>
+              <li><a href="https://www.imagine.art/teams-plan/contact-us" target="_blank" rel="noopener">Book a Demo</a></li>
             </ul>
           </div>
 
