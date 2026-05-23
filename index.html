@@ -862,68 +862,54 @@
     /* Table grid: label col + 3 value cols */
     .mkt-compare-table {
       width: 100%;
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 16px;
-      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.08);
     }
     .mkt-compare-row {
       display: grid;
-      grid-template-columns: 240px 1fr 1fr 1fr;
+      grid-template-columns: 220px 1fr 1fr 1fr;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .mkt-compare-row:last-child { border-bottom: none; }
     /* Column head row */
     .mkt-compare-row.mkt-compare-head {
-      background: rgba(255,255,255,0.02);
+      border-bottom-color: rgba(255,255,255,0.08);
     }
     .mkt-compare-cell {
-      padding: 22px 28px;
-      border-right: 1px solid rgba(255,255,255,0.06);
+      padding: 20px 24px;
       display: flex; flex-direction: column; justify-content: center; gap: 4px;
     }
-    .mkt-compare-cell:last-child { border-right: none; }
-    /* Highlight — ImagineArt column (2nd cell = index 1) */
-    .mkt-compare-row .mkt-compare-cell:nth-child(2) {
-      background: rgba(0,140,90,0.07);
-      border-right-color: rgba(0,140,90,0.12);
-    }
-    .mkt-compare-head .mkt-compare-cell:nth-child(2) {
-      border-top: 2px solid rgba(0,180,110,0.4);
-    }
+    /* ImagineArt column — brighter text only, no bg */
+    .mkt-compare-row .mkt-compare-cell:nth-child(2) .mkt-cell-val { color: rgba(255,255,255,0.88); }
+    .mkt-compare-head .mkt-compare-cell:nth-child(2) .mkt-col-name { color: rgba(255,255,255,0.88); }
     /* Head cell labels */
     .mkt-col-name {
-      font-size: 11px; font-weight: 500; letter-spacing: 1.2px;
-      text-transform: uppercase; color: rgba(255,255,255,0.55);
+      font-size: 10.5px; font-weight: 400; letter-spacing: 1px;
+      text-transform: uppercase; color: rgba(255,255,255,0.32);
       margin: 0;
     }
     .mkt-col-sub {
       font-size: 11px; font-weight: 300;
-      color: rgba(255,255,255,0.22); margin: 0;
+      color: rgba(255,255,255,0.18); margin: 0;
     }
     /* Row label */
     .mkt-row-label {
-      font-size: 14px; font-weight: 400;
-      color: rgba(255,255,255,0.55); margin: 0;
+      font-size: 13px; font-weight: 400;
+      color: rgba(255,255,255,0.38); margin: 0;
     }
     /* Cell value */
     .mkt-cell-val {
       display: flex; align-items: center; gap: 10px;
-      font-size: 14px; font-weight: 300;
-      color: rgba(255,255,255,0.72); line-height: 1.5;
+      font-size: 13.5px; font-weight: 300;
+      color: rgba(255,255,255,0.38); line-height: 1.5;
     }
-    .mkt-cell-val.mkt-neutral { color: rgba(255,255,255,0.35); }
     /* Icons */
-    .mkt-icon-check, .mkt-icon-minus {
-      flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%;
+    .mkt-icon-check {
+      flex-shrink: 0; color: #3dba80;
       display: flex; align-items: center; justify-content: center;
     }
-    .mkt-icon-check {
-      background: rgba(0,160,100,0.18);
-      color: #3dba80;
-    }
     .mkt-icon-minus {
-      background: rgba(255,255,255,0.05);
-      color: rgba(255,255,255,0.22);
+      flex-shrink: 0; color: rgba(255,255,255,0.18);
+      display: flex; align-items: center; justify-content: center;
     }
 
     /* ─── How It Works Z-fold ────────────────────────────── */
@@ -1964,13 +1950,13 @@
         <div class="mkt-compare-row">
           <div class="mkt-compare-cell"><p class="mkt-row-label">Paste URL → ad ready</p></div>
           <div class="mkt-compare-cell" data-col="ImagineArt Studio">
-            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Yes — no setup required</span>
+            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Yes — no setup required</span>
           </div>
           <div class="mkt-compare-cell" data-col="Generic AI Video Tools">
-            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Requires detailed prompting</span>
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M1 1H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>Requires detailed prompting</span>
           </div>
           <div class="mkt-compare-cell" data-col="UGC Platforms">
-            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Not applicable</span>
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M1 1H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>Not applicable</span>
           </div>
         </div>
 
@@ -1978,13 +1964,13 @@
         <div class="mkt-compare-row">
           <div class="mkt-compare-cell"><p class="mkt-row-label">Built for ecommerce</p></div>
           <div class="mkt-compare-cell" data-col="ImagineArt Studio">
-            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Native to ecommerce</span>
+            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Native to ecommerce</span>
           </div>
           <div class="mkt-compare-cell" data-col="Generic AI Video Tools">
-            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>General purpose tool</span>
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M1 1H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>General purpose tool</span>
           </div>
           <div class="mkt-compare-cell" data-col="UGC Platforms">
-            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Ad-focused, not ecommerce-native</span>
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M1 1H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>Ad-focused, not ecommerce-native</span>
           </div>
         </div>
 
@@ -1992,13 +1978,13 @@
         <div class="mkt-compare-row">
           <div class="mkt-compare-cell"><p class="mkt-row-label">UGC, demo, cinematic, try-on</p></div>
           <div class="mkt-compare-cell" data-col="ImagineArt Studio">
-            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>9 ad formats</span>
+            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>9 ad formats</span>
           </div>
           <div class="mkt-compare-cell" data-col="Generic AI Video Tools">
-            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Video only, no ad modes</span>
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M1 1H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>Video only, no ad modes</span>
           </div>
           <div class="mkt-compare-cell" data-col="UGC Platforms">
-            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>UGC only</span>
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M1 1H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>UGC only</span>
           </div>
         </div>
 
@@ -2006,13 +1992,13 @@
         <div class="mkt-compare-row">
           <div class="mkt-compare-cell"><p class="mkt-row-label">AI avatar library</p></div>
           <div class="mkt-compare-cell" data-col="ImagineArt Studio">
-            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>40+ avatars + custom generation</span>
+            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>40+ avatars + custom generation</span>
           </div>
           <div class="mkt-compare-cell" data-col="Generic AI Video Tools">
-            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>No avatars</span>
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M1 1H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>No avatars</span>
           </div>
           <div class="mkt-compare-cell" data-col="UGC Platforms">
-            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Real creators, 5–14 day wait</span>
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M1 1H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>Real creators, 5–14 day wait</span>
           </div>
         </div>
 
@@ -2020,13 +2006,13 @@
         <div class="mkt-compare-row">
           <div class="mkt-compare-cell"><p class="mkt-row-label">Time from brief to ad</p></div>
           <div class="mkt-compare-cell" data-col="ImagineArt Studio">
-            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Under 3 minutes</span>
+            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Under 3 minutes</span>
           </div>
           <div class="mkt-compare-cell" data-col="Generic AI Video Tools">
-            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Minutes, needs prompt skill</span>
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M1 1H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>Minutes, needs prompt skill</span>
           </div>
           <div class="mkt-compare-cell" data-col="UGC Platforms">
-            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>5–14 days</span>
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M1 1H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>5–14 days</span>
           </div>
         </div>
 
@@ -2034,13 +2020,13 @@
         <div class="mkt-compare-row">
           <div class="mkt-compare-cell"><p class="mkt-row-label">Cost per ad at volume</p></div>
           <div class="mkt-compare-cell" data-col="ImagineArt Studio">
-            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Fraction of a cent</span>
+            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Fraction of a cent</span>
           </div>
           <div class="mkt-compare-cell" data-col="Generic AI Video Tools">
-            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Per-generation credits</span>
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M1 1H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>Per-generation credits</span>
           </div>
           <div class="mkt-compare-cell" data-col="UGC Platforms">
-            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>$150–$500 per video</span>
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M1 1H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>$150–$500 per video</span>
           </div>
         </div>
 
@@ -2048,13 +2034,13 @@
         <div class="mkt-compare-row">
           <div class="mkt-compare-cell"><p class="mkt-row-label">Platform-ready export</p></div>
           <div class="mkt-compare-cell" data-col="ImagineArt Studio">
-            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta, TikTok, YouTube, Google</span>
+            <span class="mkt-cell-val"><span class="mkt-icon-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Meta, TikTok, YouTube, Google</span>
           </div>
           <div class="mkt-compare-cell" data-col="Generic AI Video Tools">
-            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Manual resizing needed</span>
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M1 1H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>Manual resizing needed</span>
           </div>
           <div class="mkt-compare-cell" data-col="UGC Platforms">
-            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M1 1H7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>Manual formatting</span>
+            <span class="mkt-cell-val mkt-neutral"><span class="mkt-icon-minus"><svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M1 1H9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>Manual formatting</span>
           </div>
         </div>
 
