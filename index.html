@@ -1050,6 +1050,26 @@
       width: 5px; height: 5px; border-radius: 50%;
       background: #3dba80; flex-shrink: 0;
     }
+    .hiw-zfold-stats {
+      display: flex; align-items: stretch; gap: 0;
+      border: 1px solid rgba(15,15,15,0.08); border-radius: 14px;
+      overflow: hidden; margin-bottom: 28px;
+    }
+    .hiw-zfold-stat {
+      flex: 1; padding: 20px 22px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .hiw-zfold-stat-divider {
+      width: 1px; background: rgba(15,15,15,0.08); flex-shrink: 0;
+    }
+    .hiw-zfold-stat-num {
+      font-size: clamp(28px, 3vw, 36px); font-weight: 400;
+      letter-spacing: -1.5px; line-height: 1; color: #0f0f0f;
+    }
+    .hiw-zfold-stat-desc {
+      font-size: 12px; font-weight: 300; line-height: 1.5;
+      color: rgba(15,15,15,0.45);
+    }
     .hiw-zfold-controls {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 8px; margin-bottom: 28px;
@@ -1759,21 +1779,19 @@
           <div class="hiw-zfold-text">
             <p class="hiw-zfold-step">Tool 02 — Ad Studio</p>
             <h3 class="hiw-zfold-title">Full creative control.<br>Zero production overhead.</h3>
-            <p class="hiw-zfold-body">Avatar, hook, script, background — every creative decision in one session, handled by AI.</p>
+            <p class="hiw-zfold-body">Avatar, hook, script, background — every creative decision in one session, handled by AI. Ad Studio is URL to Video with full creative direction layered on top. You choose the avatar, write the script direction, pick the hook, and set the environment — the AI handles the production.</p>
 
-            <div class="hiw-zfold-callout">
-              <span class="hiw-zfold-callout-icon">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v6M7 10v.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/></svg>
-              </span>
-              <p>UGC converts 29% better but costs $400/video and takes 5–14 days per creator. Ad Studio gives you an AI presenter, a proven hook, a custom script, and a background — in one session.</p>
+            <div class="hiw-zfold-stats">
+              <div class="hiw-zfold-stat">
+                <span class="hiw-zfold-stat-num">29%</span>
+                <span class="hiw-zfold-stat-desc">better conversion with UGC vs standard video</span>
+              </div>
+              <div class="hiw-zfold-stat-divider"></div>
+              <div class="hiw-zfold-stat">
+                <span class="hiw-zfold-stat-num">$400</span>
+                <span class="hiw-zfold-stat-desc">avg. creator cost · 5–14 day wait. Ad Studio: one session.</span>
+              </div>
             </div>
-
-            <p class="hiw-zfold-body">Ad Studio is URL to Video with full creative direction layered on top. You choose the avatar, write the script direction, pick the hook, and set the environment — the AI handles the production.</p>
-
-            <span class="hiw-zfold-badge">
-              <span class="hiw-zfold-badge-dot"></span>
-              Replace your entire creator + production workflow
-            </span>
 
             <a href="https://www.imagine.art/flow" target="_blank" rel="noopener" class="hiw-zfold-cta">Try Ad Studio free →</a>
           </div>
