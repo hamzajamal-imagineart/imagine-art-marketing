@@ -207,8 +207,8 @@
             <ul>
               <li><a href="${BASE}/image" target="_blank" rel="noopener">Image Studio</a></li>
               <li><a href="${BASE}/video" target="_blank" rel="noopener">Video Studio</a></li>
-              <li><a href="${BASE}/audio" target="_blank" rel="noopener">Audio Studio</a></li>
-              <li><a href="${BASE}/film-studio" target="_blank" rel="noopener">Film Studio</a></li>
+              <li><a href="${BASE}/audio-studio" target="_blank" rel="noopener">Audio Studio</a></li>
+              <li><a href="${BASE}/ai-film-studio" target="_blank" rel="noopener">Film Studio</a></li>
               <li><a href="${BASE}/flow" target="_blank" rel="noopener">Workflow</a></li>
               <li><a href="${BASE}/business/enterprise" target="_blank" rel="noopener">Enterprise</a></li>
               <li><a href="${BASE}/teams-plan" target="_blank" rel="noopener">Teams</a></li>
@@ -221,7 +221,7 @@
             <ul>
               <li><a href="${BASE}/ai-image-generator" target="_blank" rel="noopener">AI Image Generator</a></li>
               <li><a href="${BASE}/ai-video-generator" target="_blank" rel="noopener">AI Video Generator</a></li>
-              <li><a href="${BASE}/audio" target="_blank" rel="noopener">AI Audio Generator</a></li>
+              <li><a href="${BASE}/audio-studio" target="_blank" rel="noopener">AI Audio Generator</a></li>
               <li><a href="${BASE}/ai-text-to-speech" target="_blank" rel="noopener">AI Text-to-Speech</a></li>
               <li><a href="${BASE}/audio/music/elevenlabs-music" target="_blank" rel="noopener">AI Music Generator</a></li>
               <li><a href="${BASE}/ai-film-studio" target="_blank" rel="noopener">AI Film Studio</a></li>
@@ -252,7 +252,7 @@
             <span class="sf-col-h">Community</span>
             <ul>
               <li><a href="https://discord.com/invite/z7kjUyvAbv" target="_blank" rel="noopener">Discord</a></li>
-              <li><a href="https://x.com/ImagineArt_X" target="_blank" rel="noopener">Twitter / X</a></li>
+              <li><a href="https://twitter.com/Imagine_aiart" target="_blank" rel="noopener">Twitter / X</a></li>
               <li><a href="https://www.instagram.com/imagineartofficial" target="_blank" rel="noopener">Instagram</a></li>
             </ul>
           </div>
@@ -282,7 +282,7 @@
           <a href="https://www.facebook.com/groups/imagineai" class="sf-soc" target="_blank" rel="noopener" title="Facebook">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           </a>
-          <a href="https://x.com/ImagineArt_X" class="sf-soc" target="_blank" rel="noopener" title="Twitter / X">
+          <a href="https://twitter.com/Imagine_aiart" class="sf-soc" target="_blank" rel="noopener" title="Twitter / X">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.432-8.5L2.25 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
           <a href="https://discord.com/invite/z7kjUyvAbv" class="sf-soc" target="_blank" rel="noopener" title="Discord">
