@@ -43,7 +43,7 @@
       /* ── Link columns ── */
       .sf-cols {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         gap: 32px;
         flex: 1;
         min-width: 0;
@@ -159,7 +159,7 @@
         .sf-inner-bar { padding: 0 20px 24px; }
         .sf-top { flex-direction: column; gap: 32px; }
         .sf-brand { width: 100%; flex-direction: row; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
-        .sf-cols { grid-template-columns: repeat(2, 1fr); }
+        .sf-cols { grid-template-columns: repeat(3, 1fr); }
       }
       @media (max-width: 480px) {
         .sf-cols { grid-template-columns: repeat(2, 1fr); gap: 24px; }
@@ -201,14 +201,16 @@
         <!-- Link columns -->
         <div class="sf-cols">
 
-          <!-- Explore -->
+          <!-- ImagineArt AI Studios -->
           <div class="sf-col">
-            <span class="sf-col-h">Explore</span>
+            <span class="sf-col-h">ImagineArt AI Studios</span>
             <ul>
-              <li><a href="${BASE}/ai-image-generator">Image</a></li>
-              <li><a href="${BASE}/ai-video-generator">Video</a></li>
-              <li><a href="${BASE}/music-studio">Music</a></li>
-              <li><a href="${BASE}/voice-studio">Voice</a></li>
+              <li><a href="${BASE}/image">Image Studio</a></li>
+              <li><a href="${BASE}/video">Video Studio</a></li>
+              <li><a href="${BASE}/audio">Audio Studio</a></li>
+              <li><a href="${BASE}/film-studio">Film Studio</a></li>
+              <li><a href="${BASE}/flow">Workflow</a></li>
+              <li><a href="${BASE}/business/enterprise">Enterprise</a></li>
               <li><a href="${BASE}/teams-plan">Teams</a></li>
             </ul>
           </div>
@@ -218,12 +220,21 @@
             <span class="sf-col-h">Tools</span>
             <ul>
               <li><a href="${BASE}/ai-image-generator">AI Image Generator</a></li>
-              <li><a href="${BASE}/ai-art-generator">AI Art Generator</a></li>
               <li><a href="${BASE}/ai-video-generator">AI Video Generator</a></li>
-              <li><a href="${BASE}/music-studio">AI Music Generator</a></li>
-              <li><a href="${BASE}/avatars">AI Avatar Generator</a></li>
-              <li><a href="${BASE}/shorts">AI Shorts Generator</a></li>
-              <li><a href="${BASE}/voice-studio">AI Voice Generator</a></li>
+              <li><a href="${BASE}/audio">AI Audio Generator</a></li>
+              <li><a href="${BASE}/ai-text-to-speech">AI Text-to-Speech</a></li>
+              <li><a href="${BASE}/audio/music/elevenlabs-music">AI Music Generator</a></li>
+              <li><a href="${BASE}/ai-film-studio">AI Film Studio</a></li>
+              <li><a href="${BASE}/workflow">AI Workflows</a></li>
+            </ul>
+          </div>
+
+          <!-- Apps -->
+          <div class="sf-col">
+            <span class="sf-col-h">Apps</span>
+            <ul>
+              <li><a href="${BASE}/apps/video-translate">Video Translate</a></li>
+              <li><a href="${BASE}/apps/heygen-avatar">HeyGen Avatar</a></li>
             </ul>
           </div>
 
@@ -232,7 +243,7 @@
             <span class="sf-col-h">Contact Us</span>
             <ul>
               <li><a href="${BASE}/teams-plan/contact-us">Contact Sales</a></li>
-              <li><a href="https://calendly.com/d/cr9s-6pt-mr3/one-on-one-demo-with-an-imagineart-expert" target="_blank" rel="noopener">Book a demo</a></li>
+              <li><a href="https://calendly.com/d/cr9s-6pt-mr3/one-on-one-demo-with-an-imagineart-expert" target="_blank" rel="noopener">Book a Demo</a></li>
             </ul>
           </div>
 
@@ -241,33 +252,17 @@
             <span class="sf-col-h">Community</span>
             <ul>
               <li><a href="https://discord.com/invite/z7kjUyvAbv" target="_blank" rel="noopener">Discord</a></li>
-              <li><a href="https://x.com/ImagineArt_X" target="_blank" rel="noopener">Twitter</a></li>
+              <li><a href="https://x.com/ImagineArt_X" target="_blank" rel="noopener">Twitter / X</a></li>
               <li><a href="https://www.instagram.com/imagineartofficial" target="_blank" rel="noopener">Instagram</a></li>
             </ul>
           </div>
 
-          <!-- Trust and Reviews -->
+          <!-- Pricing -->
           <div class="sf-col">
-            <span class="sf-col-h">Trust and Reviews</span>
-            <div class="sf-trust">
-              <a href="https://trust.imagine.art" target="_blank" rel="noopener" class="sf-soc2">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v5c0 5.25 3.5 10.15 8 11.35C16.5 21.15 20 16.25 20 11V6z"/></svg>
-                SOC 2 Compliant
-              </a>
-              <a href="https://www.trustpilot.com/review/www.imagine.art" target="_blank" rel="noopener" class="sf-tp">
-                <span class="sf-tp-name">
-                  <svg viewBox="0 0 24 24" fill="#219653" width="14" height="14"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-                  Trustpilot
-                </span>
-                <span class="sf-tp-stars">
-                  <span class="sf-tp-star"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 3.6H11L8.1 6.9l1.1 3.6L6 8.4l-3.2 2.1 1.1-3.6L1 4.6h3.8z" fill="white"/></svg></span>
-                  <span class="sf-tp-star"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 3.6H11L8.1 6.9l1.1 3.6L6 8.4l-3.2 2.1 1.1-3.6L1 4.6h3.8z" fill="white"/></svg></span>
-                  <span class="sf-tp-star"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 3.6H11L8.1 6.9l1.1 3.6L6 8.4l-3.2 2.1 1.1-3.6L1 4.6h3.8z" fill="white"/></svg></span>
-                  <span class="sf-tp-star"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 3.6H11L8.1 6.9l1.1 3.6L6 8.4l-3.2 2.1 1.1-3.6L1 4.6h3.8z" fill="white"/></svg></span>
-                  <span class="sf-tp-star"><svg viewBox="0 0 12 12"><path d="M6 1l1.2 3.6H11L8.1 6.9l1.1 3.6L6 8.4l-3.2 2.1 1.1-3.6L1 4.6h3.8z" fill="white"/></svg></span>
-                </span>
-              </a>
-            </div>
+            <span class="sf-col-h">Pricing</span>
+            <ul>
+              <li><a href="${BASE}/subscription">See Plans</a></li>
+            </ul>
           </div>
 
         </div>
