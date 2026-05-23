@@ -68,7 +68,13 @@
     }
     .hero-logo { height: 20px; width: auto; }
     .hero-studio-logo {
-      height: clamp(56px, 9vw, 160px); width: auto;
+      font-family: 'Monomaniac One', sans-serif;
+      font-size: clamp(36px, 7vw, 96px);
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      text-align: center;
     }
     .hero-sub {
       font-size: clamp(14px, 1.2vw, 16px); color: rgba(255,255,255,0.75);
@@ -1299,7 +1305,7 @@
 
     <!-- Logo + title + subtitle -->
     <div class="hero-top">
-      <img src="assets/marketing/marketing-studio-logo1.svg" alt="Marketing Studio" class="hero-studio-logo">
+      <h1 class="hero-studio-logo">Imagine Ads Studio</h1>
       <p class="hero-sub">One product image. Every ad your campaign needs: UGC, cinematic, try-on, unboxing, generated in minutes. Your creative team, running at 10x speed.</p>
     </div>
 
@@ -1763,20 +1769,6 @@
 
             <p class="hiw-zfold-body">Drop in any product page URL. The studio scrapes your product images automatically, picks the right visuals, and builds a complete video around your chosen template. You don't write a single word.</p>
 
-            <ol class="hiw-zfold-steps-list">
-              <li>
-                <span class="hiw-zfold-steps-title">Paste your product URL</span>
-                <span class="hiw-zfold-steps-sub">Any Shopify, WooCommerce, Amazon, or DTC product page</span>
-              </li>
-              <li>
-                <span class="hiw-zfold-steps-title">Select a template</span>
-                <span class="hiw-zfold-steps-sub">UGC · Tutorial · Product unboxing, and more</span>
-              </li>
-              <li>
-                <span class="hiw-zfold-steps-title">Studio scrapes &amp; generates</span>
-                <span class="hiw-zfold-steps-sub">Product images extracted automatically, video ready in minutes</span>
-              </li>
-            </ol>
 
             <p class="hiw-zfold-check">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7.5L5.5 11L12 3.5" stroke="#3dba80" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2388,10 +2380,10 @@
   <script>
     (function () {
       const NAV_LINKS = [
-        { label: 'Templates',      href: '#sec-templates'      },
-        { label: 'How it Works',   href: '#sec-how-it-works'   },
-        { label: 'Gallery',        href: '#sec-gallery'        },
-        { label: 'FAQ',            href: '#sec-faq'            },
+        { label: 'How it Works', href: '#sec-steps'    },
+        { label: 'Templates',   href: '#sec-templates' },
+        { label: 'Comparison',  href: '#sec-compare'   },
+        { label: 'FAQ',         href: '#sec-faq'        },
       ];
       const SHARED_STYLE = `
         .navbar-btn-ghost { display: none !important; }
