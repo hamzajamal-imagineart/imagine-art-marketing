@@ -75,6 +75,13 @@
       letter-spacing: -0.5px;
       line-height: 1;
       text-align: center;
+      margin: 0;
+    }
+    .hero-studio-logo img {
+      display: block;
+      height: clamp(36px, 6.5vw, 88px);
+      width: auto;
+      margin: 0 auto;
     }
     .hero-sub {
       font-size: clamp(14px, 1.2vw, 16px); color: rgba(255,255,255,0.75);
@@ -1305,7 +1312,7 @@
 
     <!-- Logo + title + subtitle -->
     <div class="hero-top">
-      <h1 class="hero-studio-logo">Imagine Ads Studio</h1>
+      <h1 class="hero-studio-logo"><img src="./assets/ads studio logo-light.svg" alt="Imagine Ads Studio"></h1>
       <p class="hero-sub">One product image. Every ad creative your campaign needs — UGC, cinematic, try-on, unboxing, generated in minutes. AI for advertising, built for ecommerce.</p>
     </div>
 
@@ -1475,7 +1482,7 @@
     input.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); }
     });
-    form.addEventListener('submit', function(e) { e.preventDefault(); });
+    form.addEventListener('submit', function(e) { e.preventDefault(); window.open('https://www.imagine.art/ad-studio', '_blank', 'noopener'); });
 
     // ── Video cycling ────────────────────────────────────────
     var isMobileHero = window.innerWidth <= 768;
@@ -2202,7 +2209,7 @@
       <h2 class="final-h2">Your competitors shipped 30 ads this week.<br>How many did you?</h2>
       <p class="final-sub">Every ad creative you need is already on your product page. You just haven't generated it yet.</p>
       <div class="final-btns">
-        <a href="https://www.imagine.art/teams-plan/contact-us" target="_blank" rel="noopener" class="btn-final-white">Book a demo</a>
+        <a href="https://cal.com/team/imagineart/imagineart-customer-assist" target="_blank" rel="noopener" class="btn-final-white">Book a demo</a>
         <a href="https://www.imagine.art/flow" target="_blank" rel="noopener" class="btn-final-ghost">Get Started</a>
       </div>
       <div class="final-stats">

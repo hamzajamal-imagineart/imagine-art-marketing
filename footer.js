@@ -243,7 +243,7 @@
             <span class="sf-col-h">Contact Us</span>
             <ul>
               <li><a href="${BASE}/teams-plan/contact-us" target="_blank" rel="noopener">Contact Sales</a></li>
-              <li><a href="https://www.imagine.art/teams-plan/contact-us" target="_blank" rel="noopener">Book a Demo</a></li>
+              <li><a href="https://cal.com/team/imagineart/imagineart-customer-assist" target="_blank" rel="noopener">Book a Demo</a></li>
             </ul>
           </div>
 
