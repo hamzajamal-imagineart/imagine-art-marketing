@@ -1,5 +1,5 @@
 /**
- * navbar.js — Shared ImagineArt navbar component
+ * navbar.js - Shared ImagineArt navbar component
  * Usage: <header id="site-nav"></header>  then  <script src="navbar.js"></script>
  */
 (function () {
@@ -101,7 +101,7 @@
   .nav-hamburger.open .bar:nth-child(1) { transform: translateY(3.25px) rotate(45deg); }
   .nav-hamburger.open .bar:nth-child(2) { transform: translateY(-3.25px) rotate(-45deg); }
 
-  /* ─── Mobile menu — full-screen dark overlay ─────────── */
+  /* ─── Mobile menu - full-screen dark overlay ─────────── */
   @keyframes mobileMenuIn {
     from { opacity: 0; transform: translateY(-10px); }
     to   { opacity: 1; transform: translateY(0); }

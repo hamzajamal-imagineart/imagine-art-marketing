@@ -269,7 +269,7 @@
       </div>
 
     </div>
-    <!-- Big watermark — full footer width, above bottom bar -->
+    <!-- Big watermark - full footer width, above bottom bar -->
     <div class="sf-wordmark"><img src="./assets/watermark.svg" alt="" aria-hidden="true"></div>
     <div class="sf-inner-bar">
       <!-- Bottom bar -->
