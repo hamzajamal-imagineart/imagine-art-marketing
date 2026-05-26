@@ -220,7 +220,7 @@
         `}
       </nav>
       <div class="nav-actions">
-        <a href="https://www.imagine.art/flow" target="_blank" rel="noopener" class="navbar-btn navbar-btn-ghost">Get Started</a>
+        <a href="https://www.imagine.art/ad-studio" target="_blank" rel="noopener" class="navbar-btn navbar-btn-ghost">Get Started</a>
         <a href="https://cal.com/team/imagineart/imagineart-customer-assist" target="_blank" rel="noopener" class="navbar-btn navbar-btn-dark">Book a demo</a>
       </div>
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
@@ -264,7 +264,7 @@
       <div class="nav-mobile-divider"></div>
       <div class="nav-mobile-actions" style="gap:10px;">
         <a href="https://cal.com/team/imagineart/imagineart-customer-assist" target="_blank" rel="noopener" class="navbar-btn navbar-btn-dark">Book a demo</a>
-        <a href="https://www.imagine.art/flow" target="_blank" rel="noopener" class="navbar-btn navbar-btn-dark" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:rgba(255,255,255,0.75);">Get Started</a>
+        <a href="https://www.imagine.art/ad-studio" target="_blank" rel="noopener" class="navbar-btn navbar-btn-dark" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:rgba(255,255,255,0.75);">Get Started</a>
       </div>
     </div>
   </div>`;
